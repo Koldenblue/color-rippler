@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-function ColorBox() {
+function ColorBox(props) {
   const [color, dispatch] = useReducer((state, action) =>{
     if (action === 'red') {
       return ({ 'red': state.red + 15, 'green': state.green, 'blue': state.blue })
