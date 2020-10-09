@@ -1,4 +1,12 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+**/.DS_Store
+.vscode
+**/__pycache__
+.DS_Store
+node_modules/
+Develop/**
+develop/**
+*.code-workspace
+.env
 
 # dependencies
 /node_modules
