@@ -7,6 +7,7 @@ function BoxGrid(props) {
   const [green, setGreen] = useState([]);
   const [blue, setBlue] = useState([]);
   const [positive, setPositive] = useState(1);
+  const [variance, setVariance] = useState(50);
 
   const [colors, dispatch] = useReducer((state, action) => {
     if (action === 'blue') {
@@ -71,6 +72,11 @@ function BoxGrid(props) {
     console.log(value);
   }
 
+  let randRed = Math.floor(Math.random() * 254)
+  let randGreen = Math.floor(Math.random() * 254)
+  let randBlue = Math.floor(Math.random() * 254)
+  let plusMinus = [-1, 1]
+
   return (
     <>
       <div className='container-fluid'>
@@ -78,9 +84,21 @@ function BoxGrid(props) {
           return (
             <div key={row} className='row'>
               {colArr.map((col) => {
-                // {dispatch(randomDispatch())}
+                let redVar = Math.floor(Math.random() * variance)
+                let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+                let blueVar = Math.floor(Math.random() * variance)
+                let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+                let greenVar = Math.floor(Math.random() * variance)
+                let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
                 return (
-                  <DynaColorBox key={col} change={changeSurroundings} data-value={`r${row}c${col}`} red={Math.floor(Math.random() * 254)} green={Math.floor(Math.random() * 254)} blue={Math.floor(Math.random() * 254)}/>
+                  <DynaColorBox 
+                    key={col} 
+                    change={changeSurroundings} 
+                    data-value={`r${row}c${col}`} 
+                    red={randRed + redVar * redPlusMinus} 
+                    green={randGreen + greenVar * greenPlusMinus}
+                    blue={randBlue + blueVar * bluePlusMinus}
+                  />
                 )
               })}
             </div>
