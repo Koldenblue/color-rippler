@@ -3,11 +3,87 @@ import ColorBox from './Colors';
 import DynaColorBox from './DynaColorBox';
 
 function BoxGrid(props) {
+  const [variance, setVariance] = useState(50);
+  const [gridSize, setGridSize] = useState(12);
+
+  // a 12 by 12 grid
+  let rowArr = new Array(gridSize);
+  let colArr = new Array(gridSize);
+  for (let i = 0, j = gridSize; i < j; i++) {
+    rowArr[i] = i;
+    colArr[i] = i;
+  }
+
+  /** function passed to color boxes, triggered on click.
+   * Gets the data-value objects for adjacent boxes
+  * @param {object} value is from the data-value attribute on the box, or props.data-value */
+  let changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
+    console.log(value, redChange, greenChange, blueChange);
+    let currentRow = value.r;
+    let currentCol = value.c;
+    let adjacentBoxes = [];
+    for (let i = -1; i < 2; i++) {
+      for (let j = -1; j < 2; j++) {
+        if (i === 0 && j === 0) {
+          continue;
+        }
+        let adjBox = {r: currentRow + i, c: currentCol + j};
+        if (adjBox.r < gridSize && adjBox.r >= 0 && adjBox.c < gridSize && adjBox.c >= 0) {
+          adjacentBoxes.push(adjBox);
+        }
+      }
+    }
+    console.log(adjacentBoxes)
+  }
+
+  // initial random color to be applied to entire grid
+  let randRed = Math.floor(Math.random() * 254)
+  let randGreen = Math.floor(Math.random() * 254)
+  let randBlue = Math.floor(Math.random() * 254)
+  // determines whether to add or subtract variance from initial color
+  let plusMinus = [-1, 1]
+
+  return (
+    <>
+      <div className='container-fluid'>
+        {rowArr.map((row) => {
+          return (
+            <div key={row} className='row'>
+              {colArr.map((col) => {
+                let redVar = Math.floor(Math.random() * variance)
+                let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+                let blueVar = Math.floor(Math.random() * variance)
+                let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+                let greenVar = Math.floor(Math.random() * variance)
+                let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+                return (
+                  <DynaColorBox 
+                    key={col} 
+                    change={changeSurroundings} 
+                    data-value={{r:row, c:col}} 
+                    red={randRed + redVar * redPlusMinus} 
+                    green={randGreen + greenVar * greenPlusMinus}
+                    blue={randBlue + blueVar * bluePlusMinus}
+                    numColumns = {gridSize}
+                  />
+                )
+              })}
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
+}
+
+export default BoxGrid;
+
+
+
   // const [red, setRed] = useState([]);
   // const [green, setGreen] = useState([]);
   // const [blue, setBlue] = useState([]);
   // const [positive, setPositive] = useState(1);
-  const [variance, setVariance] = useState(50);
 
   // const [colors, dispatch] = useReducer((state, action) => {
   //   if (action === 'blue') {
@@ -32,7 +108,7 @@ function BoxGrid(props) {
 
 
   // useEffect(() => {
-  //   for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+  //   for (let i = 0; i < gridSize * gridSize; i++) {
   //     red.push(i);
   //     green.push(i);
   //     blue.push(i);
@@ -43,61 +119,9 @@ function BoxGrid(props) {
   //   // now each color is an array of numbers, 0 thru 143
   // },[])
 
-
-  const GRID_SIZE = 12;
-  let rowArr = new Array(GRID_SIZE);
-  let colArr = new Array(GRID_SIZE);
-  for (let i = 0, j = GRID_SIZE; i < j; i++) {
-    rowArr[i] = i;
-    colArr[i] = i;
-  }
-
   // let dispatchArray = ['red', 'green', 'blue']
   // const randomDispatch = () => {
   //   let num = Math.floor(Math.random() * 3)
   //   let randDispatch = dispatchArray[num]
   //   return randDispatch;
   // }
-
-  let changeSurroundings = (value) => {
-    console.log(value);
-  }
-
-  let randRed = Math.floor(Math.random() * 254)
-  let randGreen = Math.floor(Math.random() * 254)
-  let randBlue = Math.floor(Math.random() * 254)
-  let plusMinus = [-1, 1]
-
-  return (
-    <>
-      <div className='container-fluid'>
-        {rowArr.map((row) => {
-          return (
-            <div key={row} className='row'>
-              {colArr.map((col) => {
-                let redVar = Math.floor(Math.random() * variance)
-                let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-                let blueVar = Math.floor(Math.random() * variance)
-                let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-                let greenVar = Math.floor(Math.random() * variance)
-                let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-                return (
-                  <DynaColorBox 
-                    key={col} 
-                    change={changeSurroundings} 
-                    data-value={`r${row}c${col}`} 
-                    red={randRed + redVar * redPlusMinus} 
-                    green={randGreen + greenVar * greenPlusMinus}
-                    blue={randBlue + blueVar * bluePlusMinus}
-                  />
-                )
-              })}
-            </div>
-          )
-        })}
-      </div>
-    </>
-  )
-}
-
-export default BoxGrid;
