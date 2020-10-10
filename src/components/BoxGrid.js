@@ -67,6 +67,10 @@ function BoxGrid(props) {
   }
   let newDisp;
 
+  let changeSurroundings = (value) => {
+    console.log(value);
+  }
+
   return (
     <>
       <div className='container-fluid'>
@@ -76,7 +80,7 @@ function BoxGrid(props) {
               {colArr.map((col) => {
                 // {dispatch(randomDispatch())}
                 return (
-                  <DynaColorBox key={col} red={Math.floor(Math.random() * 254)} green={Math.floor(Math.random() * 254)} blue={Math.floor(Math.random() * 254)}/>
+                  <DynaColorBox key={col} change={changeSurroundings} data-value={`r${row}c${col}`} red={Math.floor(Math.random() * 254)} green={Math.floor(Math.random() * 254)} blue={Math.floor(Math.random() * 254)}/>
                 )
               })}
             </div>
