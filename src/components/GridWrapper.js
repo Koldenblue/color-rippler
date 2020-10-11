@@ -32,6 +32,42 @@ function GridWrapper() {
     setColorGrid(newGrid)
   }, [])
 
+  // accepting a 2d array, d for the max delta, o for the current delta, row and column
+  const changeColor = (grids, maxDelta, startDelta = 1, row, col, redChange, greenChange, blueChange) => {
+    // mapping to new grid to create a copy that doesn't have same reference
+    const currentGrid = grids.map(a=> a.map(b=> b))
+
+    setTimeout(()=> {
+
+      // ranges is the row and column numbers of boxes to be changed - ex. [-2, -1, 0, 1, 2]
+      const ranges = [0];
+      for(let i = 1; i <= startDelta; i++){
+        ranges.unshift(-i);
+        ranges.push(i);
+      };
+
+      // for each row/col in the range, return a new value in the outermost shell
+      // the outermost shell will always have at least one row or column equal to the absolute value of the max range
+      ranges.forEach(a => {
+        return (
+          ranges.map(b => {
+            // only change the outermost shell:
+            if(Math.abs(b) === startDelta || Math.abs(a) === startDelta){
+              // turning the range into a 2D array of dimensions equal to max range
+              currentGrid[a + row][b + col] = {
+                red: currentGrid[a + row][b + col].red + redChange,
+                green: currentGrid[a + row][b + col].green + greenChange,
+                blue: currentGrid[a + row][b + col].blue + blueChange,
+              };
+            }
+          })
+        )
+      });
+      setColorGrid(currentGrid)
+      console.log(currentGrid);
+      startDelta < maxDelta && changeColor(grids, maxDelta, startDelta + 1, row, col)
+    }, 2000)
+  }
 
   /** function passed to color boxes, triggered on click.
   * Gets the data-value objects for adjacent boxes
@@ -41,6 +77,7 @@ function GridWrapper() {
     const currentRow = value.r;
     const currentCol = value.c;
     console.log(colorGrid)
+    // mapping to new grid to create a copy that doesn't have same reference
     let newGrid = colorGrid.map((data) => {
       return data;
     })
@@ -50,8 +87,10 @@ function GridWrapper() {
       blue: newGrid[currentRow][currentCol].blue + blueChange,
     })
     console.log("new Grid", newGrid)
+    changeColor(newGrid, 2, 1, 3, 3, redChange, greenChange, blueChange)
     setColorGrid(newGrid)
   }
+
 
   return (
     <>
