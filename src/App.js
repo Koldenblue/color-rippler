@@ -5,8 +5,8 @@ import ClassBoxGrid from './components/ClassBoxGrid';
 function App() {
   return (
     <div className="App">
-      <BoxGrid />
-      {/* <ClassBoxGrid /> */}
+      {/* <BoxGrid /> */}
+      <ClassBoxGrid />
     </div>
   );
 }

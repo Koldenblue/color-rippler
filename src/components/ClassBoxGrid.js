@@ -21,6 +21,10 @@ class ClassBoxGrid extends React.Component {
 
     this.starting = true;
     this.populateArrays();
+    this.grid = this.populateGrid();
+    this.colorGrid = this.generateColorGrid();
+    this.newBoxArr = this.populateGrid2()
+    console.log(this.newBoxArr)
   }
   
   // a 12 by 12 grid
@@ -40,9 +44,6 @@ class ClassBoxGrid extends React.Component {
     console.log(value, redChange, greenChange, blueChange);
     let currentRow = value.r;
     let currentCol = value.c;
-    // console.log(grids[value.r].props.children[value.c].props.red)
-    // console.log(grids[value.r].props.children[value.c].props.green)
-    // console.log(grids[value.r].props.children[value.c].props.blue)
     let adjacentBoxes = [];
     for (let i = -1; i < 2; i++) {
       for (let j = -1; j < 2; j++) {
@@ -50,7 +51,7 @@ class ClassBoxGrid extends React.Component {
           continue;
         }
         let adjBox = {r: currentRow + i, c: currentCol + j};
-        if (adjBox.r < this.gridSize && adjBox.r >= 0 && adjBox.c < this.gridSize && adjBox.c >= 0) {
+        if (adjBox.r < this.state.gridSize && adjBox.r >= 0 && adjBox.c < this.state.gridSize && adjBox.c >= 0) {
           adjacentBoxes.push(adjBox);
         }
       }
@@ -59,54 +60,101 @@ class ClassBoxGrid extends React.Component {
     console.log(this.state.rgbArr)
   }
 
-  populateGrid = () => {
-  let grids = this.rowArr.map((row) => {
-    if (this.starting) {
-      this.newRgbArr.push([])
+  generateColorGrid = () => {
+    let colorGrid = [];
+    for (let i = 0; i < this.state.gridSize; i++) {
+      colorGrid.push([])
+      for (let j = 0; j < this.state.gridSize; j++) {
+        let redVar = Math.floor(Math.random() * this.state.variance)
+        let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        let blueVar = Math.floor(Math.random() * this.state.variance)
+        let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        let greenVar = Math.floor(Math.random() * this.state.variance)
+        let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        colorGrid[i].push([this.randRed + redVar * redPlusMinus, this.randGreen + greenVar * greenPlusMinus, this.randBlue + blueVar * bluePlusMinus])
+      }
     }
-    return (
-      <div key={row} className='row'>
-        {this.colArr.map((col) => {
-          let redVar = Math.floor(Math.random() * this.state.variance)
-          let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-          let blueVar = Math.floor(Math.random() * this.state.variance)
-          let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-          let greenVar = Math.floor(Math.random() * this.state.variance)
-          let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-          if (this.starting) {
-            this.newRgbArr[row].push([this.randRed + redVar * redPlusMinus, this.randGreen + greenVar * greenPlusMinus, this.randBlue + blueVar * bluePlusMinus])
-          }
-          return (
-            <DynaColorBox
-              key={[row, col]}
-              change={this.changeSurroundings}
-              data-value={{r:row, c:col}}
-              red={this.randRed + redVar * redPlusMinus}
-              green={this.randGreen + greenVar * greenPlusMinus}
-              blue={this.randBlue + blueVar * bluePlusMinus}
-              numColumns = {this.state.gridSize}
-              reduce={this.reduce}
-            />
-          )
-        })}
-      </div>
-    )
-  })
-  this.starting = false
-  return grids
-}
+    return colorGrid;
+  }
+
+  populateGrid = () => {
+    let grids = this.rowArr.map((row) => {
+      if (this.starting) {
+        this.newRgbArr.push([])
+      }
+      return (
+        <div key={row} className='row'>
+          {this.colArr.map((col) => {
+            let redVar = Math.floor(Math.random() * this.state.variance)
+            let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+            let blueVar = Math.floor(Math.random() * this.state.variance)
+            let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+            let greenVar = Math.floor(Math.random() * this.state.variance)
+            let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+            if (this.starting) {
+              this.newRgbArr[row].push([this.randRed + redVar * redPlusMinus, this.randGreen + greenVar * greenPlusMinus, this.randBlue + blueVar * bluePlusMinus])
+            }
+            return (
+              <DynaColorBox
+                key={[row, col]}
+                change={this.changeSurroundings}
+                data-value={{r:row, c:col}}
+                red={this.randRed + redVar * redPlusMinus}
+                green={this.randGreen + greenVar * greenPlusMinus}
+                blue={this.randBlue + blueVar * bluePlusMinus}
+                numColumns = {this.state.gridSize}
+              />
+            )
+          })}
+        </div>
+      )
+    })
+    this.starting = false
+    return grids;
+  }
+
+  populateGrid2 = () => {
+    let row = -1;
+    let grids = this.colorGrid.map((a) => {
+      row++;
+      let col = -1;
+      return (
+        <div key={a} className='row'>
+          {a.map((b) => {
+            col++
+            return (
+              <DynaColorBox
+                key={[row, col]}
+                change={this.changeSurroundings}
+                red={b[0]}
+                green={b[1]}
+                blue={b[2]}
+                numColumns = {this.state.gridSize}
+
+              />
+          )})}
+        </div>
+      )
+    })
+    console.log(grids)
+    return grids
+  }
+  
 
 componentDidMount() {
+  // newRgbArr is populated by populateGrid, which is called in the constructor
   this.setState({rgbArr: this.newRgbArr})
+  // colorGrid is created in constructor
+  console.log(this.colorGrid)
 }
 
   render() {
-    let grids;
-    grids = this.populateGrid()
+
     return (
       <>
         <div className='container-fluid'>
-          {grids}
+          {/* {this.grid} */}
+          {this.newBoxArr}
         </div>
       </>
     )

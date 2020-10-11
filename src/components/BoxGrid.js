@@ -27,6 +27,7 @@ function BoxGrid(props) {
 
   // initial random color to be applied to entire grid
   const randRed = Math.floor(Math.random() * 254);
+  console.log(randRed)
   const randGreen = Math.floor(Math.random() * 254);
   const randBlue = Math.floor(Math.random() * 254);
   // determines whether to add or subtract variance from initial color
@@ -59,6 +60,10 @@ function BoxGrid(props) {
     console.log(rgbArr)
   }
 
+  const propagateChange = () => {
+
+  }
+
   const reduce = () => {
 
   }
@@ -71,14 +76,12 @@ function BoxGrid(props) {
     colArr[i] = i;
   }
 
-  let i = 0;
   // problem: newRrb is being manipulated directly, rather than setting state. Also, can't set state within this function!
   // problem: also, pushing each time this renders, so a bunch of empty arrays are being pushed if not accounted for
   let grids = rowArr.map((row) => {
     if(newRgbArr.length < gridSize) {
       newRgbArr.push([])
     }
-    console.log(i++)
     return (
       <div key={row} className='row'>
         {colArr.map((col) => {
