@@ -32,6 +32,7 @@ function GridWrapper() {
     setColorGrid(newGrid)
   }, [])
 
+
   // accepting a 2d array, d for the max delta, o for the current delta, row and column
   const changeColor = (grids, maxDelta, startDelta = 1, row, col, redChange, greenChange, blueChange) => {
     // mapping to new grid to create a copy that doesn't have same reference
@@ -65,9 +66,10 @@ function GridWrapper() {
       });
       setColorGrid(currentGrid)
       console.log(currentGrid);
-      startDelta < maxDelta && changeColor(grids, maxDelta, startDelta + 1, row, col)
-    }, 2000)
+      startDelta < maxDelta && changeColor(grids, maxDelta, startDelta + 1, row, col, redChange, greenChange, blueChange)
+    }, 1000)
   }
+
 
   /** function passed to color boxes, triggered on click.
   * Gets the data-value objects for adjacent boxes
@@ -86,8 +88,8 @@ function GridWrapper() {
       green: newGrid[currentRow][currentCol].green + greenChange,
       blue: newGrid[currentRow][currentCol].blue + blueChange,
     })
-    console.log("new Grid", newGrid)
-    changeColor(newGrid, 2, 1, 3, 3, redChange, greenChange, blueChange)
+    // console.log("new Grid", newGrid)
+    changeColor(newGrid, 3, 1, currentRow, currentCol, redChange, greenChange, blueChange)
     setColorGrid(newGrid)
   }
 
