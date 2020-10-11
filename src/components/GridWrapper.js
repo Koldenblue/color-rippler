@@ -8,12 +8,13 @@ function GridWrapper() {
   const [gridSize, setGridSize] = useState(12);
 
   // initial random color to be applied to entire grid
-  const randRed = Math.floor(Math.random() * 254);
-  const randGreen = Math.floor(Math.random() * 254);
-  const randBlue = Math.floor(Math.random() * 254);
+  const randRed = Math.floor(Math.random() * 255);
+  const randGreen = Math.floor(Math.random() * 255);
+  const randBlue = Math.floor(Math.random() * 255);
   // determines whether to add or subtract variance from initial color
   const plusMinus = [-1, 1];
 
+  // initializes the color grid
   useEffect(() => {
     let newGrid = []
     for (let i = 0; i < gridSize; i++) {
@@ -25,21 +26,39 @@ function GridWrapper() {
         let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
         let greenVar = Math.floor(Math.random() * variance)
         let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-        newGrid[i].push({red: randRed + redVar * redPlusMinus, green: randGreen + greenVar * greenPlusMinus, blue: randBlue + blueVar * bluePlusMinus})
+        newGrid[i].push({ red: randRed + redVar * redPlusMinus, green: randGreen + greenVar * greenPlusMinus, blue: randBlue + blueVar * bluePlusMinus })
       }
     }
     setColorGrid(newGrid)
-  },[])
+  }, [])
 
-  useEffect(() => {
+
+  /** function passed to color boxes, triggered on click.
+  * Gets the data-value objects for adjacent boxes
+  * @param {object} value is from the data-value attribute on the box, or props.data-value */
+  const changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
+    console.log(value, redChange, greenChange, blueChange);
+    const currentRow = value.r;
+    const currentCol = value.c;
     console.log(colorGrid)
-  }, [colorGrid])
+    let newGrid = colorGrid.map((data) => {
+      return data;
+    })
+    newGrid[currentRow].splice(currentCol, 1, {
+      red: newGrid[currentRow][currentCol].red + redChange,
+      green: newGrid[currentRow][currentCol].green + greenChange,
+      blue: newGrid[currentRow][currentCol].blue + blueChange,
+    })
+    console.log("new Grid", newGrid)
+    setColorGrid(newGrid)
+  }
 
   return (
     <>
       <Grid
         colorGrid={colorGrid}
         gridSize={gridSize}
+        changeSurroundings={changeSurroundings}
       />
     </>
   )
