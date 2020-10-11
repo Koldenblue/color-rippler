@@ -36,6 +36,10 @@ function BoxGrid(props) {
     console.log(adjacentBoxes)
   }
 
+  const reduce = () => {
+    
+  }
+
   // initial random color to be applied to entire grid
   let randRed = Math.floor(Math.random() * 254)
   let randGreen = Math.floor(Math.random() * 254)
@@ -65,6 +69,7 @@ function BoxGrid(props) {
                     green={randGreen + greenVar * greenPlusMinus}
                     blue={randBlue + blueVar * bluePlusMinus}
                     numColumns = {gridSize}
+                    reduce={reduce}
                   />
                 )
               })}
