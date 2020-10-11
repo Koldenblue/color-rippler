@@ -1,8 +1,12 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import ColorBox from './Colors';
 import DynaColorBox from './DynaColorBox';
+import useConstructor from './useConstructor';
 
 function BoxGrid(props) {
+  useConstructor(() => {
+    console.log("one time only")
+  })
   const [variance, setVariance] = useState(50);
   const [gridSize, setGridSize] = useState(12);
   const [newRgbArr, setNewRgbArr] = useState([]);
@@ -60,6 +64,23 @@ function BoxGrid(props) {
     console.log(rgbArr)
   }
 
+  // function that generates an array of colors
+  const generateColorGrid = () => {
+    let colorGrid = [];
+    for (let i = 0; i < this.state.gridSize; i++) {
+      colorGrid.push([])
+      for (let j = 0; j < this.state.gridSize; j++) {
+        let redVar = Math.floor(Math.random() * this.state.variance)
+        let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        let blueVar = Math.floor(Math.random() * this.state.variance)
+        let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        let greenVar = Math.floor(Math.random() * this.state.variance)
+        let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
+        colorGrid[i].push({red: this.randRed + redVar * redPlusMinus, green: this.randGreen + greenVar * greenPlusMinus, blue: this.randBlue + blueVar * bluePlusMinus})
+      }
+    }
+    return colorGrid;
+  }
   const propagateChange = () => {
 
   }
