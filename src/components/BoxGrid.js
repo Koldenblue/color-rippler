@@ -71,9 +71,14 @@ function BoxGrid(props) {
     colArr[i] = i;
   }
 
-
+  let i = 0;
+  // problem: newRrb is being manipulated directly, rather than setting state. Also, can't set state within this function!
+  // problem: also, pushing each time this renders, so a bunch of empty arrays are being pushed if not accounted for
   let grids = rowArr.map((row) => {
-    newRgbArr.push([])
+    if(newRgbArr.length < gridSize) {
+      newRgbArr.push([])
+    }
+    console.log(i++)
     return (
       <div key={row} className='row'>
         {colArr.map((col) => {
@@ -83,7 +88,9 @@ function BoxGrid(props) {
           let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
           let greenVar = Math.floor(Math.random() * variance)
           let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-          newRgbArr[row].push([randRed + redVar * redPlusMinus, randGreen + greenVar * greenPlusMinus, randBlue + blueVar * bluePlusMinus])
+          if (newRgbArr[row].length < gridSize) {
+            newRgbArr[row].push([randRed + redVar * redPlusMinus, randGreen + greenVar * greenPlusMinus, randBlue + blueVar * bluePlusMinus])
+          }
           return (
             <DynaColorBox
               key={[row, col]}
