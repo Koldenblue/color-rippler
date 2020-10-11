@@ -1,5 +1,7 @@
 const colors = ["red", "white", "blue", "green", "yellow"]
 
+// creates a new array then destructures it so that all initial values are undefined.
+// then maps each undefined value to a new array
 const makeGrids = n => [...Array(n)].map(b => [...Array(n)].map(a => colors[~~(Math.random()*5)]));
 
 const grids = makeGrids(5);

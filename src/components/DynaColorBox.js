@@ -28,17 +28,17 @@ function DynaColorBox(props) {
   //   return { 'red': newRed, 'green': newGreen, 'blue': newBlue}
   // }, { 'red': props.red, 'green': props.green, 'blue': props.blue })
   
-  // // height of boxes is based on browser window height
-  // let boxHeight = window.innerHeight / Number(props.numColumns)
-  // let styles = {
-  //   colorBox: {
-  //     width: 'auto',
-  //     height: boxHeight + 'px',
-  //     backgroundColor: `rgb(${colors['red']}, ${colors['green']}, ${colors['blue']})`,
-  //     opacity: opacity,
-  //     transition: `opacity ${transition}s`,
-  //   }
-  // }
+  // height of boxes is based on browser window height
+  let boxHeight = window.innerHeight / Number(props.numColumns)
+  let styles = {
+    colorBox: {
+      width: 'auto',
+      height: boxHeight + 'px',
+      backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
+      opacity: opacity,
+      transition: `opacity ${transition}s`,
+    }
+  }
 
   useEffect(() => {
     setOpacity(1);
@@ -54,8 +54,8 @@ function DynaColorBox(props) {
     let blueVar = Math.floor(Math.random() * variance)
     let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
     // dispatch([redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
-    props.reduce()
-    // props.change(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
+    // props.reduce()
+    props.change(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
   }
 
   return(
