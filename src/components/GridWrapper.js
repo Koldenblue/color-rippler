@@ -33,7 +33,13 @@ function GridWrapper() {
   }, [])
 
 
-  // accepting a 2d array, d for the max delta, o for the current delta, row and column
+  /** Accepts a 2D array and initial row/column value, containing rgb objects. Propogates rgb changes one array shell at a time.
+   * @param {Array} grids A 2d array, consisting of an outer array of rows, and inner arrays corresponding to columns, with each row/col having an rgb object
+   * @param {Number} maxDelta The maximum propogation of color change
+   * @param {Number} startDelta The innermost shell in the array that will be changed
+   * @param {Number} row The starting row, corresponding to the outermost array
+   * @param {Number} col The starting column, corresponding to the inner arrays
+   * @param {Number} redChange The amount that each red value in the rgb objects will be changed. Similar for greenChange and blueChange */
   const changeColor = (grids, maxDelta, startDelta = 1, row, col, redChange, greenChange, blueChange) => {
     // mapping to new grid to create a copy that doesn't have same reference
     const currentGrid = grids.map(a=> a.map(b=> b))
@@ -55,19 +61,26 @@ function GridWrapper() {
             // only change the outermost shell:
             if(Math.abs(b) === startDelta || Math.abs(a) === startDelta){
               // turning the range into a 2D array of dimensions equal to max range
-              currentGrid[a + row][b + col] = {
-                red: currentGrid[a + row][b + col].red + redChange,
-                green: currentGrid[a + row][b + col].green + greenChange,
-                blue: currentGrid[a + row][b + col].blue + blueChange,
-              };
+              try {
+                currentGrid[a + row][b + col] = {
+                  red: currentGrid[a + row][b + col].red + redChange,
+                  green: currentGrid[a + row][b + col].green + greenChange,
+                  blue: currentGrid[a + row][b + col].blue + blueChange,
+                };
+              }
+              catch (TypeError) {
+                // console.log('max range reached');
+              }
             }
           })
         )
       });
       setColorGrid(currentGrid)
       console.log(currentGrid);
+      // can set the grids param to the original grid in order to only change outermost shell, instead of all shells
+      // or set to currentGrid to change all shells
       startDelta < maxDelta && changeColor(grids, maxDelta, startDelta + 1, row, col, redChange, greenChange, blueChange)
-    }, 1000)
+    }, 300)
   }
 
 

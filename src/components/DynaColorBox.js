@@ -5,28 +5,6 @@ function DynaColorBox(props) {
   const [opacity, setOpacity] = useState(0);
   const [transition, setTransition] = useState(Math.floor(Math.random() * 15));
 
-  // reducer modifies state of colors based on prev state.
-  // const [colors, dispatch] = useReducer((state, action) => {
-  //   let newRed = state.red + action[0];
-  //   let newGreen = state.green + action[1];
-  //   let newBlue = state.blue + action[2];
-  //   if (newRed > 254) {
-  //     newRed = 254;
-  //   } else if (newRed < 0) {
-  //     newRed = 0;
-  //   } 
-  //   if (newGreen > 254) {
-  //     newGreen = 254;
-  //   } else if (newGreen < 0) {
-  //     newGreen = 0;
-  //   } 
-  //   if (newBlue > 254) {
-  //     newBlue = 254;
-  //   } else if (newBlue < 0) {
-  //     newBlue = 0;
-  //   } 
-  //   return { 'red': newRed, 'green': newGreen, 'blue': newBlue}
-  // }, { 'red': props.red, 'green': props.green, 'blue': props.blue })
   
   // height of boxes is based on browser window height
   let boxHeight = window.innerHeight / Number(props.numColumns)
@@ -55,7 +33,7 @@ function DynaColorBox(props) {
     let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
     // dispatch([redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
     // props.reduce()
-    props.change(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
+    props.changeSurroundings(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
   }
 
   return(

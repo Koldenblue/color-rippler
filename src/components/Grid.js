@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DynaColorBox from './DynaColorBox';
 
 function Grid(props) {
-  const [visualGrids, setVisualGrids] = useState('');
-
 
   let r = -1;
   let c = -1;
@@ -25,7 +23,7 @@ function Grid(props) {
                 red={box.red}
                 green={box.green}
                 blue={box.blue}
-                change={props.changeSurroundings}
+                changeSurroundings={props.changeSurroundings}
                 numColumns = {props.gridSize}
               />
             );
