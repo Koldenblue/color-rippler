@@ -1,12 +1,11 @@
 import React from 'react';
-import BoxGrid from './components/BoxGrid';
-import ClassBoxGrid from './components/ClassBoxGrid';
+import GridWrapper from './components/GridWrapper';
 
 function App() {
+
   return (
     <div className="App">
-      {/* <BoxGrid /> */}
-      <ClassBoxGrid />
+      <GridWrapper />
     </div>
   );
 }

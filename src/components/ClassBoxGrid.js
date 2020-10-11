@@ -1,5 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
-import ColorBox from './Colors';
+import React from 'react';
 import DynaColorBox from './DynaColorBox';
 
 class ClassBoxGrid extends React.Component {
@@ -8,36 +7,20 @@ class ClassBoxGrid extends React.Component {
     this.state = {
       variance: 50,
       gridSize: 12,
-      rgbArr: []
+      rgbArr: [],
+      colorGrid: []
     }
-    
+
     // initial random color to be applied to entire grid
     this.randRed = Math.floor(Math.random() * 255);
     this.randGreen = Math.floor(Math.random() * 255);
     this.randBlue = Math.floor(Math.random() * 255);
     // determines whether to add or subtract variance from initial color
     this.plusMinus = [-1, 1];
-    this.newRgbArr = []
 
-    this.starting = true;
-    this.populateArrays();
-    // this.grid = this.populateGrid();
-    this.colorGrid = this.generateColorGrid();
-    console.log(this.colorGrid)
-    let boxArr3 = this.populateGrid3()
-    console.log(boxArr3)
-    // this.newBoxArr = this.populateGrid2()
-    // console.log(this.newBoxArr)
-  }
-  
-  // a 12 by 12 grid
-  rowArr = new Array(12); 
-  colArr = new Array(12);
-  populateArrays = () => {
-    for (let i = 0, j = this.state.gridSize; i < j; i++) {
-      this.rowArr[i] = i;
-      this.colArr[i] = i;
-    }
+    // generate the initial color grid, which will then be set to the rgbArr state upon componentDidMount
+    
+
   }
 
   /** function passed to color boxes, triggered on click.
@@ -59,26 +42,20 @@ class ClassBoxGrid extends React.Component {
         }
       }
     }
-    console.log(adjacentBoxes)
+    let newRed = this.state.rgbArr[currentRow][currentCol].red + redChange;
+    let newGreen = this.state.rgbArr[currentRow][currentCol].green + greenChange;
+    let newBlue = this.state.rgbArr[currentRow][currentCol].blue + blueChange;
+    let newColorArr = this.state.rgbArr;
+    console.log(this.state.rgbArr)
+
+    newColorArr[currentRow].splice(currentCol , 1, {red: newRed, green: newGreen, blue: newBlue})
+    console.log(newColorArr)
+    this.setState({ rgbArr:newColorArr })
+    // console.log(adjacentBoxes)
     console.log(this.state.rgbArr)
   }
 
-  generateColorGrid = () => {
-    let colorGrid = [];
-    for (let i = 0; i < this.state.gridSize; i++) {
-      colorGrid.push([])
-      for (let j = 0; j < this.state.gridSize; j++) {
-        let redVar = Math.floor(Math.random() * this.state.variance)
-        let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-        let blueVar = Math.floor(Math.random() * this.state.variance)
-        let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-        let greenVar = Math.floor(Math.random() * this.state.variance)
-        let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-        colorGrid[i].push({red: this.randRed + redVar * redPlusMinus, green: this.randGreen + greenVar * greenPlusMinus, blue: this.randBlue + blueVar * bluePlusMinus})
-      }
-    }
-    return colorGrid;
-  }
+  
 
   populateGrid3 = () => {
     let r = -1;
@@ -109,51 +86,11 @@ class ClassBoxGrid extends React.Component {
     return grids;
   }
 
-
-  // populateGrid = () => {
-  //   let grids = this.rowArr.map((row) => {
-  //     if (this.starting) {
-  //       this.newRgbArr.push([])
-  //     }
-  //     return (
-  //       <div key={row} className='row'>
-  //         {this.colArr.map((col) => {
-  //           let redVar = Math.floor(Math.random() * this.state.variance)
-  //           let redPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-  //           let blueVar = Math.floor(Math.random() * this.state.variance)
-  //           let bluePlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-  //           let greenVar = Math.floor(Math.random() * this.state.variance)
-  //           let greenPlusMinus = this.plusMinus[Math.floor(Math.random() * 2)]
-  //           if (this.starting) {
-  //             this.newRgbArr[row].push([this.randRed + redVar * redPlusMinus, this.randGreen + greenVar * greenPlusMinus, this.randBlue + blueVar * bluePlusMinus])
-  //           }
-  //           return (
-  //             <DynaColorBox
-  //               key={[row, col]}
-  //               change={this.changeSurroundings}
-  //               data-value={{r:row, c:col}}
-  //               red={this.randRed + redVar * redPlusMinus}
-  //               green={this.randGreen + greenVar * greenPlusMinus}
-  //               blue={this.randBlue + blueVar * bluePlusMinus}
-  //               numColumns = {this.state.gridSize}
-  //             />
-  //           )
-  //         })}
-  //       </div>
-  //     )
-  //   })
-  //   this.starting = false
-  //   return grids;
-  // }
-
-
-  
-
 componentDidMount() {
   // newRgbArr is populated by populateGrid, which is called in the constructor
-  this.setState({rgbArr: this.newRgbArr})
+  
+  this.setState({rgbArr: this.generateColorGrid()})
   // colorGrid is created in constructor
-  console.log(this.colorGrid)
   this.boxArr3 = this.populateGrid3()
 }
 
