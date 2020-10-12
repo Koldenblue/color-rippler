@@ -1,5 +1,7 @@
 # Color Rippler
 
+![image](https://user-images.githubusercontent.com/64618290/95695986-32f57080-0bee-11eb-8859-c32d9461b6dd.png)
+
 ## Table of Contents
 
 1. <a href="#description">Description</a>
