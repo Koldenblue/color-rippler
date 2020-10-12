@@ -13,7 +13,7 @@ function Grid(props) {
       return (
         <div className='row' key={r}>
           {row.map((box) => {
-            {if (++c > 11) {
+            {if (++c > (props.gridSize - 1)) {
               c = 0 
             }}
             return (

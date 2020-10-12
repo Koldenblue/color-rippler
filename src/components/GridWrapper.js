@@ -5,7 +5,7 @@ import Grid from './Grid';
 function GridWrapper() {
   const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(50);
-  const [gridSize, setGridSize] = useState(12);
+  const [gridSize, setGridSize] = useState(20);
 
   // initial random color to be applied to entire grid
   const randRed = Math.floor(Math.random() * 255);
@@ -14,6 +14,11 @@ function GridWrapper() {
   // determines whether to add or subtract variance from initial color
   const plusMinus = [-1, 1];
 
+  // let styles = {
+  //   background: {
+  //     backgroundColor: `rgb(${randRed}, ${randGreen}, ${randBlue})`
+  //   }
+  // }
   // initializes the color grid
   useEffect(() => {
     let newGrid = []
@@ -108,13 +113,13 @@ function GridWrapper() {
 
 
   return (
-    <>
+    <div className='container-fluid'>
       <Grid
         colorGrid={colorGrid}
         gridSize={gridSize}
         changeSurroundings={changeSurroundings}
       />
-    </>
+    </div>
   )
 }
 
