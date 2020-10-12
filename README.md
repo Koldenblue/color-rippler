@@ -1,6 +1,6 @@
 # Color Rippler
 
-![image](https://user-images.githubusercontent.com/64618290/95695986-32f57080-0bee-11eb-8859-c32d9461b6dd.png)
+![image](https://user-images.githubusercontent.com/64618290/95696027-53bdc600-0bee-11eb-8945-f23d1cca9b1f.png)
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@
 Click on the grid in the webpage to cause ripples of color! This project takes advantage of the React framework to efficiently render and re-render a large grid of components. The main app consists of a grid of colored boxes. Clicking on any box will cause color changes to ripple outwards. Work in progress. Future updates including routing to an option page, in which options such as grid size, initial color, and ripple styles will be able to be selected. The target max grid size is a 50 x 50 grid - that's 2500 squares! In other words, that is more than 2500 components contained in the DOM, or thousands of HTML elements. This is a situation where the advantage of React over a traditional JavaScript framework is clear = React is designed to re-render individual components on an as-needed basis, rather than having to rerender the entire HTML document upon DOM changes.
 
 <h3 id='installation'>Installation</h3>
-Check out the deployed website at _____________!
+Check out the deployed website at https://color-rippler.herokuapp.com/!
 
 <h3 id='usage'>Usage</h3>
 Click for colors, yay!
