@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Grid from './Grid';
 
 // manages initial state 
-function GridWrapper({ outerShellOnly=false, initialVariance=50, rippleVariance=100, maxGridSize=20, rippleSpeed=100, ripplePropogation=5, autoDrop=false }) {
+function GridWrapper({ 
+  outerShellOnly=false, 
+  initialVariance=50, 
+  rippleVariance=100, 
+  maxGridSize=20, 
+  rippleSpeed=100, 
+  ripplePropogation=5, 
+  autoDrop=false 
+}) {
   const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(initialVariance);
   const [gridSize, setGridSize] = useState(maxGridSize);
