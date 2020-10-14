@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 
 function DynaColorBox(props) {
-  const [variance, setVariance] = useState(60);
+  const [variance, setVariance] = useState(props.clickVariance);
   const [opacity, setOpacity] = useState(0);
   const [transition, setTransition] = useState(Math.floor(Math.random() * 15));
 
@@ -15,7 +15,8 @@ function DynaColorBox(props) {
       height: boxHeight + 'px',
       backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
       opacity: opacity,
-      transition: `opacity ${transition}s`,
+      transitionProperty: 'opacity, background-color',
+      transitionDuration: `${transition}s, 0.5s`,
       borderRadius: '20px',
     }
   }
