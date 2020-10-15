@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-import '../index.css'
-import Background from "./Background"
-import ColorGrid from './ColorGrid';
-import OptionsDropdown from './OptionsDropdown';
+import '../../index.css'
+import Background from "../Background"
+import ColorGrid from '../ColorGrid';
+import OptionsDropdown from '../OptionsDropdown';
+import OptionsForm from './OptionsForm';
 
-function OptionsSelector() {
+function OptionsPage() {
   const [outerShellOnly, setOuterShellOnly] = useState(false)
   const [colorGrid, setColorGrid] = useState()
   // things that could be options:
@@ -32,9 +32,17 @@ function OptionsSelector() {
 
   let generateColorGrid = () => {
     setColorGrid(
-      <ColorGrid 
+      <ColorGrid
         outerShellOnly={outerShellOnly}
-      />)
+      />
+    )
+  }
+
+  let handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target)
+    console.log(event.target[0].value)
+    console.log(event.target[1].checked);
   }
 
   if (colorGrid) {
@@ -60,17 +68,14 @@ function OptionsSelector() {
 
         <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
 
-        <Form>
-          <Form.Check
-            type="switch"
-            id="outer-shell-switch"
-            label="Only Outer Shell Changes Color"
-            onClick={() => handleShellSwitch()}
-          />
-        </Form>
+      <OptionsForm 
+        handleFormSubmit={handleFormSubmit}
+        handleShellSwitch={handleShellSwitch}
+      />
+
         <button onClick={generateColorGrid}>Generate a new color grid with selected options</button>
       </>
     )
   }
 }
-export default OptionsSelector;
+export default OptionsPage;
