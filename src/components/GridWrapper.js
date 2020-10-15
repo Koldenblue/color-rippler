@@ -168,7 +168,7 @@ function GridWrapper({
   return (
     <div className='container-fluid'>
       <Grid
-        {/* appropriate options are passed down to lower components */}
+        // appropriate options are passed down to lower components
         clickVariance={clickVariance}
         colorGrid={colorGrid}
         gridSize={gridSize}
