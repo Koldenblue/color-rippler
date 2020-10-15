@@ -1,9 +1,10 @@
 import React, { useState, useReducer, useEffect } from 'react';
 
-function DynaColorBox(props) {
+function DynaColorBox(props, { rippleTransitionSpeed=0.5 }) {
   const [variance, setVariance] = useState(props.clickVariance);
   const [opacity, setOpacity] = useState(0);
-  const [transition, setTransition] = useState(Math.floor(Math.random() * 15));
+  const [opacityTransition, setOpacityTransition] = useState(Math.floor(Math.random() * 15));
+  const [colorTransition, setColorTransition] = useState(rippleTransitionSpeed)
 
   // height of boxes is based on browser window height
   let boxHeight = window.innerHeight / Number(props.numColumns)
@@ -16,7 +17,7 @@ function DynaColorBox(props) {
       backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
       opacity: opacity,
       transitionProperty: 'opacity, background-color',
-      transitionDuration: `${transition}s, 0.5s`,
+      transitionDuration: `${opacityTransition}s, ${colorTransition}s`,
       borderRadius: '20px',
     }
   }

@@ -9,7 +9,8 @@ function GridWrapper({
   maxGridSize=20, 
   rippleSpeed=100, 
   ripplePropogation=5, 
-  autoDrop=false 
+  autoDrop=false,
+  rippleTransitionSpeed=0.5
 }) {
   const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(initialVariance);
@@ -22,11 +23,14 @@ function GridWrapper({
   const randBlue = Math.floor(Math.random() * 256);
   // determines whether to add or subtract variance from initial color
   const plusMinus = [-1, 1];
+
+  // background color to be implemented, but doing it this way rerenders it every time grid changes
   // let styles = {
   //   background: {
   //     backgroundColor: `rgb(${randRed}, ${randGreen}, ${randBlue})`
   //   }
   // }
+
   // initializes the color grid
   useEffect(() => {
     let newGrid = []
@@ -161,6 +165,7 @@ function GridWrapper({
         colorGrid={colorGrid}
         gridSize={gridSize}
         changeSurroundings={changeSurroundings}
+        rippleTransitionSpeed={rippleTransitionSpeed}
       />
     </div>
   )

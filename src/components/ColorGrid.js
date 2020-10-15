@@ -13,6 +13,8 @@ function ColorGrid(props) {
       rippleSpeed={props.rippleSpeed} 
       ripplePropogation={props.ripplePropogation}
       autoDrop={props.autoDrop}
+      rippleTransitionSpeed={props.rippleTransitionSpeed}
+
       // grayscale={props.grayscale}
     />
   )

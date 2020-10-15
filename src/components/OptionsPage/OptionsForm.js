@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
-
+import Button from 'react-bootstrap/Button';
 
 export default function OptionsForm(props) {
   return (
@@ -47,23 +47,28 @@ export default function OptionsForm(props) {
           />
         </Form.Group>
 
-        {/* <Form.Group controlId='`ripplePr`opagation'>
+        <Form.Group controlId='`ripplePr`opagation'>
           <Form.Label>Ripple color change speed</Form.Label>
           <Form.Control
             type='text'
             placeholder='5'
           />
-        </Form.Group> */}
+        </Form.Group>
 
 
         <Form.Check
           type="switch"
           id="grayscale-switch"
           label="Grayscale"
-          onClick={() => props.handleShellSwitch()}
+          onClick={() => {}}
         />
 
-
+        <Form.Check
+          type="switch"
+          id="auto-switch"
+          label="Auto Drop"
+          onClick={() => {}}
+        />
 
         <Form.Check
           type="switch"
@@ -71,7 +76,7 @@ export default function OptionsForm(props) {
           label="Only Outer Shell Changes Color"
           onClick={() => props.handleShellSwitch()}
         />
-        <button type='submit'>submit form</button>
+        <Button type='submit' className='btn btn-success'>submit form</Button>
       </Form>
     </section>
   )
