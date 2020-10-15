@@ -11,7 +11,6 @@ function DynaColorBox(props, { rippleTransitionSpeed=0.5 }) {
   let boxWidth = window.innerWidth / Number(props.numColumns)
   let styles = {
     colorBox: {
-      // width: 'auto',
       width: boxWidth + 'px',
       height: boxHeight + 'px',
       backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
@@ -43,7 +42,6 @@ function DynaColorBox(props, { rippleTransitionSpeed=0.5 }) {
   return(
     <>
       <div
-        // className='col-sm-1' 
         style={styles.colorBox}
         onClick={changeColors} 
       >

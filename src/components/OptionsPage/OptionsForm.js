@@ -32,7 +32,7 @@ export default function OptionsForm(props) {
         </Form.Group>
 
         <Form.Group controlId='rippleSpeed'>
-          <Form.Label>Ripple Speed (milliseconds)</Form.Label>
+          <Form.Label>Outward Ripple Speed (milliseconds)</Form.Label>
           <Form.Control
             type='text'
             placeholder='100'
@@ -47,11 +47,11 @@ export default function OptionsForm(props) {
           />
         </Form.Group>
 
-        <Form.Group controlId='`ripplePr`opagation'>
-          <Form.Label>Ripple color change speed</Form.Label>
+        <Form.Group controlId='`rippleTransitionSpeed'>
+          <Form.Label>Ripple color change speed (seconds)</Form.Label>
           <Form.Control
             type='text'
-            placeholder='5'
+            placeholder='0.5'
           />
         </Form.Group>
 
@@ -76,8 +76,12 @@ export default function OptionsForm(props) {
           label="Only Outer Shell Changes Color"
           onClick={() => props.handleShellSwitch()}
         />
-        <Button type='submit' className='btn btn-success'>submit form</Button>
+        <Button type='submit' className='btn btn-success'>Generate grid with selected options (not yet functional)</Button>
+        <Button className='btn btn-secondary'>Store Options (not yet functional)</Button>
+        <Button className='btn btn-secondary'>Load Options (not yet functional)</Button>
       </Form>
+
+      <Button className='btn btn-warning'>See stored color ripples in database (to be implemented)</Button>
     </section>
   )
 }

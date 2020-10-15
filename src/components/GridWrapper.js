@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Grid from './Grid';
 
-// manages initial state 
+/** Should manage options, auto function, and ripple change functions.
+* Should get the initial grid array from a higher order component. */
 function GridWrapper({ 
   outerShellOnly=false, 
   initialVariance=50, 
@@ -10,7 +11,9 @@ function GridWrapper({
   rippleSpeed=100, 
   ripplePropogation=5, 
   autoDrop=false,
-  rippleTransitionSpeed=0.5
+  rippleTransitionSpeed=0.5,
+  // grayscale to be implemented
+  grayscale=false
 }) {
   const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(initialVariance);
@@ -56,6 +59,7 @@ function GridWrapper({
     setColorGrid(newGrid)
   }, [])
 
+  // auto function. automatically selects a random row and column to execute changeSurroundings function for.
   useEffect(() => {
     if (autoDrop && colorGrid.length > 0) {
       autoDrop = false;
@@ -99,10 +103,11 @@ function GridWrapper({
       // the outermost shell will always have at least one row or column equal to the absolute value of the max range
       ranges.forEach(a => {
         return (
+          // ranges is originally a 1 dimensional array. This is turning ranges into a 2D array of dimensions equal to max range,
+          // by associating each 'a' value with another array of 'b' values
           ranges.map(b => {
-            // only change the outermost shell:
+            // only change the current outermost shell:
             if(Math.abs(b) === startDelta || Math.abs(a) === startDelta){
-              // turning the range into a 2D array of dimensions equal to max range
               try {
                 let newRed = currentGrid[a + row][b + col].red + redChange;
                 let newGreen = currentGrid[a + row][b + col].green + greenChange;
@@ -114,7 +119,7 @@ function GridWrapper({
                 };
               }
               catch (TypeError) {
-                // console.log('max range reached');
+                // this expected error will happen if ripples go out of bounds
               }
             }
           })
@@ -122,10 +127,11 @@ function GridWrapper({
       });
       setColorGrid(currentGrid)
       console.log(currentGrid);
-      // can set the grids param to the original grid in order to only change outermost shell, instead of all shells
-      // or set to currentGrid to change all shells
+      // can set the grids param to the original grids in order to only save changes to the outermost shell, instead of all shells, since the original grid has not changed
+      // remember we are working with currentGrid, which is a copy of the original grids.
       if (outerShellOnly) {
         startDelta < maxDelta && changeColor(grids, maxDelta, startDelta + 1, row, col, redChange, greenChange, blueChange)
+      // or set to currentGrid to change all shells
       } else {
         startDelta < maxDelta && changeColor(currentGrid, maxDelta, startDelta + 1, row, col, redChange, greenChange, blueChange)
       }
@@ -134,7 +140,8 @@ function GridWrapper({
 
 
   /** function passed to color boxes, triggered on click.
-  * Gets the data-value objects for adjacent boxes
+  * Gets the row and column of the clicked box, changes its color, 
+  * then passes the color changes to the changeColor algorithm in order to propogate ripples.
   * @param {object} value is from the data-value attribute on the box, or props.data-value */
   const changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
     console.log(value, redChange, greenChange, blueChange);
@@ -161,6 +168,7 @@ function GridWrapper({
   return (
     <div className='container-fluid'>
       <Grid
+        {/* appropriate options are passed down to lower components */}
         clickVariance={clickVariance}
         colorGrid={colorGrid}
         gridSize={gridSize}

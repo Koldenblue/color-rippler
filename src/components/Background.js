@@ -1,5 +1,6 @@
 import React from 'react';
 
+/** a colored background */
 function Background() {
 
   let styles = {

@@ -11,11 +11,14 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+
           <Route exact path='/options' component={OptionsPage} />
+
           <Route exact path='/'>
             <OptionsDropdown />
             <ColorGrid />
           </Route>
+
         </Switch>
       </Router>
     </div>

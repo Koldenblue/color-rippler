@@ -8,6 +8,7 @@ import ColorGrid from '../ColorGrid';
 import OptionsDropdown from '../OptionsDropdown';
 import OptionsForm from './OptionsForm';
 
+/** Either routes to ColorGrid with default options, or will load up ColorGrid with selected options */
 function OptionsPage() {
   const [outerShellOnly, setOuterShellOnly] = useState(false)
   const [colorGrid, setColorGrid] = useState()
