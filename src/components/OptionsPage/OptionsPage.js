@@ -58,7 +58,7 @@ function OptionsPage() {
     return (
       <>
         <Background />
-        <Jumbotron fluid id='options-jumbotron'>
+         <Jumbotron fluid id='options-jumbotron'>
           <Container>
             <h1>Options</h1>
             <p>
