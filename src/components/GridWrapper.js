@@ -11,9 +11,10 @@ function GridWrapper({
   rippleSpeed=100, 
   ripplePropogation=5, 
   autoDrop=false,
-  rippleTransitionSpeed=0.5,
+  rippleTransitionSpeed=1.5,
   // grayscale to be implemented
-  grayscale=false
+  initialGrayscale=true,
+  grayscaleChange=false
 }) {
   const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(initialVariance);
@@ -24,8 +25,16 @@ function GridWrapper({
 
   // initial random color to be applied to entire grid
   const randRed = Math.floor(Math.random() * 256);
-  const randGreen = Math.floor(Math.random() * 256);
-  const randBlue = Math.floor(Math.random() * 256);
+  let randGreen;
+  let randBlue;
+  if (initialGrayscale) {
+    randGreen = randRed;
+    randBlue = randRed;
+  }
+  else {
+    randGreen = Math.floor(Math.random() * 256);
+    randBlue = Math.floor(Math.random() * 256);
+  }
   // determines whether to add or subtract variance from initial color
   const plusMinus = [-1, 1];
 
@@ -36,7 +45,7 @@ function GridWrapper({
   //   }
   // }
 
-  // initializes the color grid
+  // initializes the color grid by generating random color variance, with the random RGB values above as starting points.
   useEffect(() => {
     let newGrid = []
     for (let i = 0; i < gridSize; i++) {
@@ -49,8 +58,15 @@ function GridWrapper({
         let greenVar = Math.floor(Math.random() * variance);
         let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)];
         let newRed = randRed + redVar * redPlusMinus;
-        let newGreen = randGreen + greenVar * greenPlusMinus;
-        let newBlue = randBlue + blueVar * bluePlusMinus;
+        let newGreen;
+        let newBlue;
+        if (initialGrayscale) {
+          newGreen = newRed;
+          newBlue = newRed;
+        } else {
+          newGreen = randGreen + greenVar * greenPlusMinus;
+          newBlue = randBlue + blueVar * bluePlusMinus;
+        }
         newGrid[i].push({
           red: newRed > 255 ? 255 : (newRed < 0 ? 0 : newRed),
           green: newGreen > 255 ? 255 : (newGreen < 0 ? 0 : newGreen),
