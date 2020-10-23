@@ -10,7 +10,6 @@ import OptionsForm from './OptionsForm';
 
 /** Either routes to ColorGrid with default options, or will load up ColorGrid with selected options */
 function OptionsPage() {
-  const [outerShellOnly, setOuterShellOnly] = useState(false)
   const [colorGrid, setColorGrid] = useState()
   // things that could be options:
   // grayscale
@@ -21,29 +20,47 @@ function OptionsPage() {
   // grid size
 
   let handleShellSwitch = () => {
-    try {
-      let isChecked = document.getElementById('outer-shell-switch').checked
-      setOuterShellOnly(isChecked)
-      console.log(outerShellOnly)
-    } catch (err) {
-      console.log(err)
-      console.log(outerShellOnly)
-    }
+    // try {
+    //   let isChecked = document.getElementById('outer-shell-switch').checked
+    //   setOuterShellOnly(isChecked)
+    //   console.log(outerShellOnly)
+    // } catch (err) {
+    //   console.log(err)
+    //   console.log(outerShellOnly)
+    // }
   }
 
   let generateColorGrid = () => {
-    setColorGrid(
-      <ColorGrid
-        outerShellOnly={outerShellOnly}
-      />
-    )
+
   }
 
   let handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event.target)
     console.log(event.target[0].value)
-    console.log(event.target[1].checked);
+    let maxGridSize = event.target[0].value;
+    let initialVariance = event.target[1].value;
+    let rippleVariance = event.target[2].value;
+    let rippleSpeed = event.target[3].value;
+    let ripplePropagation = event.target[4].value;
+    let rippleTransitionSpeed = event.target[5].value;
+    let initialGrayscale = event.target[6].checked;
+    let grayscaleChange = event.target[7].checked;
+    let autoDrop = event.target[8].checked;
+    let outerShellOnly = event.target[9].checked;
+
+    setColorGrid(
+      <ColorGrid
+        outerShellOnly={outerShellOnly}
+        initialVariance={initialVariance}
+        rippleVariance={rippleVariance}
+        maxGridSize={maxGridSize}
+        rippleSpeed={rippleSpeed}
+        ripplePropagation={ripplePropagation}
+        autoDrop={autoDrop}
+        rippleTransitionSpeed={rippleTransitionSpeed}
+      />
+    )
   }
 
   if (colorGrid) {

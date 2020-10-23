@@ -58,7 +58,14 @@ export default function OptionsForm(props) {
 
         <Form.Check
           type="switch"
-          id="grayscale-switch"
+          id="initialGrayscale"
+          label="Grayscale"
+          onClick={() => {}}
+        />
+
+        <Form.Check
+          type="switch"
+          id="grayscaleChange"
           label="Grayscale"
           onClick={() => {}}
         />

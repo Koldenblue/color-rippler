@@ -9,10 +9,9 @@ function GridWrapper({
   rippleVariance=100, 
   maxGridSize=50, 
   rippleSpeed=100, 
-  ripplePropogation=5, 
+  ripplePropagation=5, 
   autoDrop=false,
   rippleTransitionSpeed=1.5,
-  // grayscale to be implemented
   initialGrayscale=true,
   grayscaleChange=false
 }) {
@@ -93,7 +92,7 @@ function GridWrapper({
         let blueVar = Math.floor(Math.random() * clickVariance)
         let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
         changeSurroundings({r: randRow, c: randCol}, [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
-      }, rippleSpeed * ripplePropogation * 1.5)
+      }, rippleSpeed * ripplePropagation * 1.5)
     }
   },[autoDrop])
 
@@ -144,7 +143,7 @@ function GridWrapper({
         )
       });
       setColorGrid(currentGrid)
-      console.log(currentGrid);
+      // console.log(currentGrid);
       // can set the grids param to the original grids in order to only save changes to the outermost shell, instead of all shells, since the original grid has not changed
       // remember we are working with currentGrid, which is a copy of the original grids.
       if (outerShellOnly) {
@@ -177,7 +176,7 @@ function GridWrapper({
         blue: newGrid[currentRow][currentCol].blue + blueChange,
       })
       // console.log("new Grid", newGrid)
-      changeColor(newGrid, ripplePropogation, 1, currentRow, currentCol, redChange, greenChange, blueChange)
+      changeColor(newGrid, ripplePropagation, 1, currentRow, currentCol, redChange, greenChange, blueChange)
       setColorGrid(newGrid)
     }
   }
