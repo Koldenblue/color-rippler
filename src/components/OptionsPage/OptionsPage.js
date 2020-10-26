@@ -11,6 +11,9 @@ import OptionsForm from './OptionsForm';
 /** Either routes to ColorGrid with default options, or will load up ColorGrid with selected options */
 function OptionsPage() {
   const [colorGrid, setColorGrid] = useState()
+  const [validated, setValidated] = useState(false);
+
+
   // things that could be options:
   // grayscale
   // color variance
@@ -36,31 +39,41 @@ function OptionsPage() {
 
   let handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target)
-    console.log(event.target[0].value)
-    let maxGridSize = event.target[0].value;
-    let initialVariance = event.target[1].value;
-    let rippleVariance = event.target[2].value;
-    let rippleSpeed = event.target[3].value;
-    let ripplePropagation = event.target[4].value;
-    let rippleTransitionSpeed = event.target[5].value;
-    let initialGrayscale = event.target[6].checked;
-    let grayscaleChange = event.target[7].checked;
-    let autoDrop = event.target[8].checked;
-    let outerShellOnly = event.target[9].checked;
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log("false")
+    }
+    // setValidated(true)
 
-    setColorGrid(
-      <ColorGrid
-        outerShellOnly={outerShellOnly}
-        initialVariance={initialVariance}
-        rippleVariance={rippleVariance}
-        maxGridSize={maxGridSize}
-        rippleSpeed={rippleSpeed}
-        ripplePropagation={ripplePropagation}
-        autoDrop={autoDrop}
-        rippleTransitionSpeed={rippleTransitionSpeed}
-      />
-    )
+    else {
+      console.log(event.target)
+      console.log(event.target[0].value)
+      let maxGridSize = event.target[0].value;
+      let initialVariance = event.target[1].value;
+      let rippleVariance = event.target[2].value;
+      let rippleSpeed = event.target[3].value;
+      let ripplePropagation = event.target[4].value;
+      let rippleTransitionSpeed = event.target[5].value;
+      let initialGrayscale = event.target[6].checked;
+      let grayscaleChange = event.target[7].checked;
+      let autoDrop = event.target[8].checked;
+      let outerShellOnly = event.target[9].checked;
+
+      setColorGrid(
+        <ColorGrid
+          outerShellOnly={outerShellOnly}
+          initialVariance={initialVariance}
+          rippleVariance={rippleVariance}
+          maxGridSize={maxGridSize}
+          rippleSpeed={rippleSpeed}
+          ripplePropagation={ripplePropagation}
+          autoDrop={autoDrop}
+          rippleTransitionSpeed={rippleTransitionSpeed}
+        />
+      )
+    }
   }
 
   if (colorGrid) {
@@ -88,7 +101,8 @@ function OptionsPage() {
 
       <OptionsForm 
         handleFormSubmit={handleFormSubmit}
-        handleShellSwitch={handleShellSwitch}
+        // handleShellSwitch={handleShellSwitch}
+        validated={validated}
       />
 
         <button onClick={generateColorGrid}>Generate a new color grid with selected options</button>

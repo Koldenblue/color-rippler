@@ -5,13 +5,16 @@ import Button from 'react-bootstrap/Button';
 export default function OptionsForm(props) {
   return (
     <section className='container'>
-      <Form inline onSubmit={props.handleFormSubmit}>
+      <Form inline onSubmit={props.handleFormSubmit} noValidate validated={props.validated}>
 
         <Form.Group controlId='maxGridSize'>
           <Form.Label>Max Grid Size</Form.Label>
           <Form.Control
-            type='text'
+            type='number'
             placeholder='20'
+            defaultValue='20'
+            max='50'
+            min='1'
           />
         </Form.Group>
 
@@ -20,6 +23,7 @@ export default function OptionsForm(props) {
           <Form.Control
             type='text'
             placeholder='50'
+            defaultValue='50'
           />
         </Form.Group>
 
@@ -28,6 +32,7 @@ export default function OptionsForm(props) {
           <Form.Control
             type='text'
             placeholder='100'
+            defaultValue='100'
           />
         </Form.Group>
 
@@ -36,6 +41,7 @@ export default function OptionsForm(props) {
           <Form.Control
             type='text'
             placeholder='100'
+            defaultValue='100'
           />
         </Form.Group>
 
@@ -44,14 +50,16 @@ export default function OptionsForm(props) {
           <Form.Control
             type='text'
             placeholder='5'
+            defaultValue='5'
           />
         </Form.Group>
 
         <Form.Group controlId='`rippleTransitionSpeed'>
           <Form.Label>Ripple color change speed (seconds)</Form.Label>
           <Form.Control
-            type='text'
-            placeholder='0.5'
+            type='number'
+            placeholder='1.5'
+            defaultValue='1.5'
           />
         </Form.Group>
 
