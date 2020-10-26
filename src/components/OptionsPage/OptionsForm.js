@@ -15,7 +15,8 @@ export default function OptionsForm(props) {
             defaultValue='20'
             max='50'
             min='1'
-          />
+            />
+            <Form.Text>Enter a number from 1 to 50</Form.Text>
         </Form.Group>
 
         <Form.Group controlId='initialVariance'>
@@ -24,7 +25,10 @@ export default function OptionsForm(props) {
             type='text'
             placeholder='50'
             defaultValue='50'
+            min='0'
+            max='255'
           />
+          <Form.Text>Enter a number from 0 to 255</Form.Text>
         </Form.Group>
 
         <Form.Group controlId='rippleVariance'>
@@ -33,7 +37,10 @@ export default function OptionsForm(props) {
             type='text'
             placeholder='100'
             defaultValue='100'
+            min='0'
+            max='255'
           />
+          <Form.Text>Enter a number from 0 to 255</Form.Text>
         </Form.Group>
 
         <Form.Group controlId='rippleSpeed'>
@@ -42,7 +49,10 @@ export default function OptionsForm(props) {
             type='text'
             placeholder='100'
             defaultValue='100'
-          />
+            min='10'
+            max='2000'
+            />
+          <Form.Text>Enter a number from 10 to 2000</Form.Text>
         </Form.Group>
 
         <Form.Group controlId='ripplePropagation'>
@@ -50,17 +60,23 @@ export default function OptionsForm(props) {
           <Form.Control
             type='text'
             placeholder='5'
+            min='1'
+            max='25'
             defaultValue='5'
           />
+          <Form.Text>Enter a number from 1 to 25 </Form.Text>
         </Form.Group>
 
         <Form.Group controlId='`rippleTransitionSpeed'>
-          <Form.Label>Ripple color change speed (seconds)</Form.Label>
+          <Form.Label>Ripple color change speed (milliseconds)</Form.Label>
           <Form.Control
             type='number'
-            placeholder='1.5'
-            defaultValue='1.5'
+            placeholder='1500'
+            defaultValue='1500'
+            min='10'
+            max='5000'
           />
+          <Form.Text>Enter a number from 10 to 5000 </Form.Text>
         </Form.Group>
 
 

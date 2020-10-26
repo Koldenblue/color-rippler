@@ -78,23 +78,31 @@ function GridWrapper({
 
   // auto function. automatically selects a random row and column to execute changeSurroundings function for.
   useEffect(() => {
-    if (autoDrop && colorGrid.length > 0) {
-      autoDrop = false;
-      setInterval(() => {
-        console.log(colorGrid)
-        console.log("auto")
-        let randRow = Math.floor(Math.random() * gridSize);
-        let randCol = Math.floor(Math.random() * gridSize);
-        let redVar = Math.floor(Math.random() * clickVariance)
-        let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-        let greenVar = Math.floor(Math.random() * clickVariance)
-        let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-        let blueVar = Math.floor(Math.random() * clickVariance)
-        let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-        changeSurroundings({r: randRow, c: randCol}, [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
-      }, rippleSpeed * ripplePropagation * 1.5)
+    console.log("checking auto")
+    console.log(autoDrop)
+    console.log(colorGrid.length)
+    function auto() {
+      if (autoDrop && colorGrid.length > 0) {
+        console.log("start auto")
+        // autoDrop = false;
+        setTimeout(() => {
+          console.log(colorGrid)
+          console.log("auto")
+          let randRow = Math.floor(Math.random() * gridSize);
+          let randCol = Math.floor(Math.random() * gridSize);
+          let redVar = Math.floor(Math.random() * clickVariance)
+          let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+          let greenVar = Math.floor(Math.random() * clickVariance)
+          let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+          let blueVar = Math.floor(Math.random() * clickVariance)
+          let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+          changeSurroundings({r: randRow, c: randCol}, [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
+          // setColorGrid(colorGrid)
+        }, rippleSpeed * ripplePropagation * 10)
+      }
     }
-  },[autoDrop])
+    auto()
+  },[colorGrid.length])
 
   /** Accepts a 2D array and initial row/column value, containing rgb objects. Propogates rgb changes one array shell at a time.
    * @param {Array} grids A 2d array, consisting of an outer array of rows, and inner arrays corresponding to columns, with each row/col having an rgb object
@@ -177,7 +185,7 @@ function GridWrapper({
       })
       // console.log("new Grid", newGrid)
       changeColor(newGrid, ripplePropagation, 1, currentRow, currentCol, redChange, greenChange, blueChange)
-      setColorGrid(newGrid)
+      setColorGrid(newGrid);
     }
   }
 
