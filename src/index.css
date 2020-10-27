@@ -5,3 +5,7 @@
 #options-jumbotron {
   background-color:lightseagreen;
 }
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}

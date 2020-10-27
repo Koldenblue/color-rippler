@@ -7,8 +7,8 @@ function DynaColorBox(props) {
   const [colorTransition, setColorTransition] = useState(props.rippleTransitionSpeed)
 
   // height of boxes is based on browser window height
-  let boxHeight = window.innerHeight / Number(props.numColumns)
-  let boxWidth = window.innerWidth / Number(props.numColumns)
+  let boxHeight = props.height / Number(props.numColumns)
+  let boxWidth = (props.width / Number(props.numColumns)) 
   let styles = {
     colorBox: {
       width: boxWidth + 'px',
@@ -18,6 +18,7 @@ function DynaColorBox(props) {
       transitionProperty: 'opacity, background-color',
       transitionDuration: `${opacityTransition}s, ${colorTransition}s`,
       borderRadius: '20px',
+      overflow: 'hidden'
     }
   }
 

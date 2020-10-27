@@ -5,9 +5,27 @@ import DynaColorBox from './DynaColorBox';
 * The colorGrid array must be generated first before DynaBoxes can be mapped, 
  * hence why the colorGrid is a higher order component */
 function Grid(props) {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   let r = -1;
   let c = -1;
+  let allowResize = true;
+  useEffect(() => {
+    function handleResize() {
+      allowResize = false;
+      setTimeout(() => {
+        allowResize = true;
+        if (allowResize) {
+          setWidth(window.innerWidth )
+          setHeight(window.innerHeight)
+        }
+      }, 500)
+      // allowResize = false;
+    }
+
+    window.addEventListener('resize', handleResize);
+  }, [])
 
   return (
     <>
@@ -33,6 +51,8 @@ function Grid(props) {
                 changeSurroundings={props.changeSurroundings}
                 numColumns = {props.gridSize}
                 rippleTransitionSpeed={props.rippleTransitionSpeed}
+                height={height}
+                width={width}
               />
             );
           })}
