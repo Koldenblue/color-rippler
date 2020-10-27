@@ -114,12 +114,12 @@ function OptionsPage() {
           <Container>
             <h1>Options</h1>
             <p>
-              Page not fully functional, under construction!
+              Page is still being improved!
             </p>
+        <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
           </Container>
         </Jumbotron>
 
-        <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
 
       <OptionsForm 
         handleFormSubmit={handleFormSubmit}
