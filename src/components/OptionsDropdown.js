@@ -23,9 +23,9 @@ export default function OptionsDropdown() {
 
         <Dropdown.Menu>
           <Dropdown.Item onClick={generateNewGrid}>Generate New Grid</Dropdown.Item>
-          <Dropdown.Item href="/options">Go to Options Page, under construction</Dropdown.Item>
-          <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
-          <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item>
+          <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
+          {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
+          <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}
 
         </Dropdown.Menu>
       </Dropdown>

@@ -7,7 +7,7 @@ function GridWrapper({
   outerShellOnly=false, 
   initialVariance=50, 
   rippleVariance=100, 
-  maxGridSize=50, 
+  maxGridSize=20, 
   rippleSpeed=100, 
   ripplePropagation=5, 
   autoDrop=false,

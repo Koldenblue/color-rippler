@@ -80,7 +80,7 @@ export default function OptionsForm(props) {
         </Form.Group>
 
 
-        <Form.Check
+        {/* <Form.Check
           type="switch"
           id="initialGrayscale"
           label="Grayscale"
@@ -106,13 +106,13 @@ export default function OptionsForm(props) {
           id="outer-shell-switch"
           label="Only Outer Shell Changes Color"
           onClick={() => props.handleShellSwitch()}
-        />
-        <Button type='submit' className='btn btn-success'>Generate grid with selected options (not yet functional)</Button>
-        <Button className='btn btn-secondary'>Store Options (not yet functional)</Button>
-        <Button className='btn btn-secondary'>Load Options (not yet functional)</Button>
+        /> */}
+        <Button type='submit' className='btn btn-success'>Generate grid with selected options</Button>
+        {/* <Button className='btn btn-secondary'>Store Options (not yet functional)</Button> */}
+        {/* <Button className='btn btn-secondary'>Load Options (not yet functional)</Button> */}
       </Form>
 
-      <Button className='btn btn-warning'>See stored color ripples in database (to be implemented)</Button>
+      {/* <Button className='btn btn-warning'>See stored color ripples in database (to be implemented)</Button> */}
     </section>
   )
 }

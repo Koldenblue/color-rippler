@@ -127,7 +127,7 @@ function OptionsPage() {
         validated={validated}
       />
 
-        <button onClick={generateColorGrid}>Generate a new color grid with selected options</button>
+        {/* <button onClick={generateColorGrid}>Generate a new color grid with selected options</button> */}
       </>
     )
   }
