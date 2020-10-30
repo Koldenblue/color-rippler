@@ -1,3 +1,5 @@
+// given an n x n array, return a single array that traces the n x n array in a snail shell pattern
+
 snail = function(array) {
   console.log('starting array is', array);
   let snailArr = [];
