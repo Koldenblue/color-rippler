@@ -16,21 +16,31 @@ function ColorGrid(props) {
   },[])
 
 
-  return(
-    <GridWrapper 
-      // options. These have default values if not entered.
-      outerShellOnly={props.outerShellOnly}
-      initialVariance={props.initialVariance} 
-      rippleVariance={props.rippleVariance}
-      maxGridSize={props.maxGridSize}
-      rippleSpeed={props.rippleSpeed} 
-      ripplePropagation={props.ripplePropagation}
-      autoDrop={props.autoDrop}
-      rippleTransitionSpeed={props.rippleTransitionSpeed}
-      initialGrayscale={props.initialGrayscale}
-      grayscaleChange={props.grayscaleChange}
-    />
-  )
+  if (props.reloadingWithOptions) {
+    console.log('reloading with options');
+    return(
+      <>
+      <p>hi</p>
+      </>
+    )
+  }
+  else {
+    return(
+      <GridWrapper 
+        // options. These have default values if not entered.
+        outerShellOnly={props.outerShellOnly}
+        initialVariance={props.initialVariance} 
+        rippleVariance={props.rippleVariance}
+        maxGridSize={props.maxGridSize}
+        rippleSpeed={props.rippleSpeed} 
+        ripplePropagation={props.ripplePropagation}
+        autoDrop={props.autoDrop}
+        rippleTransitionSpeed={props.rippleTransitionSpeed}
+        initialGrayscale={props.initialGrayscale}
+        grayscaleChange={props.grayscaleChange}
+      />
+    )
+  }
 }
 
 export default ColorGrid;

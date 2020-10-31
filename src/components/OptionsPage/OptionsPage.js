@@ -13,14 +13,9 @@ function OptionsPage() {
   const [colorGrid, setColorGrid] = useState()
   const [validated, setValidated] = useState(false);
 
-
   // things that could be options:
-  // grayscale
-  // color variance
-  // outer shell change only
   // algorithm style
   // background color
-  // grid size
 
   let handleShellSwitch = () => {
     // try {
@@ -83,6 +78,18 @@ function OptionsPage() {
       // console.log(autoDrop)
       let outerShellOnly = event.target[7].checked;
 
+      // store options in session storage for use with the options dropdown generate new grid button
+      sessionStorage.setItem('optionsGrid', JSON.stringify({
+        outerShellOnly: outerShellOnly,
+        initialVariance: initialVariance,
+        rippleVariance: rippleVariance,
+        maxGridSize: maxGridSize,
+        rippleSpeed: rippleSpeed,
+        ripplePropagation: ripplePropagation,
+        initialGrayscale: initialGrayscale,
+        rippleTransitionSpeed: rippleTransitionSpeed
+      }))
+
       setColorGrid(
         <ColorGrid
           outerShellOnly={outerShellOnly}
@@ -99,9 +106,30 @@ function OptionsPage() {
     }
   }
 
+  // let reloadGrid = (options) => {
+  //   console.log('reloading grid')
+  //   console.log(options)
+  //   setColorGrid(
+  //     <>
+  //       <ColorGrid
+  //         outerShellOnly={options.outerShellOnly}
+  //         initialVariance={options.initialVariance}
+  //         rippleVariance={options.rippleVariance}
+  //         maxGridSize={options.maxGridSize}
+  //         rippleSpeed={options.rippleSpeed}
+  //         ripplePropagation={options.ripplePropagation}
+  //         initialGrayscale={options.initialGrayscale}
+  //         // autoDrop={autoDrop}
+  //         rippleTransitionSpeed={options.rippleTransitionSpeed}
+  //       />
+  //     </>
+  //   )
+  // }
+
   if (colorGrid) {
     return (
       <>
+        {/* <OptionsDropdown reloadGrid={reloadGrid} colorGrid={colorGrid}/> */}
         <OptionsDropdown />
         {colorGrid}
       </>
