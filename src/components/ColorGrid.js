@@ -11,15 +11,14 @@ function ColorGrid(props) {
   // disallow scroll bar when the grid is on the page (cuz it messes up margins)
   useEffect(() => {
     document.body.classList.add('no-scroll');
-
     return () => {
       document.body.classList.remove('no-scroll');
     }
   }, [])
 
+  // if at the /optionsgrid route, the custom options here will be loaded from session storage
   useEffect(() => {
     if (props.reloadingWithOptions) {
-      console.log("using effect");
       let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
       setGrid(
         <GridWrapper
@@ -37,7 +36,6 @@ function ColorGrid(props) {
   }, [])
 
   if (props.reloadingWithOptions) {
-    console.log('reloading with options');
     return (
       <>
         {grid}

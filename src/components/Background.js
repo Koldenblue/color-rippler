@@ -16,7 +16,6 @@ function Background() {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         position: 'fixed',
-        // backgroundColor: 'lightcoral',
         zIndex: '-1'
     }
   }

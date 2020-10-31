@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Redirect } from 'react-router-dom';
-const util = import('util')
 
 export default function OptionsDropdown(props) {
-  const [colorGrid, setColorGrid] = useState();
   const [redirect, setRedirect] = useState();
 
   let styles = {
@@ -15,7 +13,8 @@ export default function OptionsDropdown(props) {
   }
 
   let generateNewGrid = async () => {
-    // Generate a new grid with the selected options, if stored. Else reload page.
+    // Generate a new grid with the selected options by redirecting to appropriate route,
+    // if options are stored. Else reload page.
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (!options) {
       window.location.reload();
@@ -25,10 +24,10 @@ export default function OptionsDropdown(props) {
         <Redirect to='/optionsgrid' />
       )
       window.location.reload();
-
     }
   }
 
+  // generate default grid
   let generateDefaultGrid = async () => {
     await setRedirect(
       <Redirect to='/' />

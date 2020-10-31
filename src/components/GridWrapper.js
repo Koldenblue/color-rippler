@@ -19,8 +19,6 @@ function GridWrapper({
   const [variance, setVariance] = useState(initialVariance);
   const [gridSize, setGridSize] = useState(maxGridSize);
   const [clickVariance, setClickVariance] = useState(rippleVariance);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // initial random color to be applied to entire grid
   const randRed = Math.floor(Math.random() * 256);

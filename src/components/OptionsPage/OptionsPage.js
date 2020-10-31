@@ -17,21 +17,7 @@ function OptionsPage() {
   // algorithm style
   // background color
 
-  let handleShellSwitch = () => {
-    // try {
-    //   let isChecked = document.getElementById('outer-shell-switch').checked
-    //   setOuterShellOnly(isChecked)
-    //   console.log(outerShellOnly)
-    // } catch (err) {
-    //   console.log(err)
-    //   console.log(outerShellOnly)
-    // }
-  }
-
-  let generateColorGrid = () => {
-
-  }
-
+  // submits options form, stores the options in session storage, then generates a grid with the selected options
   let handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -106,30 +92,9 @@ function OptionsPage() {
     }
   }
 
-  // let reloadGrid = (options) => {
-  //   console.log('reloading grid')
-  //   console.log(options)
-  //   setColorGrid(
-  //     <>
-  //       <ColorGrid
-          // outerShellOnly={options.outerShellOnly}
-          // initialVariance={options.initialVariance}
-          // rippleVariance={options.rippleVariance}
-          // maxGridSize={options.maxGridSize}
-          // rippleSpeed={options.rippleSpeed}
-          // ripplePropagation={options.ripplePropagation}
-          // initialGrayscale={options.initialGrayscale}
-          // // autoDrop={autoDrop}
-          // rippleTransitionSpeed={options.rippleTransitionSpeed}
-  //       />
-  //     </>
-  //   )
-  // }
-
   if (colorGrid) {
     return (
       <>
-        {/* <OptionsDropdown reloadGrid={reloadGrid} colorGrid={colorGrid}/> */}
         <OptionsDropdown />
         {colorGrid}
       </>
@@ -139,24 +104,20 @@ function OptionsPage() {
     return (
       <>
         <Background />
-         <Jumbotron fluid id='options-jumbotron'>
+        <Jumbotron fluid id='options-jumbotron'>
           <Container>
             <h1>Options</h1>
             <p>
               Page is still being improved!
             </p>
-        <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
+            <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
           </Container>
         </Jumbotron>
 
-
-      <OptionsForm 
-        handleFormSubmit={handleFormSubmit}
-        // handleShellSwitch={handleShellSwitch}
-        validated={validated}
-      />
-
-        {/* <button onClick={generateColorGrid}>Generate a new color grid with selected options</button> */}
+        <OptionsForm
+          handleFormSubmit={handleFormSubmit}
+          validated={validated}
+        />
       </>
     )
   }
