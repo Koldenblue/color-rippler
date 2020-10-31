@@ -111,6 +111,7 @@ export default function OptionsForm(props) {
               id="initialGrayscale"
               label="Grid is initially Grayscale"
               onClick={() => { }}
+              defaultChecked={true}
             />
           </Col>
 

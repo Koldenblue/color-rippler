@@ -16,13 +16,13 @@ function Background() {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         position: 'fixed',
-        backgroundColor: 'lightcoral',
+        // backgroundColor: 'lightcoral',
         zIndex: '-1'
     }
   }
 
   return (
-    <div style={styles.image}>
+    <div id='pink-watermelon' style={styles.image}>
 
     </div>
   )
