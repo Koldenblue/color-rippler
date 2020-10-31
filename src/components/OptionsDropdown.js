@@ -20,7 +20,7 @@ export default function OptionsDropdown(props) {
       window.location.reload();
     }
     else {
-      setRedirect(<Redirect to='/' reloadingWithOptions={true} />)
+      setRedirect(<Redirect to='/optionsgrid' />)
     }
   })
 

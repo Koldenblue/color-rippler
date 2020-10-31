@@ -19,6 +19,11 @@ function App() {
             <ColorGrid />
           </Route>
 
+          <Route exact path='/optionsgrid'>
+            <OptionsDropdown />
+
+          </Route>
+
         </Switch>
       </Router>
     </div>

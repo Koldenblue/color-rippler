@@ -78,9 +78,9 @@ function GridWrapper({
 
   // auto function. automatically selects a random row and column to execute changeSurroundings function for.
   useEffect(() => {
-    console.log("checking auto")
-    console.log(autoDrop)
-    console.log(colorGrid.length)
+    // console.log("checking auto")
+    // console.log(autoDrop)
+    // console.log(colorGrid.length)
     function auto() {
       if (autoDrop && colorGrid.length > 0) {
         console.log("start auto")
