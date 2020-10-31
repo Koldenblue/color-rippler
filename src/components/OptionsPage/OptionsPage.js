@@ -105,12 +105,13 @@ function OptionsPage() {
       <>
         <Background />
         <Jumbotron fluid id='options-jumbotron'>
-          <Container>
-            <h1>Options</h1>
-            <p>
-              Page is still being improved!
+          <Container className='title-text'>
+            <h1 className='title-text'>Color Rippler</h1>
+            <p className='title-text'>
+              Select options below to customize the color ripples!
             </p>
-            <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
+            <hr></hr>
+            <Link className='color-grid-link' to='/'>Go to color grid using default settings</Link>
           </Container>
         </Jumbotron>
 

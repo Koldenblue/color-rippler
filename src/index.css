@@ -23,3 +23,7 @@
   background: rgb(240,128,128);
   background: linear-gradient(180deg, rgba(240,128,128,1) 25%, rgba(244,60,60,1) 80%); 
 }
+
+.title-text {
+  font-family: 'Comfortaa', cursive;
+}

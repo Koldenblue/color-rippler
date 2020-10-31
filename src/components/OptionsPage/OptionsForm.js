@@ -134,7 +134,7 @@ export default function OptionsForm(props) {
         </Form.Row>
         <br />
         <Row>
-          <Button type='submit' className='btn btn-success'>Generate grid with selected options</Button>
+          <Button type='submit' className='btn btn-success'>Generate grid with customized options</Button>
         </Row>
         {/* <Button className='btn btn-secondary'>Store Options (not yet functional)</Button> */}
         {/* <Button className='btn btn-secondary'>Load Options (not yet functional)</Button> */}
