@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const routes = require("./routes/index.js");
 const app = express();
-require("dotenv").config();
+// require("dotenv").config();
 const PORT = process.env.PORT || 3001;
-const session = require("express-session");
+// const session = require("express-session");
 // Requiring passport as we've configured it
-const passport = require("./config/passport");
+// const passport = require("./config/passport");
 
 app.use(logger("dev"));
 
@@ -20,11 +20,11 @@ if (process.env.NODE_ENV === "production") {
 
 // port 3001 is using the index.html in the public folder
 // important that routes be first, so it will go to the routes, then the public folder
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(
+//   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(routes);
 app.use(express.static("public"));
