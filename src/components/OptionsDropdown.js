@@ -13,20 +13,23 @@ export default function OptionsDropdown(props) {
     }
   }
 
-  let generateNewGrid = (() => {
+  let generateNewGrid = () => {
     // Generate a new grid with the selected options, if stored. Else reload page.
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (!options) {
       window.location.reload();
     }
     else {
-      setRedirect(<Redirect to='/optionsgrid' />)
+      setRedirect(
+        <Redirect to='/optionsgrid' />
+      )
     }
-  })
+  }
 
   let generateDefaultGrid = () => {
-    window.location.reload();
-    // should change this to a redirect
+    setRedirect(
+      <Redirect to='/' />
+    )
   }
 
   return (

@@ -112,15 +112,15 @@ function OptionsPage() {
   //   setColorGrid(
   //     <>
   //       <ColorGrid
-  //         outerShellOnly={options.outerShellOnly}
-  //         initialVariance={options.initialVariance}
-  //         rippleVariance={options.rippleVariance}
-  //         maxGridSize={options.maxGridSize}
-  //         rippleSpeed={options.rippleSpeed}
-  //         ripplePropagation={options.ripplePropagation}
-  //         initialGrayscale={options.initialGrayscale}
-  //         // autoDrop={autoDrop}
-  //         rippleTransitionSpeed={options.rippleTransitionSpeed}
+          // outerShellOnly={options.outerShellOnly}
+          // initialVariance={options.initialVariance}
+          // rippleVariance={options.rippleVariance}
+          // maxGridSize={options.maxGridSize}
+          // rippleSpeed={options.rippleSpeed}
+          // ripplePropagation={options.ripplePropagation}
+          // initialGrayscale={options.initialGrayscale}
+          // // autoDrop={autoDrop}
+          // rippleTransitionSpeed={options.rippleTransitionSpeed}
   //       />
   //     </>
   //   )
