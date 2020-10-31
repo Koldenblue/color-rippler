@@ -1,5 +1,5 @@
 {
-  "name": "mern-setup",
+  "name": "color-rippler",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -18,30 +18,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Koldenblue/mern-setup.git"
+    "url": "git+https://github.com/Koldenblue/color-rippler.git"
   },
   "author": "Kevin Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Koldenblue/mern-setup/issues"
+    "url": "https://github.com/Koldenblue/color-rippler/issues"
   },
-  "homepage": "https://github.com/Koldenblue/mern-setup#readme",
+  "homepage": "https://github.com/Koldenblue/color-rippler#readme",
   "dependencies": {
     "axios": "^0.20.0",
-    "bcrypt": "^5.0.0",
-    "bootstrap": "^4.5.2",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "if-env": "^1.0.4",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
-    "node-sass": "^4.14.1",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
