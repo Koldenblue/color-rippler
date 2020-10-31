@@ -2,18 +2,20 @@ import React from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 export default function OptionsForm(props) {
   return (
-    <section className='container'>
+    <Container>
       <Form inline onSubmit={props.handleFormSubmit} noValidate validated={props.validated}>
 
+      <Row>
         <Form.Group controlId='maxGridSize'>
-          <Col sm={6}>
+          <Col >
             <Form.Label>Max Grid Size</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col >
             <Form.Control
               type='number'
               placeholder='20'
@@ -22,16 +24,18 @@ export default function OptionsForm(props) {
               min='1'
             />
           </Col>
-          <Col sm={6}>
+          <Col >
             <Form.Text>Enter a number from 1 to 50</Form.Text>
           </Col>
         </Form.Group>
+      </Row>
 
+      <Row>
         <Form.Group controlId='initialVariance'>
-          <Col sm={6}>
+          <Col>
             <Form.Label>Initial color variance</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col >
             <Form.Control
               type='text'
               placeholder='50'
@@ -40,16 +44,18 @@ export default function OptionsForm(props) {
               max='255'
             />
           </Col>
-          <Col sm={6}>
+          <Col>
             <Form.Text>Enter a number from 0 to 255</Form.Text>
           </Col>
         </Form.Group>
+      </Row>
 
+    <Row>
         <Form.Group controlId='rippleVariance'>
-          <Col sm={6}>
+          <Col>
             <Form.Label>Color variance of ripples</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col>
             <Form.Control
               type='text'
               placeholder='100'
@@ -58,16 +64,18 @@ export default function OptionsForm(props) {
               max='255'
             />
           </Col>
-          <Col sm={6}>
+          <Col>
             <Form.Text>Enter a number from 0 to 255</Form.Text>
           </Col>
         </Form.Group>
+      </Row>
 
+<Row>
         <Form.Group controlId='rippleSpeed'>
-          <Col sm={6}>
+          <Col>
             <Form.Label>Outward Ripple Speed (milliseconds)</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col>
             <Form.Control
               type='text'
               placeholder='100'
@@ -76,16 +84,18 @@ export default function OptionsForm(props) {
               max='2000'
             />
           </Col>
-          <Col sm={6}>
+          <Col>
             <Form.Text>Enter a number from 10 to 2000</Form.Text>
           </Col>
         </Form.Group>
+</Row>
 
+<Row>
         <Form.Group controlId='ripplePropagation'>
-          <Col sm={6}>
+          <Col>
             <Form.Label>Size of ripples</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col>
             <Form.Control
               type='text'
               placeholder='5'
@@ -94,16 +104,18 @@ export default function OptionsForm(props) {
               defaultValue='5'
             />
           </Col>
-          <Col sm={6}>
+          <Col>
             <Form.Text>Enter a number from 1 to 25 </Form.Text>
           </Col>
         </Form.Group>
+        </Row>
 
+<Row>
         <Form.Group controlId='`rippleTransitionSpeed'>
-          <Col sm={6}>
+          <Col>
             <Form.Label>Ripple color change speed (milliseconds)</Form.Label>
           </Col>
-          <Col sm={2}>
+          <Col>
             <Form.Control
               type='number'
               placeholder='1500'
@@ -112,11 +124,11 @@ export default function OptionsForm(props) {
               max='5000'
             />
           </Col>
-          <Col sm={6}>
+          <Col>
             <Form.Text>Enter a number from 10 to 5000 </Form.Text>
           </Col>
         </Form.Group>
-
+</Row>
 
         {/* <Form.Check
           type="switch"
@@ -153,6 +165,6 @@ export default function OptionsForm(props) {
       </Form>
 
       {/* <Button className='btn btn-warning'>See stored color ripples in database (to be implemented)</Button> */}
-    </section>
+    </Container>
   )
 }
