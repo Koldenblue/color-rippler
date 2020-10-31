@@ -77,20 +77,21 @@ function OptionsPage() {
       else {
         rippleTransitionSpeed = rippleTransitionSpeed / 1000;
       }
-      // let initialGrayscale = event.target[6].checked;
+      let initialGrayscale = event.target[6].checked;
       // let grayscaleChange = event.target[7].checked;
       // let autoDrop = event.target[8].checked;
       // console.log(autoDrop)
-      // let outerShellOnly = event.target[9].checked;
+      let outerShellOnly = event.target[7].checked;
 
       setColorGrid(
         <ColorGrid
-          // outerShellOnly={outerShellOnly}
+          outerShellOnly={outerShellOnly}
           initialVariance={initialVariance}
           rippleVariance={rippleVariance}
           maxGridSize={maxGridSize}
           rippleSpeed={rippleSpeed}
           ripplePropagation={ripplePropagation}
+          initialGrayscale={initialGrayscale}
           // autoDrop={autoDrop}
           rippleTransitionSpeed={rippleTransitionSpeed}
         />
