@@ -6,6 +6,6 @@
   background-color:lightseagreen;
 }
 
-body {
+.no-scroll {
   overflow: hidden; /* Hide scrollbars */
 }

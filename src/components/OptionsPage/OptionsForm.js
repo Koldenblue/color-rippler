@@ -8,14 +8,14 @@ import Container from 'react-bootstrap/Container';
 export default function OptionsForm(props) {
   return (
     <Container>
-      <Form inline onSubmit={props.handleFormSubmit} noValidate validated={props.validated}>
+      <Form onSubmit={props.handleFormSubmit} noValidate validated={props.validated}>
 
-      <Row>
+      <Form.Row>
         <Form.Group controlId='maxGridSize'>
-          <Col >
+          <Col>
             <Form.Label>Max Grid Size</Form.Label>
           </Col>
-          <Col >
+          <Col>
             <Form.Control
               type='number'
               placeholder='20'
@@ -24,11 +24,11 @@ export default function OptionsForm(props) {
               min='1'
             />
           </Col>
-          <Col >
+          <Col>
             <Form.Text>Enter a number from 1 to 50</Form.Text>
           </Col>
         </Form.Group>
-      </Row>
+      </Form.Row>
 
       <Row>
         <Form.Group controlId='initialVariance'>

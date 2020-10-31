@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import GridWrapper from './GridWrapper';
 
 /** highest-order component for ColorGrid. The grid array generation should be in this function,
@@ -6,6 +6,15 @@ import GridWrapper from './GridWrapper';
  * For example, the ColorGrid array needs to be in place first, before the autoDrop works properly,
  * or before the DynaColorBox components can be mapped. */
 function ColorGrid(props) {
+
+  useEffect(() => {
+    document.body.classList.add('no-scroll');
+
+    return() => {
+      document.body.classList.remove('no-scroll');
+    }
+  },[])
+
 
   return(
     <GridWrapper 
