@@ -37,7 +37,7 @@ export default function OptionsForm(props) {
           </Col>
           <Col >
             <Form.Control
-              type='text'
+              type='number'
               placeholder='50'
               defaultValue='50'
               min='0'
@@ -57,7 +57,7 @@ export default function OptionsForm(props) {
           </Col>
           <Col>
             <Form.Control
-              type='text'
+              type='number'
               placeholder='100'
               defaultValue='100'
               min='0'
@@ -77,7 +77,7 @@ export default function OptionsForm(props) {
           </Col>
           <Col>
             <Form.Control
-              type='text'
+              type='number'
               placeholder='100'
               defaultValue='100'
               min='10'
@@ -97,7 +97,7 @@ export default function OptionsForm(props) {
           </Col>
           <Col>
             <Form.Control
-              type='text'
+              type='number'
               placeholder='5'
               min='1'
               max='25'
