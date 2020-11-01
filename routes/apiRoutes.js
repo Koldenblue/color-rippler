@@ -4,6 +4,10 @@ const db = require("../models")
 // const passport = require("../config/passport");
 // require("dotenv").config();
 
+router.get('/colorgetter', (req, res) => {
+    let data = {hi: 'hi'}
+    res.json(data)
+})
 
 // router.get('/users', (req, res) => {
 //   console.log("users api get route, now validate, go thru passport, and put in database");

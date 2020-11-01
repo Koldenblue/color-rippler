@@ -3,6 +3,7 @@ import OptionsDropdown from './components/OptionsDropdown';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ColorGrid from './components/ColorGrid';
 import OptionsPage from './components/OptionsPage/OptionsPage';
+import ColorGetter from './components/ColorGetter';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/options' component={OptionsPage} />
 
           <Route exact path='/'>
+            {/* <ColorGetter /> */}
             <OptionsDropdown />
             <ColorGrid />
           </Route>
