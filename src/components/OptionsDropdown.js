@@ -17,6 +17,9 @@ export default function OptionsDropdown(props) {
     // if options are stored. Else reload page.
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (!options) {
+      await setRedirect(
+        <Redirect to='/options' />
+      )
       window.location.reload();
     }
     else {
