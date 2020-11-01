@@ -27,3 +27,32 @@
 .title-text {
   font-family: 'Comfortaa', cursive;
 }
+
+/* =============== PAINT SPLATTER IMAGES =================*/
+
+
+.circle1-img {
+  position: fixed;
+  z-index: -1;
+  width: 70%;
+  top: 45%;
+  left: 10%;
+  transform: translateX(-20%);
+}
+.circle2-img {
+  position: fixed;
+  z-index: -1;
+  width: 70%;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.circle3-img {
+  position: fixed;
+  z-index: -1;
+  width: 70%;
+  top: 45%;
+  left: 90%;
+  transform: translateX(-80%);
+}
+/* ========================================================*/

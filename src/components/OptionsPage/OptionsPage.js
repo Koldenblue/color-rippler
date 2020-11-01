@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 import '../../index.css'
 import Background from "../Background"
 import ColorGrid from '../ColorGrid';
@@ -104,6 +105,11 @@ function OptionsPage() {
     return (
       <>
         <Background />
+        <Image className='circle1-img' src={require('../../assets/watercolor-circle2.svg')} />
+        <Image className='circle3-img' src={require('../../assets/watercolor-circle3.svg')} />
+        <Image className='circle2-img' src={require('../../assets/watercolor-circle.svg')} />
+
+
         <Jumbotron fluid id='options-jumbotron'>
           <Container className='title-text'>
             <h1 className='title-text'>Color Rippler</h1>
