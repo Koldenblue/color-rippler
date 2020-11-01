@@ -42,16 +42,40 @@ export default function WatercolorCircles() {
       opacity: opacity3
     }
   }
+
+  let counter = 1;
+  let changeOpacity = async () => {
+    let opacityArr = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1],
+      [1, 0, 1],
+      [0, 1, 0],
+    ]
+
+    setOpacity1(opacityArr[counter][0]);
+    setOpacity2(opacityArr[counter][1]);
+    setOpacity3(opacityArr[counter][2]);
+
+    counter++;
+    if (counter >= opacityArr.length) {
+      counter = 0;
+    }
+  }
+
   useEffect(() => {
-    setOpacity1(1);
-    setOpacity2(1);
-    setOpacity3(1);
-  })
+    setOpacity1(1)
+    let opacityInterval = setInterval(changeOpacity, 6000)
+
+    return() => {
+      clearInterval(opacityInterval)
+      console.log(opacity1)
+    }
+  }, [])
+
 
   return (<>
-    {/* <Image className='circle1-img' src={require('../../assets/watercolor-circle2.svg')} alt='watercolor circle' />
-    <Image className='circle3-img' src={require('../../assets/watercolor-circle3.svg')} alt='watercolor circle' />
-    <Image className='circle2-img' src={require('../../assets/watercolor-circle.svg')} alt='watercolor circle' /> */}
     <Image style={styles.circle2} src={require('../../assets/watercolor-circle.svg')} alt='watercolor circle' />
     <Image style={styles.circle1} src={require('../../assets/watercolor-circle2.svg')} alt='watercolor circle' />
     <Image style={styles.circle3} src={require('../../assets/watercolor-circle3.svg')} alt='watercolor circle' />
