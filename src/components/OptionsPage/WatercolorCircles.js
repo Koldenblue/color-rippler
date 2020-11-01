@@ -52,6 +52,11 @@ export default function WatercolorCircles() {
       [1, 1, 1],
       [1, 0, 1],
       [0, 1, 0],
+      [1, 1, 1],
+      [0, 0, 1],
+      [0, 1, 0],
+      [1, 0, 0],
+      [1, 1, 1]
     ]
 
     setOpacity1(opacityArr[counter][0]);
