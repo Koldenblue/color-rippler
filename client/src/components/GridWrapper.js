@@ -19,8 +19,6 @@ function GridWrapper({
   const [variance, setVariance] = useState(initialVariance);
   const [gridSize, setGridSize] = useState(maxGridSize);
   const [clickVariance, setClickVariance] = useState(rippleVariance);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // initial random color to be applied to entire grid
   const randRed = Math.floor(Math.random() * 256);
@@ -78,9 +76,9 @@ function GridWrapper({
 
   // auto function. automatically selects a random row and column to execute changeSurroundings function for.
   useEffect(() => {
-    console.log("checking auto")
-    console.log(autoDrop)
-    console.log(colorGrid.length)
+    // console.log("checking auto")
+    // console.log(autoDrop)
+    // console.log(colorGrid.length)
     function auto() {
       if (autoDrop && colorGrid.length > 0) {
         console.log("start auto")
@@ -130,9 +128,9 @@ function GridWrapper({
         return (
           // ranges is originally a 1 dimensional array. This is turning ranges into a 2D array of dimensions equal to max range,
           // by associating each 'a' value with another array of 'b' values
-          ranges.map(b => {
+          ranges.forEach(b => {
             // only change the current outermost shell:
-            if(Math.abs(b) === startDelta || Math.abs(a) === startDelta){
+            if (Math.abs(b) === startDelta || Math.abs(a) === startDelta){
               try {
                 let newRed = currentGrid[a + row][b + col].red + redChange;
                 let newGreen = currentGrid[a + row][b + col].green + greenChange;
@@ -169,10 +167,10 @@ function GridWrapper({
   * then passes the color changes to the changeColor algorithm in order to propogate ripples.
   * @param {object} value is from the data-value attribute on the box, or props.data-value */
   const changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
-    console.log(value, redChange, greenChange, blueChange);
+    // console.log(value, redChange, greenChange, blueChange);
     const currentRow = value.r;
     const currentCol = value.c;
-    console.log(colorGrid)
+    // console.log(colorGrid)
     // mapping to new grid to create a copy that doesn't have same reference
     if (colorGrid.length > 0) {
       let newGrid = colorGrid.map((data) => {

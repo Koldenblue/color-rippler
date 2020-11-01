@@ -19,6 +19,11 @@ function App() {
             <ColorGrid />
           </Route>
 
+          <Route exact path='/optionsgrid'>
+            <OptionsDropdown />
+            <ColorGrid reloadingWithOptions={true} />
+          </Route>
+
         </Switch>
       </Router>
     </div>

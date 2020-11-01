@@ -8,8 +8,8 @@ function Grid(props) {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
 
-  let r = -1;
-  let c = -1;
+  // resizes the DynaColorBox components based on the window size.
+  // Resizing is only allowed every 500 ms.
   let allowResize = true;
   useEffect(() => {
     function handleResize() {
@@ -17,48 +17,51 @@ function Grid(props) {
       setTimeout(() => {
         allowResize = true;
         if (allowResize) {
-          setWidth(window.innerWidth )
+          setWidth(window.innerWidth)
           setHeight(window.innerHeight)
         }
       }, 500)
-      // allowResize = false;
     }
-
     window.addEventListener('resize', handleResize);
   }, [])
+
+  // r and c are used to indicate rows and columns in the keys and data
+  let r = -1;
+  let c = -1;
 
   return (
     <>
       {props.colorGrid.map((row) => {
-        // r and c are used to indicate rows and columns in the keys and data
-      r++;
-      return (
-        <div className='row' key={r}>
-          {row.map((box) => {
-            // reset column to 0 after it reaches max
-            {if (++c > (props.gridSize - 1)) {
-              c = 0 
-            }}
-            // map a grid of DynaColorBoxes, based on the props.colorGrid array
-            return (
-              <DynaColorBox
-                clickVariance={props.clickVariance}
-                key={`r${c}c${r}`}
-                data-value={{r:r, c:c}}
-                red={box.red}
-                green={box.green}
-                blue={box.blue}
-                changeSurroundings={props.changeSurroundings}
-                numColumns = {props.gridSize}
-                rippleTransitionSpeed={props.rippleTransitionSpeed}
-                height={height}
-                width={width}
-              />
-            );
-          })}
-        </div>
-      )
-    })}
+        r++;
+        return (
+          <div className='row' key={r}>
+            {row.map((box) => {
+              // reset column to 0 after it reaches max
+              {
+                if (++c > (props.gridSize - 1)) {
+                  c = 0
+                }
+              }
+              // map a grid of DynaColorBoxes, based on the props.colorGrid array
+              return (
+                <DynaColorBox
+                  clickVariance={props.clickVariance}
+                  key={`r${c}c${r}`}
+                  data-value={{ r: r, c: c }}
+                  red={box.red}
+                  green={box.green}
+                  blue={box.blue}
+                  changeSurroundings={props.changeSurroundings}
+                  numColumns={props.gridSize}
+                  rippleTransitionSpeed={props.rippleTransitionSpeed}
+                  height={height}
+                  width={width}
+                />
+              );
+            })}
+          </div>
+        )
+      })}
     </>
   )
 }
