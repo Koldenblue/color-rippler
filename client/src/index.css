@@ -1,11 +1,30 @@
 .color-grid-link {
-  color: green;
+  color: #992929;
+}
+
+.color-grid-link:hover {
+  color: #650f7d;
 }
 
 #options-jumbotron {
-  background-color:lightseagreen;
+  background: rgb(32,178,70);
+  background: linear-gradient(0deg, rgba(32,178,70,1) 0%, rgba(45,125,88,1) 82%); 
+  border-bottom: black;
+  border-width: 0 0 2px 0;
+  border-style: dotted;
+
 }
 
-body {
+.no-scroll {
   overflow: hidden; /* Hide scrollbars */
 }
+
+#pink-watermelon {
+  background: rgb(240,128,128);
+  background: linear-gradient(180deg, rgba(240,128,128,1) 25%, rgba(244,60,60,1) 80%); 
+}
+
+.title-text {
+  font-family: 'Comfortaa', cursive;
+}
+

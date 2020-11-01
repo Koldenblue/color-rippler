@@ -3,40 +3,22 @@ import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import '../../index.css'
-import Background from "../Background"
+import Background from "./Background"
 import ColorGrid from '../ColorGrid';
 import OptionsDropdown from '../OptionsDropdown';
 import OptionsForm from './OptionsForm';
+import WatercolorCircles from './WatercolorCircles';
 
 /** Either routes to ColorGrid with default options, or will load up ColorGrid with selected options */
 function OptionsPage() {
   const [colorGrid, setColorGrid] = useState()
   const [validated, setValidated] = useState(false);
 
-
   // things that could be options:
-  // grayscale
-  // color variance
-  // outer shell change only
   // algorithm style
   // background color
-  // grid size
 
-  let handleShellSwitch = () => {
-    // try {
-    //   let isChecked = document.getElementById('outer-shell-switch').checked
-    //   setOuterShellOnly(isChecked)
-    //   console.log(outerShellOnly)
-    // } catch (err) {
-    //   console.log(err)
-    //   console.log(outerShellOnly)
-    // }
-  }
-
-  let generateColorGrid = () => {
-
-  }
-
+  // submits options form, stores the options in session storage, then generates a grid with the selected options
   let handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -44,7 +26,7 @@ function OptionsPage() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log("false")
+      // console.log("false")
     }
 
     else {
@@ -78,10 +60,22 @@ function OptionsPage() {
         rippleTransitionSpeed = rippleTransitionSpeed / 1000;
       }
       let initialGrayscale = event.target[6].checked;
-      let grayscaleChange = event.target[7].checked;
-      let autoDrop = event.target[8].checked;
-      console.log(autoDrop)
-      let outerShellOnly = event.target[9].checked;
+      // let grayscaleChange = event.target[7].checked;
+      // let autoDrop = event.target[8].checked;
+      // console.log(autoDrop)
+      let outerShellOnly = event.target[7].checked;
+
+      // store options in session storage for use with the options dropdown generate new grid button
+      sessionStorage.setItem('optionsGrid', JSON.stringify({
+        outerShellOnly: outerShellOnly,
+        initialVariance: initialVariance,
+        rippleVariance: rippleVariance,
+        maxGridSize: maxGridSize,
+        rippleSpeed: rippleSpeed,
+        ripplePropagation: ripplePropagation,
+        initialGrayscale: initialGrayscale,
+        rippleTransitionSpeed: rippleTransitionSpeed
+      }))
 
       setColorGrid(
         <ColorGrid
@@ -91,7 +85,8 @@ function OptionsPage() {
           maxGridSize={maxGridSize}
           rippleSpeed={rippleSpeed}
           ripplePropagation={ripplePropagation}
-          autoDrop={autoDrop}
+          initialGrayscale={initialGrayscale}
+          // autoDrop={autoDrop}
           rippleTransitionSpeed={rippleTransitionSpeed}
         />
       )
@@ -110,24 +105,23 @@ function OptionsPage() {
     return (
       <>
         <Background />
-         <Jumbotron fluid id='options-jumbotron'>
-          <Container>
-            <h1>Options</h1>
-            <p>
-              Page is still being improved!
+        <WatercolorCircles />
+
+        <Jumbotron fluid id='options-jumbotron'>
+          <Container className='title-text'>
+            <h1 className='title-text'>Color Rippler</h1>
+            <p className='title-text'>
+              Select options below to customize the color ripples!
             </p>
-        <Link className='color-grid-link' to='/'>Click to go to color grid using default settings</Link>
+            <hr></hr>
+            <Link className='color-grid-link' to='/'>Go to color grid using default settings</Link>
           </Container>
         </Jumbotron>
 
-
-      <OptionsForm 
-        handleFormSubmit={handleFormSubmit}
-        // handleShellSwitch={handleShellSwitch}
-        validated={validated}
-      />
-
-        {/* <button onClick={generateColorGrid}>Generate a new color grid with selected options</button> */}
+        <OptionsForm
+          handleFormSubmit={handleFormSubmit}
+          validated={validated}
+        />
       </>
     )
   }

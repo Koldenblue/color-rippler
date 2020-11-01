@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function DynaColorBox(props) {
   const [variance, setVariance] = useState(props.clickVariance);
@@ -7,8 +7,9 @@ function DynaColorBox(props) {
   const [colorTransition, setColorTransition] = useState(props.rippleTransitionSpeed)
 
   // height of boxes is based on browser window height
-  let boxHeight = props.height / Number(props.numColumns)
-  let boxWidth = (props.width / Number(props.numColumns)) 
+  // rounding down so that boxes don't overflow window and cause weird rendering
+  let boxHeight = Math.floor(props.height / Number(props.numColumns))
+  let boxWidth = Math.floor(props.width / Number(props.numColumns)) 
   let styles = {
     colorBox: {
       width: boxWidth + 'px',
@@ -26,8 +27,9 @@ function DynaColorBox(props) {
     setOpacity(1);
   }, [])
 
-  let plusMinus = [-1, 1]
+  let plusMinus = [-1, 1]   // plus or minus random color variance
 
+  // generates a random color variance, then propogates to surroundings thru props.changeSurroundings
   const changeColors = () => {
     let redVar = Math.floor(Math.random() * variance)
     let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
