@@ -17,6 +17,9 @@ export default function OptionsDropdown(props) {
     // if options are stored. Else reload page.
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (!options) {
+      await setRedirect(
+        <Redirect to='/options' />
+      )
       window.location.reload();
     }
     else {
@@ -45,8 +48,8 @@ export default function OptionsDropdown(props) {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={generateNewGrid}>Generate Grid with Customized Options</Dropdown.Item>
-          <Dropdown.Item onClick={generateDefaultGrid}>Generate Grid with Default Options</Dropdown.Item>
+          <Dropdown.Item onClick={generateNewGrid}>New Grid with Customized Options</Dropdown.Item>
+          <Dropdown.Item onClick={generateDefaultGrid}>New Grid with Default Options</Dropdown.Item>
           <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
           {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
           <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}

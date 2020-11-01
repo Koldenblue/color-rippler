@@ -74,10 +74,10 @@ export default function OptionsForm(props) {
               <Form.Label>Size of ripples</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='5'
+                placeholder='3'
                 min='1'
                 max='25'
-                defaultValue='5'
+                defaultValue='3'
               />
               <Form.Text>Enter a number from 1 to 25 </Form.Text>
             </Form.Group>

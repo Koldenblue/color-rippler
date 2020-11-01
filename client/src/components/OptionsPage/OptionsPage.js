@@ -49,7 +49,7 @@ function OptionsPage() {
       }
       let ripplePropagation = event.target[4].value;
       if (ripplePropagation === '') {
-        ripplePropagation = 5;
+        ripplePropagation = 3;
       }
       let rippleTransitionSpeed = event.target[5].value;
       console.log(rippleTransitionSpeed)
