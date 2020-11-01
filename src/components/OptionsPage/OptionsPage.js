@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
@@ -26,7 +26,7 @@ function OptionsPage() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log("false")
+      // console.log("false")
     }
 
     else {
