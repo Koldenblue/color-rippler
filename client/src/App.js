@@ -3,7 +3,8 @@ import OptionsDropdown from './components/OptionsDropdown';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ColorGrid from './components/ColorGrid';
 import OptionsPage from './components/OptionsPage/OptionsPage';
-import ColorGetter from './components/ColorGetter';
+import Login from './components/LoginSignupPages/Login';
+// import ColorGetter from './components/ColorGetter';
 
 
 function App() {
@@ -15,15 +16,21 @@ function App() {
 
           <Route exact path='/options' component={OptionsPage} />
 
+          {/* Loads the color grid with default options */}
           <Route exact path='/'>
             {/* <ColorGetter /> */}
             <OptionsDropdown />
             <ColorGrid />
           </Route>
 
+          {/* This route loads the grid with custom options */}
           <Route exact path='/optionsgrid'>
             <OptionsDropdown />
             <ColorGrid reloadingWithOptions={true} />
+          </Route>
+
+          <Route exact path='/login'>
+            <Login />
           </Route>
 
         </Switch>
