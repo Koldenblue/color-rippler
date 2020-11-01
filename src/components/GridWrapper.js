@@ -9,7 +9,7 @@ function GridWrapper({
   rippleVariance=100, 
   maxGridSize=20, 
   rippleSpeed=100, 
-  ripplePropagation=5, 
+  ripplePropagation=3, 
   autoDrop=false,
   rippleTransitionSpeed=1.5,
   initialGrayscale=true,
