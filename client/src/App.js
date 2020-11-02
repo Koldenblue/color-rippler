@@ -5,7 +5,7 @@ import ColorGrid from './components/ColorGrid';
 import OptionsPage from './components/OptionsPage/OptionsPage';
 import Login from './components/LoginSignupPages/Login';
 // import ColorGetter from './components/ColorGetter';
-
+import Signup from './components/LoginSignupPages/Signup';
 
 function App() {
 
@@ -31,6 +31,10 @@ function App() {
 
           <Route exact path='/login'>
             <Login />
+          </Route>
+
+          <Route exact path='/signup'>
+            <Signup />
           </Route>
 
         </Switch>

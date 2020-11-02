@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import AlertBox from '../components/AlertBox';
+import AlertBox from './AlertBox';
 import axios from 'axios';
 import {Redirect} from "react-router-dom"
-import './signupLoginBtns.css';
+import { useHistory } from "react-router-dom";
 
 function Signup({ loading, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   let handleSubmit = (event) => {
     event.preventDefault();
@@ -18,24 +19,22 @@ function Signup({ loading, user }) {
       setMessage("Neither username nor password may be blank.")
     }
     else {
-      axios.get(`/api/users`).then((data) => {
-        let user = {
-          username: username,
-          password: password
-        }
+      let user = {
+        username: username,
+        password: password
+      }
 
-        axios.post('api/users', user).then(data => {
-          // console.log(data)
-          if (data.data === "That username already exists!") {
-            setMessage(data.data);
-          } 
-          else if (data.data === "Password must be at least 6 characters.") {
-            setMessage(data.data);
-          }
-          else {
-            window.location.href='/login';
-          }
-        })
+      axios.post('api/users', user).then(data => {
+        // console.log(data)
+        if (data.data === "That username already exists!") {
+          setMessage(data.data);
+        } 
+        else if (data.data === "Password must be at least 6 characters.") {
+          setMessage(data.data);
+        }
+        else {
+          window.location.href='/login';
+        }
       })
     }
   }
@@ -63,7 +62,6 @@ function Signup({ loading, user }) {
             onChange={(event) => setUsername(event.target.value)}
             type="text"
             placeholder=""
-            id="username"
           />
         </Form.Group>
 
@@ -74,7 +72,6 @@ function Signup({ loading, user }) {
             type="password"
             placeholder="password"
             name='password'
-            id="password"
           />
         </Form.Group>
 

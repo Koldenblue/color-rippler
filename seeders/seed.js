@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/colorrippler", {
 let seeder =
 {
   "username": "1",
-  "password": "$2b$10$x0RdS0bqA11R9w/iljOVFe5TJOy5GQVvjiRYCqK4fscNyQAdppheW",
+  "password": "1",
 }
 
 db.User.deleteMany({})

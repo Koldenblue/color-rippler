@@ -19,37 +19,34 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
 })
 
 
-// router.get('/users', (req, res) => {
-//   console.log("users api get route, now validate, go thru passport, and put in database");
-//   db.User.find({}).then(data => {
-//     res.json(data)
-//   }).catch((err) => {
-//     console.log(err);
-//   })
-// })
+router.get('/users', (req, res) => {
+  console.log("users api get route, now validate, go thru passport, and put in database");
+  db.User.find({}).then(data => {
+    res.json(data)
+  }).catch((err) => {
+    console.log(err);
+  })
+})
+
+router.post('/users', (req, res) => {
+	db.User.create(req.body).then((data) => {
+		res.status(200).end();
+	}).catch((err) => {
+		try {
+			err.errors.password.properties.message === "Password must be at least 6 characters." ? res.json(err.errors.password.properties.message) : null;
+		}
+		catch (undefErr) {
+			if (err.code) {
+				err.code === 11000 ? res.json("That username already exists!") : null;
+			}
+		}
+	})
+})
 
 // router.get('/logout', (req, res) => {
 //   req.logout();
 //   res.status(200).end();
 // })
-
-
-
-// router.post('/users', (req, res) => {
-//   db.User.create(req.body).then((data) => {
-//     res.status(200).end();
-//   }).catch((err) => {
-//     try {
-//       err.errors.password.properties.message === "Password must be at least 6 characters." ? res.json(err.errors.password.properties.message) : null;
-//     }
-//     catch (undefErr) {
-//       if (err.code) {
-//         err.code === 11000 ? res.json("That username already exists!") : null;
-//       }
-//     }
-//   })
-// })
-
 
 
 // router.get("/userdata", ({ user }, res) => {
