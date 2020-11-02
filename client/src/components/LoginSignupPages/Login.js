@@ -28,7 +28,7 @@ function Login() {
         password: password
       }
       axios.post(`/api/login`, user).then((data) => {
-        console.log(data)
+        console.log(data.config.data)
         history.push("/");
       }).catch((err) => {
         if (err.message === "Request failed with status code 401") {

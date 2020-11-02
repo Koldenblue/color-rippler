@@ -10,7 +10,7 @@ router.get('/colorgetter', (req, res) => {
 })
 
 router.post('/login', passport.authenticate("local"), (req, res) => {
-    console.log("login route")
+
   let response = {
     username: req.user.username,
     id: req.user._id,
