@@ -28,13 +28,8 @@ function Login() {
         password: password
       }
       axios.post(`/api/login`, user).then((data) => {
-        if (!data.data.homeAddress.address) {
-          window.location.replace("/addressform");
-          //history.push("/addressform");
-        } else {
-          window.location.replace("/");
-          // history.push("/");
-        }
+        console.log(data)
+        history.push("/");
       }).catch((err) => {
         if (err.message === "Request failed with status code 401") {
           setMessage("That username cannot be found.");
@@ -75,7 +70,6 @@ function Login() {
                 name='username'
                 onChange={(event) => setUsername(event.target.value)}
                 type="text"
-                id="username"
               />
             </Form.Group>
           </Col>
@@ -92,7 +86,6 @@ function Login() {
                 onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 name='password'
-                id="password"
               />
             </Form.Group>
           </Col>

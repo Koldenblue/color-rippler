@@ -1,13 +1,23 @@
 const router = require("express").Router();
 const axios = require("axios");
 const db = require("../models")
-// const passport = require("../config/passport");
+const passport = require("../config/passport");
 // require("dotenv").config();
 
 router.get('/colorgetter', (req, res) => {
     let data = {hi: 'hi'}
     res.json(data)
 })
+
+router.post('/login', passport.authenticate("local"), (req, res) => {
+    console.log("login route")
+  let response = {
+    username: req.user.username,
+    id: req.user._id,
+  }
+  res.json(response);
+})
+
 
 // router.get('/users', (req, res) => {
 //   console.log("users api get route, now validate, go thru passport, and put in database");
@@ -40,14 +50,7 @@ router.get('/colorgetter', (req, res) => {
 //   })
 // })
 
-// router.post('/login', passport.authenticate("local"), (req, res) => {
-//   let response = {
-//     username: req.user.username,
-//     id: req.user._id,
-//     homeAddress: req.user.homeAddress ? req.user.homeAddress : null
-//   }
-//   res.json(response);
-// })
+
 
 // router.get("/userdata", ({ user }, res) => {
 //   if (user) {
@@ -64,10 +67,7 @@ router.get('/colorgetter', (req, res) => {
 //   }
 // })
 
-
 module.exports = router;
-
-
 
 
 function removeSpaces(str) {
