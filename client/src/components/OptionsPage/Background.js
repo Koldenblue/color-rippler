@@ -14,7 +14,6 @@ function Background() {
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         position: 'fixed',
         zIndex: '-3'
     }
