@@ -32,7 +32,6 @@ function Login() {
           window.location.replace("/addressform");
           //history.push("/addressform");
         } else {
-          console.log("going home");
           window.location.replace("/");
           // history.push("/");
         }
@@ -48,8 +47,9 @@ function Login() {
 
   let goToSignup = (event) => {
     event.preventDefault();
-    window.location.replace("/signup");
+    history.push('/signup')
   }
+
   useEffect(() => {
     if (message !== "") {
       setMessage("");
@@ -62,14 +62,10 @@ function Login() {
       .then(() => window.location.replace("/"));
   };
 
-  const handleFormSubmit = () => {
-
-  }
-
   return (<>
     <WatercolorBackground />
-    <Container>
-      <Form onSubmit={handleFormSubmit}>
+    <Container className='loginSignupContainer'>
+      <Form>
         <Form.Row>
           <Col></Col>
           <Col>
@@ -116,7 +112,7 @@ function Login() {
         <Form.Row>
           <Col></Col>
           <Col>
-            <Button className='signupLoginBtns' onClick={goToSignup} variant="danger" type="submit">
+            <Button className='signupLoginBtns' onClick={goToSignup} variant="success" type="submit">
               Sign Up Form
             </Button>
           </Col>

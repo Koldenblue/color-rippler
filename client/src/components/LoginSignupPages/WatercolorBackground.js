@@ -8,7 +8,8 @@ export default function WatercolorBackground() {
       position: 'absolute',
       width: '50%',
       left: '50%',
-      transform: 'translateX(-50%)'
+      transform: 'translateX(-50%)',
+      marginTop: '-2em'
     }
   }
   return (<>

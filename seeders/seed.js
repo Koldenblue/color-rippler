@@ -6,13 +6,13 @@ mongoose.connect("mongodb://localhost/DBNAME", {
   useFindAndModify: false
 });
 
-let seeder = 
+let seeder =
 {
-  "username" : "1",
-  "password" : "$2b$10$x0RdS0bqA11R9w/iljOVFe5TJOy5GQVvjiRYCqK4fscNyQAdppheW",
+  "username": "1",
+  "password": "$2b$10$x0RdS0bqA11R9w/iljOVFe5TJOy5GQVvjiRYCqK4fscNyQAdppheW",
 }
 
-  db.User.deleteMany({})
+db.User.deleteMany({})
   .then(() => db.User.insertMany(seeder))
   .then(data => {
     console.log(data + " records inserted!");
