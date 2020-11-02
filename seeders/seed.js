@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect("mongodb://localhost/DBNAME", {
+mongoose.connect("mongodb://localhost/colorrippler", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
