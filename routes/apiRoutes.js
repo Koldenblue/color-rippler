@@ -19,14 +19,14 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
 })
 
 
-router.get('/users', (req, res) => {
-  console.log("users api get route, now validate, go thru passport, and put in database");
-  db.User.find({}).then(data => {
-    res.json(data)
-  }).catch((err) => {
-    console.log(err);
-  })
-})
+// router.get('/users', (req, res) => {
+//   console.log("users api get route, now validate, go thru passport, and put in database");
+//   db.User.find({}).then(data => {
+//     res.json(data)
+//   }).catch((err) => {
+//     console.log(err);
+//   })
+// })
 
 router.post('/users', (req, res) => {
 	db.User.create(req.body).then((data) => {
