@@ -8,7 +8,7 @@
 3. <a href="#usage">Usage</a>
 4. <a href="#contributions">Contributions</a>
 5. <a href="#questions">Issues and Questions</a>
-![image](https://user-images.githubusercontent.com/64618290/96037483-c0b5a380-0e1a-11eb-97e3-447315ca7d56.png)
+![image](https://user-images.githubusercontent.com/64618290/97955561-4f9f4700-1d5b-11eb-8bad-083d6a7c3c74.png)
 
 ![image](https://user-images.githubusercontent.com/64618290/97913383-0d4a1b80-1d03-11eb-80f1-18866d74bcf3.png)
 <hr><h3 id='description'>Description</h3>
