@@ -7,7 +7,10 @@ import Container from 'react-bootstrap/Container';
 
 export default function OptionsForm(props) {
 
+  // retrieves previous values from storage and puts them into form
   useEffect(() => {
+    // can possibly switch to using state for the form input values for a more "react" solution, but this works fine
+    // does not work: setting default value to a state, then setting the state to options.values
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (options) {
       document.getElementById('outer-shell-switch').checked=options.outerShellOnly;
