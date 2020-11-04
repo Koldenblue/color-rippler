@@ -30,7 +30,7 @@ function OptionsPage() {
     }
 
     else {
-      console.log(event.target)
+      // console.log(event.target)
       let maxGridSize = event.target[0].value;
       if (maxGridSize === '') {
         maxGridSize = 20;
@@ -52,7 +52,6 @@ function OptionsPage() {
         ripplePropagation = 3;
       }
       let rippleTransitionSpeed = event.target[5].value;
-      console.log(rippleTransitionSpeed)
       if (rippleTransitionSpeed === '') {
         rippleTransitionSpeed = 1.5
       }

@@ -8,7 +8,6 @@ router.use("/api", apiRoutes);
 router.use("/html", htmlRoutes);
 
 router.get("*", (req,res)=> {
-    console.log("sending")
     res.sendFile(path.join(__dirname, "../client/build/index.html"))
 })
 

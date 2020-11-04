@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -6,6 +6,21 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
 export default function OptionsForm(props) {
+
+  useEffect(() => {
+    let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
+    if (options) {
+      document.getElementById('outer-shell-switch').checked=options.outerShellOnly;
+      document.getElementById('initialGrayscale').checked=options.initialGrayscale;
+      document.getElementById('rippleTransitionSpeed').value=(options.rippleTransitionSpeed * 1000);
+      document.getElementById('ripplePropagation').value=options.ripplePropagation;
+      document.getElementById('rippleSpeed').value=options.rippleSpeed;
+      document.getElementById('rippleVariance').value=options.rippleVariance;
+      document.getElementById('initialVariance').value=options.initialVariance;
+      document.getElementById('maxGridSize').value=options.maxGridSize;
+    }
+  }, [])
+
   return (
     <Container>
       <Form onSubmit={props.handleFormSubmit} noValidate validated={props.validated}>
@@ -84,7 +99,7 @@ export default function OptionsForm(props) {
           </Col>
 
           <Col>
-            <Form.Group controlId='`rippleTransitionSpeed'>
+            <Form.Group controlId='rippleTransitionSpeed'>
               <Form.Label>Ripple color change speed (milliseconds)</Form.Label>
               <Form.Control
                 type='number'
@@ -127,6 +142,7 @@ export default function OptionsForm(props) {
               type="switch"
               id="outer-shell-switch"
               label="Only Outer Shell Changes Color"
+              defaultChecked={false}
               onClick={() => {}}
             />
           </Col>

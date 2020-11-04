@@ -43,6 +43,7 @@ export default function WatercolorCircles() {
     }
   }
 
+  // changes the opacity of the watercolor circles, in a pattern dictated by the array
   let counter = 1;
   let changeOpacity = async () => {
     let opacityArr = [
@@ -73,9 +74,9 @@ export default function WatercolorCircles() {
     setOpacity1(1)
     let opacityInterval = setInterval(changeOpacity, 6000)
 
+    // cleans up the clearInterval function upon component unmount
     return() => {
       clearInterval(opacityInterval)
-      console.log(opacity1)
     }
   }, [])
 
