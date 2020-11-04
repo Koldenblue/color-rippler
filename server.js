@@ -34,7 +34,12 @@ app.use(express.static("public"));
 // the 3000 routes don't seem to hit the 3001 routes
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/colorrippler", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/colorrippler",   {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 
 app.listen(PORT, () => {
