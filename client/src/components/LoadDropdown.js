@@ -2,12 +2,14 @@ import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
+import { setColorGrid, selectColorGrid } from '../redux/colorGridSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function LoadDropdown(props) {
   const dispatch = useDispatch();
   let userInfo = useSelector(selectLoggedInUser);
-
+  let colorGrid = useSelector(selectColorGrid);
+  
   let styles = {
     dropdown: {
       // position: 'absolute',
@@ -25,7 +27,7 @@ export default function LoadDropdown(props) {
       Axios.get(`api/load/${userInfo._id}/${slot}`).then(loadedGrid => {
         if (loadedGrid) {
           console.log(loadedGrid.data)
-          props.setColorGrid(loadedGrid.data);
+          dispatch(setColorGrid(loadedGrid.data));
         }
       }).catch((err) => {
         console.error(err);

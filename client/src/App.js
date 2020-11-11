@@ -61,15 +61,15 @@ function App() {
             <OptionsDropdown />
             {/* these should be shown conditionally */}
             <SaveDropdown 
-              colorGrid={colorGrid}
-              setColorGrid={setColorGrid}
+              // colorGrid={colorGrid}
+              // setColorGrid={setColorGrid}
             />
             <LoadDropdown 
-              setColorGrid={setColorGrid}
+              // setColorGrid={setColorGrid}
             />
             <ColorGrid
-              colorGrid={colorGrid}
-              setColorGrid={setColorGrid}
+              // colorGrid={colorGrid}
+              // setColorGrid={setColorGrid}
             />
           </Route>
 
@@ -77,12 +77,12 @@ function App() {
           <Route exact path='/optionsgrid'>
             <OptionsDropdown />
             <LoadDropdown 
-              setColorGrid={setColorGrid}
+              // setColorGrid={setColorGrid}
             />
             <ColorGrid 
               reloadingWithOptions={true} 
-              colorGrid={colorGrid}
-              setColorGrid={setColorGrid}
+              // colorGrid={colorGrid}
+              // setColorGrid={setColorGrid}
             />
           </Route>
 

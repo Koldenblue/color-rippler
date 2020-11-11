@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { setColorGrid, selectColorGrid } from '../redux/colorGridSlice';
 
 export default function SaveDropdown(props) {
   const dispatch = useDispatch();
   let userInfo = useSelector(selectLoggedInUser);
+  let colorGrid = useSelector(selectColorGrid);
 
   let styles = {
     dropdown: {
@@ -18,7 +20,7 @@ export default function SaveDropdown(props) {
 
   let saveGrid = (slot) => {
     if (userInfo !== null) {
-      Axios.put(`api/save/${userInfo._id}/${slot}`, props.colorGrid).then(data => {
+      Axios.put(`api/save/${userInfo._id}/${slot}`, colorGrid).then(data => {
         // indicate save here
       }).catch((err) => {
         console.error(err);

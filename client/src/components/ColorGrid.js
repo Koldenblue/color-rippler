@@ -9,8 +9,6 @@ import { useHistory } from "react-router-dom";
 function ColorGrid(props) {
   const [grid, setGrid] = useState();
   const history = useHistory();
-  let colorGrid = props.colorGrid;
-  let setColorGrid = props.setColorGrid;
 
   // disallow scroll bar when the grid is on the page (cuz it messes up margins)
   useEffect(() => {
@@ -29,8 +27,6 @@ function ColorGrid(props) {
       } else {
         setGrid(
           <GridWrapper
-            colorGrid={colorGrid}
-            setColorGrid={setColorGrid}
             outerShellOnly={options.outerShellOnly}
             initialVariance={options.initialVariance}
             rippleVariance={options.rippleVariance}
@@ -56,8 +52,6 @@ function ColorGrid(props) {
     return (
       <GridWrapper
         // options. These have default values if not entered.
-        colorGrid={colorGrid}
-        setColorGrid={setColorGrid}
         outerShellOnly={props.outerShellOnly}
         initialVariance={props.initialVariance}
         rippleVariance={props.rippleVariance}
