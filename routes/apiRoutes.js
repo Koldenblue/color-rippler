@@ -21,8 +21,9 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
 router.put('/save/:userId/:slot', (req, res) => {
   // req.body is the color grid array
   let slot = req.params.slot - 1;
+  console.log(slot)
   db.User.findById(req.params.userId).then((doc) => {
-    doc.grids[slot] = req.body;
+    doc['grids'].splice(slot, 1, req.body);
     doc.save();
   })
   res.json({})
@@ -35,14 +36,6 @@ router.get('/load/:userId/:slot', (req, res) => {
     res.json(loadedGrid)
   })
 })
-// router.get('/users', (req, res) => {
-//   console.log("users api get route, now validate, go thru passport, and put in database");
-//   db.User.find({}).then(data => {
-//     res.json(data)
-//   }).catch((err) => {
-//     console.log(err);
-//   })
-// })
 
 router.post('/users', (req, res) => {
 	db.User.create(req.body).then((data) => {
@@ -64,7 +57,6 @@ router.get('/logout', (req, res) => {
   res.status(200).end();
 })
 
-
 router.get("/userdata", (req, res) => {
   let user = req.user;
   // console.log(req)
@@ -83,18 +75,3 @@ router.get("/userdata", (req, res) => {
 })
 
 module.exports = router;
-
-
-function removeSpaces(str) {
-  if (str === null) {
-      return;
-  }
-  str = str.trim();
-  for (let i = 0; i < str.length; i++)
-      if (str[i] === " ") {
-          var leftStr = str.slice(0, i);
-          var rightStr = str.slice(i + 1,);
-          str = leftStr + "%20" + rightStr;
-      }
-  return str;
-}
