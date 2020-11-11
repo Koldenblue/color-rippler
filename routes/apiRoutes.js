@@ -18,15 +18,24 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
   res.json(response);
 })
 
+router.put('/save/:userId/:slot', (req, res) => {
+  // req.body is the color grid array
+  let slot = req.params.slot - 1;
+  console.log(slot)
+  db.User.findById(req.params.userId).then((doc) => {
+    doc['grids'].splice(slot, 1, req.body);
+    doc.save();
+  })
+  res.json({})
+})
 
-// router.get('/users', (req, res) => {
-//   console.log("users api get route, now validate, go thru passport, and put in database");
-//   db.User.find({}).then(data => {
-//     res.json(data)
-//   }).catch((err) => {
-//     console.log(err);
-//   })
-// })
+router.get('/load/:userId/:slot', (req, res) => {
+  let slot = req.params.slot - 1;
+  db.User.findById(req.params.userId).then((doc) => {
+    let loadedGrid = doc.grids[slot];
+    res.json(loadedGrid)
+  })
+})
 
 router.post('/users', (req, res) => {
 	db.User.create(req.body).then((data) => {
@@ -43,40 +52,24 @@ router.post('/users', (req, res) => {
 	})
 })
 
-// router.get('/logout', (req, res) => {
-//   req.logout();
-//   res.status(200).end();
-// })
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.status(200).end();
+})
 
-
-// router.get("/userdata", ({ user }, res) => {
-//   if (user) {
-//     // console.log(user._id)
-//     db.User.findById(user._id)
-//       .then(userData => {
-//         // console.log("THIS IS IN USERDATA ROUTE ",userData)
-//         const { password, ...data } = userData._doc;
-//         return res.json(data).end()
-//       }
-//       ).catch(err=> console.log(err))
-//   } else {
-//     res.json(null)
-//   }
-// })
+router.get("/userdata", (req, res) => {
+  let user = req.user;
+  // console.log(req)
+  console.log('apiRoutes.js', user)
+  if (user) {
+    db.User.findById(user._id).then(userData => {
+      // separate the password from the rest of the data, and respond with data
+      const { password, ...data } = userData._doc;
+      return res.json(data).end();
+    }).catch(err=> console.error(err))
+  } else {
+    res.json(null)
+  }
+})
 
 module.exports = router;
-
-
-function removeSpaces(str) {
-  if (str === null) {
-      return;
-  }
-  str = str.trim();
-  for (let i = 0; i < str.length; i++)
-      if (str[i] === " ") {
-          var leftStr = str.slice(0, i);
-          var rightStr = str.slice(i + 1,);
-          str = leftStr + "%20" + rightStr;
-      }
-  return str;
-}
