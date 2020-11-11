@@ -25,45 +25,53 @@ function Grid(props) {
     window.addEventListener('resize', handleResize);
   }, [])
 
+  useEffect(() => {
+    console.log(props.colorGrid)
+  }, [props.colorGrid])
+
   // r and c are used to indicate rows and columns in the keys and data
   let r = -1;
   let c = -1;
 
-  return (
-    <>
-      {props.colorGrid.map((row) => {
-        r++;
-        return (
-          <div className='row' key={r}>
-            {row.map((box) => {
-              // reset column to 0 after it reaches max
-              {
-                if (++c > (props.gridSize - 1)) {
-                  c = 0
+  if (Array.isArray(props.colorGrid) && props.colorGrid.length > 0) {
+    return (
+      <>
+        {props.colorGrid.map((row) => {
+          r++;
+          return (
+            <div className='row' key={r}>
+              {row.map((box) => {
+                // reset column to 0 after it reaches max
+                {
+                  if (++c > (props.gridSize - 1)) {
+                    c = 0
+                  }
                 }
-              }
-              // map a grid of DynaColorBoxes, based on the props.colorGrid array
-              return (
-                <DynaColorBox
-                  clickVariance={props.clickVariance}
-                  key={`r${c}c${r}`}
-                  data-value={{ r: r, c: c }}
-                  red={box.red}
-                  green={box.green}
-                  blue={box.blue}
-                  changeSurroundings={props.changeSurroundings}
-                  numColumns={props.gridSize}
-                  rippleTransitionSpeed={props.rippleTransitionSpeed}
-                  height={height}
-                  width={width}
-                />
-              );
-            })}
-          </div>
-        )
-      })}
-    </>
-  )
+                // map a grid of DynaColorBoxes, based on the props.colorGrid array
+                return (
+                  <DynaColorBox
+                    clickVariance={props.clickVariance}
+                    key={`r${c}c${r}`}
+                    data-value={{ r: r, c: c }}
+                    red={box.red}
+                    green={box.green}
+                    blue={box.blue}
+                    changeSurroundings={props.changeSurroundings}
+                    numColumns={props.gridSize}
+                    rippleTransitionSpeed={props.rippleTransitionSpeed}
+                    height={height}
+                    width={width}
+                  />
+                );
+              })}
+            </div>
+          )
+        })}
+      </>
+    )
+  } else {
+    return (<> </>)
+  }
 }
 
 export default Grid;

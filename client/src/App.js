@@ -64,7 +64,9 @@ function App() {
               colorGrid={colorGrid}
               setColorGrid={setColorGrid}
             />
-            <LoadDropdown />
+            <LoadDropdown 
+              setColorGrid={setColorGrid}
+            />
             <ColorGrid
               colorGrid={colorGrid}
               setColorGrid={setColorGrid}
@@ -74,7 +76,9 @@ function App() {
           {/* This route loads the grid with custom options */}
           <Route exact path='/optionsgrid'>
             <OptionsDropdown />
-            <LoadDropdown />
+            <LoadDropdown 
+              setColorGrid={setColorGrid}
+            />
             <ColorGrid 
               reloadingWithOptions={true} 
               colorGrid={colorGrid}

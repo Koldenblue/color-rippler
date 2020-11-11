@@ -17,7 +17,7 @@ const userSchema = new Schema({
     },
     grids: {
         type: Array,
-        default: []
+        default: [null, null, null]
     }
 });
 

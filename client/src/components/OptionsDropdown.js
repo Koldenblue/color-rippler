@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { loggedInUser } from '../redux/userSlice';
 import { useDispatch } from 'react-redux';
 

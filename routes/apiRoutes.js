@@ -19,10 +19,21 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
 })
 
 router.put('/save/:userId/:slot', (req, res) => {
-  // console.log(req.body) // req.body is the color grid array
-  console.log(req.params.slot)
-  console.log(req.params.userId)
+  // req.body is the color grid array
+  let slot = req.params.slot - 1;
+  db.User.findById(req.params.userId).then((doc) => {
+    doc.grids[slot] = req.body;
+    doc.save();
+  })
   res.json({})
+})
+
+router.get('/load/:userId/:slot', (req, res) => {
+  let slot = req.params.slot - 1;
+  db.User.findById(req.params.userId).then((doc) => {
+    let loadedGrid = doc.grids[slot];
+    res.json(loadedGrid)
+  })
 })
 // router.get('/users', (req, res) => {
 //   console.log("users api get route, now validate, go thru passport, and put in database");
