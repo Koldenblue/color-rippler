@@ -10,9 +10,6 @@ import WatercolorBackground from "./WatercolorBackground";
 import { loggedInUser, selectLoggedInUser } from '../../redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
-// import './signupLoginBtns.css';
-
-
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -63,11 +60,11 @@ function Login() {
     }
   }, [username, password])
 
-  const devLogin = () => {
-    axios
-      .post(`/api/login`, { username: "test", password: "test" })
-      .then(() => window.location.replace("/"));
-  };
+  // const devLogin = () => {
+  //   axios
+  //     .post(`/api/login`, { username: "test", password: "test" })
+  //     .then(() => window.location.replace("/"));
+  // };
 
   return (<>
     <WatercolorBackground />
@@ -136,9 +133,9 @@ function Login() {
 
         </Form.Row>
 
-        <Button onClick={devLogin}>
+        {/* <Button onClick={devLogin}>
           DEV LOGIN
-          </Button>
+          </Button> */}
       </Form>
     </Container>
   </>)

@@ -9,8 +9,12 @@ import axios from 'axios';
 import Signup from './components/LoginSignupPages/Signup';
 import { loggedInUser, selectLoggedInUser } from './redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import SaveDropdown from './components/SaveDropdown';
+import LoadDropdown from './components/LoadDropdown';
 
 function App() {
+  const [colorGrid, setColorGrid] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   let user = useSelector(selectLoggedInUser);
@@ -55,13 +59,26 @@ function App() {
           <Route exact path='/'>
             {/* <ColorGetter /> */}
             <OptionsDropdown />
-            <ColorGrid />
+            <SaveDropdown 
+              colorGrid={colorGrid}
+              setColorGrid={setColorGrid}
+            />
+            <LoadDropdown />
+            <ColorGrid
+              colorGrid={colorGrid}
+              setColorGrid={setColorGrid}
+            />
           </Route>
 
           {/* This route loads the grid with custom options */}
           <Route exact path='/optionsgrid'>
             <OptionsDropdown />
-            <ColorGrid reloadingWithOptions={true} />
+            <LoadDropdown />
+            <ColorGrid 
+              reloadingWithOptions={true} 
+              colorGrid={colorGrid}
+              setColorGrid={setColorGrid}
+            />
           </Route>
 
           <Route exact path='/login'>

@@ -3,7 +3,9 @@ import Grid from './Grid';
 
 /** Should manage options, auto function, and ripple change functions.
 * Should get the initial grid array from a higher order component. */
-function GridWrapper({ 
+function GridWrapper({
+  colorGrid,
+  setColorGrid,
   outerShellOnly=false, 
   initialVariance=50, 
   rippleVariance=100, 
@@ -15,7 +17,7 @@ function GridWrapper({
   initialGrayscale=true,
   grayscaleChange=false
 }) {
-  const [colorGrid, setColorGrid] = useState([]);
+  // const [colorGrid, setColorGrid] = useState([]);
   const [variance, setVariance] = useState(initialVariance);
   const [gridSize, setGridSize] = useState(maxGridSize);
   const [clickVariance, setClickVariance] = useState(rippleVariance);

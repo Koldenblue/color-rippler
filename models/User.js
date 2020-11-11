@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
         validate: [({ length }) => length >= 1, "Password must be at least 1 characters."]
+    },
+    grids: {
+        type: Array,
+        default: []
     }
 });
 
