@@ -49,20 +49,22 @@ router.post('/users', (req, res) => {
 // })
 
 
-// router.get("/userdata", ({ user }, res) => {
-//   if (user) {
-//     // console.log(user._id)
-//     db.User.findById(user._id)
-//       .then(userData => {
-//         // console.log("THIS IS IN USERDATA ROUTE ",userData)
-//         const { password, ...data } = userData._doc;
-//         return res.json(data).end()
-//       }
-//       ).catch(err=> console.log(err))
-//   } else {
-//     res.json(null)
-//   }
-// })
+router.get("/userdata", (req, res) => {
+  let user = req.user;
+  // console.log(req)
+  console.log('apiRoutes.js', user)
+  if (user) {
+    db.User.findById(user._id)
+      .then(userData => {
+        // separate the password from the rest of the data, and respond with data
+        const { password, ...data } = userData._doc;
+        return res.json(data).end()
+      }
+      ).catch(err=> console.log(err))
+  } else {
+    res.json(null)
+  }
+})
 
 module.exports = router;
 

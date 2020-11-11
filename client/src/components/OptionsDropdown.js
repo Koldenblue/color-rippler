@@ -51,6 +51,8 @@ export default function OptionsDropdown(props) {
           <Dropdown.Item onClick={generateNewGrid}>New Grid with Customized Options</Dropdown.Item>
           <Dropdown.Item onClick={generateDefaultGrid}>New Grid with Default Options</Dropdown.Item>
           <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
+          <Dropdown.Item href="/login">Log In</Dropdown.Item>
+
           {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
           <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}
 

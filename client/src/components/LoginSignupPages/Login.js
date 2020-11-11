@@ -7,6 +7,8 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import WatercolorBackground from "./WatercolorBackground";
+import { loggedInUser, selectLoggedInUser } from '../../redux/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 // import './signupLoginBtns.css';
 
@@ -16,6 +18,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useHistory();
+  const dispatch = useDispatch();
+  let user = useSelector(selectLoggedInUser);
 
   let handleSubmit = (event) => {
     event.preventDefault();
@@ -27,12 +31,20 @@ function Login() {
         username: username,
         password: password
       }
+      // attempt to log in with username and password
       axios.post(`/api/login`, user).then((data) => {
-        console.log(data.config.data)
+        // if successful, get all related user data
+        axios.get("/api/userdata").then(({data}) => {
+          // set the user data in the redux store
+          if (data) {
+            dispatch(loggedInUser(data))
+          }
+        })
+        // finally, go to '/'
         history.push("/");
       }).catch((err) => {
         if (err.message === "Request failed with status code 401") {
-          setMessage("That username cannot be found.");
+          setMessage("Incorrect username or password.");
         } else {
           console.log(err);
         }
