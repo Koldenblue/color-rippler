@@ -62,13 +62,11 @@ router.get("/userdata", (req, res) => {
   // console.log(req)
   console.log('apiRoutes.js', user)
   if (user) {
-    db.User.findById(user._id)
-      .then(userData => {
-        // separate the password from the rest of the data, and respond with data
-        const { password, ...data } = userData._doc;
-        return res.json(data).end()
-      }
-      ).catch(err=> console.log(err))
+    db.User.findById(user._id).then(userData => {
+      // separate the password from the rest of the data, and respond with data
+      const { password, ...data } = userData._doc;
+      return res.json(data).end();
+    }).catch(err=> console.error(err))
   } else {
     res.json(null)
   }

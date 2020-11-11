@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 export default function OptionsDropdown(props) {
   const dispatch = useDispatch();
   const [redirect, setRedirect] = useState();
+  const history = useHistory();
 
   let styles = {
     dropdown: {
@@ -21,12 +22,14 @@ export default function OptionsDropdown(props) {
     // if options are stored. Else reload page.
     let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
     if (!options) {
-      await setRedirect(
-        <Redirect to='/options' />
-      )
-      window.location.reload();
+      // await setRedirect(
+      //   <Redirect to='/options' />
+      // )
+      history.push('/options')
+      // window.location.reload();
     }
     else {
+      // pushing history doesn't seem helpful, since the colorgrid doesn't revert anyway
       await setRedirect(
         <Redirect to='/optionsgrid' />
       )
