@@ -36,7 +36,7 @@ function Signup({ loading, user }) {
           setMessage(data.data);
         }
         else {
-          window.location.href = '/login';
+          history.push('/login');
         }
       })
     }
@@ -44,7 +44,7 @@ function Signup({ loading, user }) {
 
   let goToLogin = (event) => {
     event.preventDefault();
-    window.location.replace("/login")
+    history.push('/login');
   }
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function Signup({ loading, user }) {
   return ((user && !loading) ? <Redirect to="/home" /> :
     <>
       <WatercolorBackground />
-      <Container className='loginSisgnupContainer'>
+      <Container className='loginSignupContainer'>
 
         <Form>
           <Form.Row>

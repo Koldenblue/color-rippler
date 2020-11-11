@@ -23,7 +23,8 @@ const userSchema = new Schema({
 
 userSchema.pre("save", function () {
     if (this.isNew) {
-        return bcrypt.hash(this.password, HASH_TIMES).then(hash => {
+        // return bcrypt.hash(this.password, HASH_TIMES).then(hash => {
+        return bcrypt.hash(this.password, bcrypt.genSaltSync(HASH_TIMES), null).then(hash => {
             this.password = hash;
         })
     } else return;
