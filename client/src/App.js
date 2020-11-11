@@ -17,7 +17,7 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-  let user = useSelector(selectLoggedInUser);
+  let userInfo = useSelector(selectLoggedInUser);
 
   // const getCurrentUser = () => axios.get("/api/userdata").then(({data}) => {
   //   console.log(data)
@@ -59,6 +59,7 @@ function App() {
           <Route exact path='/'>
             {/* <ColorGetter /> */}
             <OptionsDropdown />
+            {/* these should be shown conditionally */}
             <SaveDropdown 
               colorGrid={colorGrid}
               setColorGrid={setColorGrid}

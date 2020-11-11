@@ -1,16 +1,29 @@
 import Axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function SaveDropdown(props) {
+  const dispatch = useDispatch();
+  let userInfo = useSelector(selectLoggedInUser);
+
   let styles = {
     dropdown: {
-      // left: '200px'
     }
   }
+  useEffect(() => {
+    console.log(userInfo)
+  })
 
   let saveGrid = (slot) => {
-    Axios.put(`api/save/${slot}`, props.colorGrid)
+    if (userInfo !== null) {
+      Axios.put(`api/save/${userInfo._id}/${slot}`, props.colorGrid).then(data => {
+        // indicate save here
+      }).catch((err) => {
+        console.error(err);
+      })
+    }
   }
 
   return (<>
@@ -21,8 +34,8 @@ export default function SaveDropdown(props) {
       <Dropdown.Menu>
 
       <Dropdown.Item onClick={() => saveGrid(1)}>Slot 1</Dropdown.Item>
-      <Dropdown.Item>Slot 2</Dropdown.Item>
-      <Dropdown.Item>Slot 3</Dropdown.Item>
+      <Dropdown.Item onClick={() => saveGrid(2)}>Slot 2</Dropdown.Item>
+      <Dropdown.Item onClick={() => saveGrid(3)}>Slot 3</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 

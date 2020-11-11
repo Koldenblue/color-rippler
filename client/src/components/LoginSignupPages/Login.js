@@ -16,7 +16,7 @@ function Login() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  let user = useSelector(selectLoggedInUser);
+  let userInfo = useSelector(selectLoggedInUser);
 
   let handleSubmit = (event) => {
     event.preventDefault();

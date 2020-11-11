@@ -1,8 +1,12 @@
+import Axios from 'axios';
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Redirect } from 'react-router-dom';
+import { loggedInUser } from '../redux/userSlice';
+import { useDispatch } from 'react-redux';
 
 export default function OptionsDropdown(props) {
+  const dispatch = useDispatch();
   const [redirect, setRedirect] = useState();
 
   let styles = {
@@ -36,7 +40,12 @@ export default function OptionsDropdown(props) {
       <Redirect to='/' />
     )
     window.location.reload();
+  }
 
+  let logout = () => {
+    Axios.get('/logout').then(() => {
+      dispatch(loggedInUser(null));
+    })
   }
 
   return (
@@ -52,7 +61,7 @@ export default function OptionsDropdown(props) {
           <Dropdown.Item onClick={generateDefaultGrid}>New Grid with Default Options</Dropdown.Item>
           <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
           <Dropdown.Item href="/login">Log In</Dropdown.Item>
-          <Dropdown.Item href="/logout">Log Out</Dropdown.Item>
+          <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
           {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
           <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}
 

@@ -7,7 +7,6 @@ export default function LoadDropdown(props) {
     dropdown: {
       // position: 'absolute',
       // zIndex: '9999',
-      // left: '50px'
     }
   }
 

@@ -18,9 +18,10 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
   res.json(response);
 })
 
-router.put('/save/:slot', (req, res) => {
+router.put('/save/:userId/:slot', (req, res) => {
   // console.log(req.body) // req.body is the color grid array
   console.log(req.params.slot)
+  console.log(req.params.userId)
   res.json({})
 })
 // router.get('/users', (req, res) => {
