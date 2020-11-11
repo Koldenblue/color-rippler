@@ -8,6 +8,8 @@ import ColorGrid from '../ColorGrid';
 import OptionsDropdown from '../OptionsDropdown';
 import OptionsForm from './OptionsForm';
 import WatercolorCircles from './WatercolorCircles';
+import SaveDropdown from '../SaveDropdown';
+import LoadDropdown from '../LoadDropdown';
 
 /** Either routes to ColorGrid with default options, or will load up ColorGrid with selected options */
 function OptionsPage() {
@@ -96,6 +98,8 @@ function OptionsPage() {
     return (
       <>
         <OptionsDropdown />
+        <SaveDropdown />
+        <LoadDropdown />
         {colorGrid}
       </>
     )

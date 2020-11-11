@@ -24,13 +24,13 @@ export default function OptionsDropdown(props) {
       await setRedirect(
         <Redirect to='/options' />
       )
-      // window.location.reload();
+      window.location.reload();
     }
     else {
       await setRedirect(
         <Redirect to='/optionsgrid' />
       )
-      // window.location.reload();
+      window.location.reload();
     }
   }
 

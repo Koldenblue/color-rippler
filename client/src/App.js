@@ -19,34 +19,15 @@ function App() {
   const dispatch = useDispatch();
   let userInfo = useSelector(selectLoggedInUser);
 
-  // const getCurrentUser = () => axios.get("/api/userdata").then(({data}) => {
-  //   console.log(data)
-  //   if (data) {
-  //     console.log(data)
-  //     dispatch(loggedInUser(data))
-  //   }
-  // })
 
-  useEffect(()=> {
-
-    // console.log(user)
-    // getCurrentUser()
-    // .then((data) => {
-
-    //   if(data) {
-    //     try {
-    //       console.log(data)
-    //       // setUser(data);
-    //     }
-    //     catch (err) {
-    //       console.log(err)
-    //     }
-    //   }
-    //   setLoading(false)
-    // }).catch((err) => {
-    //   console.error(err);
-    // })
-  }, []);
+  useEffect(() => {
+    axios.get("/api/userdata").then(({ data }) => {
+      if (data) {
+        console.log(data)
+        dispatch(loggedInUser(data))
+      }
+    })
+  }, [])
 
   return (
     <div className="App">
@@ -60,29 +41,18 @@ function App() {
             {/* <ColorGetter /> */}
             <OptionsDropdown />
             {/* these should be shown conditionally */}
-            <SaveDropdown 
-              // colorGrid={colorGrid}
-              // setColorGrid={setColorGrid}
-            />
-            <LoadDropdown 
-              // setColorGrid={setColorGrid}
-            />
-            <ColorGrid
-              // colorGrid={colorGrid}
-              // setColorGrid={setColorGrid}
-            />
+            <SaveDropdown />
+            <LoadDropdown />
+            <ColorGrid />
           </Route>
 
           {/* This route loads the grid with custom options */}
           <Route exact path='/optionsgrid'>
             <OptionsDropdown />
-            <LoadDropdown 
-              // setColorGrid={setColorGrid}
-            />
-            <ColorGrid 
-              reloadingWithOptions={true} 
-              // colorGrid={colorGrid}
-              // setColorGrid={setColorGrid}
+            <SaveDropdown />
+            <LoadDropdown />
+            <ColorGrid
+              reloadingWithOptions={true}
             />
           </Route>
 

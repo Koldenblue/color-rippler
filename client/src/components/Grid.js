@@ -33,7 +33,7 @@ function Grid(props) {
   let r = -1;
   let c = -1;
 
-  if (Array.isArray(props.colorGrid) && props.colorGrid.length > 0) {
+  // if (Array.isArray(props.colorGrid) && props.colorGrid.length > 0) {
     return (
       <>
         {props.colorGrid.map((row) => {
@@ -69,9 +69,9 @@ function Grid(props) {
         })}
       </>
     )
-  } else {
-    return (<> </>)
-  }
+  // } else {
+  //   return (<> </>)
+  // }
 }
 
 export default Grid;
