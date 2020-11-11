@@ -10,13 +10,6 @@ export default function OptionsDropdown(props) {
   const [redirect, setRedirect] = useState();
   const history = useHistory();
 
-  let styles = {
-    dropdown: {
-      // position: 'fixed',
-      // zIndex: '9999'
-    }
-  }
-
   let generateNewGrid = async () => {
     // Generate a new grid with the selected options by redirecting to appropriate route,
     // if options are stored. Else reload page.
@@ -54,7 +47,7 @@ export default function OptionsDropdown(props) {
   return (
     <>
     {redirect}
-      <Dropdown style={styles.dropdown}>
+      <Dropdown className='dropdown'>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
           Options
         </Dropdown.Toggle>

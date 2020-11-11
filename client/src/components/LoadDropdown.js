@@ -9,13 +9,7 @@ export default function LoadDropdown(props) {
   const dispatch = useDispatch();
   let userInfo = useSelector(selectLoggedInUser);
   let colorGrid = useSelector(selectColorGrid);
-  
-  let styles = {
-    dropdown: {
-      // position: 'absolute',
-      // zIndex: '9999',
-    }
-  }
+
 
   useEffect(() => {
     //get user every time grid is saved
@@ -36,7 +30,7 @@ export default function LoadDropdown(props) {
   }
 
   return (<>
-    <Dropdown >
+    <Dropdown className='dropdown'>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         Load
       </Dropdown.Toggle>

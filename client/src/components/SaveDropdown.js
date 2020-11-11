@@ -10,10 +10,6 @@ export default function SaveDropdown(props) {
   let userInfo = useSelector(selectLoggedInUser);
   let colorGrid = useSelector(selectColorGrid);
 
-  let styles = {
-    dropdown: {
-    }
-  }
   useEffect(() => {
     console.log(userInfo)
   })
@@ -29,17 +25,16 @@ export default function SaveDropdown(props) {
   }
 
   return (<>
-      <Dropdown >
+    <Dropdown className='dropdown'>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          Save
+        Save
       </Dropdown.Toggle>
       <Dropdown.Menu>
 
-      <Dropdown.Item onClick={() => saveGrid(1)}>Slot 1</Dropdown.Item>
-      <Dropdown.Item onClick={() => saveGrid(2)}>Slot 2</Dropdown.Item>
-      <Dropdown.Item onClick={() => saveGrid(3)}>Slot 3</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
+        <Dropdown.Item onClick={() => saveGrid(1)}>Slot 1</Dropdown.Item>
+        <Dropdown.Item onClick={() => saveGrid(2)}>Slot 2</Dropdown.Item>
+        <Dropdown.Item onClick={() => saveGrid(3)}>Slot 3</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   </>)
 }

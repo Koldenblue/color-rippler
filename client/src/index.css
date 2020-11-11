@@ -36,3 +36,12 @@
 .signupLoginBtns {
   margin: 2px;
 }
+
+.topbar {
+  width: 100%;
+  background-color: slategray;
+}
+
+.dropdown {
+  display: inline;
+}

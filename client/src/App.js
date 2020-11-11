@@ -11,6 +11,7 @@ import { loggedInUser, selectLoggedInUser } from './redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import SaveDropdown from './components/SaveDropdown';
 import LoadDropdown from './components/LoadDropdown';
+import TopBar from './components/TopBar';
 
 function App() {
   const [colorGrid, setColorGrid] = useState([]);
@@ -39,18 +40,13 @@ function App() {
           {/* Loads the color grid with default options */}
           <Route exact path='/'>
             {/* <ColorGetter /> */}
-            <OptionsDropdown />
-            {/* these should be shown conditionally */}
-            <SaveDropdown />
-            <LoadDropdown />
+            <TopBar />
             <ColorGrid />
           </Route>
 
           {/* This route loads the grid with custom options */}
           <Route exact path='/optionsgrid'>
-            <OptionsDropdown />
-            <SaveDropdown />
-            <LoadDropdown />
+            <TopBar />
             <ColorGrid
               reloadingWithOptions={true}
             />
