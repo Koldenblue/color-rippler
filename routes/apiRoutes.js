@@ -18,7 +18,11 @@ router.post('/login', passport.authenticate("local"), (req, res) => {
   res.json(response);
 })
 
-
+router.put('/save/:slot', (req, res) => {
+  // console.log(req.body) // req.body is the color grid array
+  console.log(req.params.slot)
+  res.json({})
+})
 // router.get('/users', (req, res) => {
 //   console.log("users api get route, now validate, go thru passport, and put in database");
 //   db.User.find({}).then(data => {

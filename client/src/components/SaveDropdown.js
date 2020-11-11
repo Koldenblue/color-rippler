@@ -9,9 +9,8 @@ export default function SaveDropdown(props) {
     }
   }
 
-  let saveGrid = () => {
-
-    Axios.put('api/save', props.colorgrid)
+  let saveGrid = (slot) => {
+    Axios.put(`api/save/${slot}`, props.colorGrid)
   }
 
   return (<>
@@ -21,7 +20,7 @@ export default function SaveDropdown(props) {
       </Dropdown.Toggle>
       <Dropdown.Menu>
 
-      <Dropdown.Item>Slot 1</Dropdown.Item>
+      <Dropdown.Item onClick={() => saveGrid(1)}>Slot 1</Dropdown.Item>
       <Dropdown.Item>Slot 2</Dropdown.Item>
       <Dropdown.Item>Slot 3</Dropdown.Item>
         </Dropdown.Menu>
