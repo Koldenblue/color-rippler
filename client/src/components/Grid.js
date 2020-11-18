@@ -13,14 +13,14 @@ function Grid(props) {
   let allowResize = true;
   useEffect(() => {
     function handleResize() {
-      allowResize = false;
-      setTimeout(() => {
-        allowResize = true;
-        if (allowResize) {
+      if (allowResize) {
+        allowResize = false;
+        setTimeout(() => {
           setWidth(window.innerWidth)
           setHeight(window.innerHeight)
-        }
-      }, 500)
+          allowResize = true;
+        }, 500)
+      }
     }
     window.addEventListener('resize', handleResize);
   }, [])
