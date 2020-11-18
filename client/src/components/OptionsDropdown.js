@@ -52,8 +52,9 @@ export default function OptionsDropdown(props) {
   }
 
   let logout = () => {
-    Axios.get('/logout').then(() => {
+    Axios.get('/api/logout').then(() => {
       dispatch(loggedInUser(null));
+      window.location.reload();
     })
   }
 
