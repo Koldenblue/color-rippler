@@ -26,7 +26,13 @@ function GridWrapper({
 
 
   // initial random color to be applied to entire grid
-  const randRed = Math.floor(Math.random() * 256);
+  let randRed = Math.floor(Math.random() * 256);
+  if (randRed < initialVariance) {
+    randRed = initialVariance;
+  }
+  else if (randRed + initialVariance > 255) {
+    randRed = 255 - initialVariance;
+  }
   let randGreen;
   let randBlue;
   if (initialGrayscale) {

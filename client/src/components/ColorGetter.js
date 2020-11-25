@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function ColorGetter() {
   let retrieveColor = () => {
-    console.log("hi")
     axios.get('/api/colorgetter').then((data) => {
       console.log(data);
     })
@@ -17,7 +17,14 @@ export default function ColorGetter() {
   // the display can possibly be in a navbar of some sort? to be implemented
   // perhaps the color grid should be put into a container-fluid rather than the entire window
   return (<>
-    <button onClick={retrieveColor}>Click me</button>
+    <Dropdown className='dropdown'>
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+        Get Colors
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={() => retrieveColor()}>Get Color</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   </>)
 }
 
