@@ -1,12 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { setGettingColor, selectGettingColor } from '../redux/colorGridSlice'
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function ColorGetter() {
+  const dispatch = useDispatch();
+  const gettingColor = useSelector(selectGettingColor);
+
   let retrieveColor = () => {
     axios.get('/api/colorgetter').then((data) => {
       console.log(data);
     })
+  }
+
+  let colorDropper = () => {
+    // set gettingColor so that instead of changing the surrounding colors, clicking on a square will get rgb values
+    dispatch(setGettingColor());
+    console.log('color dropper')
+    console.log(gettingColor)
   }
 
   // to implement: set a flag for 'picking a color', which is activated by selecting the appropriate option in the dropdown.
@@ -22,7 +34,9 @@ export default function ColorGetter() {
         Get Colors
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => retrieveColor()}>Get Color</Dropdown.Item>
+        <Dropdown.Item onClick={() => retrieveColor()}>Choose Color</Dropdown.Item>
+        <Dropdown.Item onClick={() => colorDropper()}>Color Dropper</Dropdown.Item>
+
       </Dropdown.Menu>
     </Dropdown>
   </>)

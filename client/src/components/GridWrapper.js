@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Grid from './Grid';
 import { setColorGrid, selectColorGrid } from '../redux/colorGridSlice';
+import { setGettingColor, selectGettingColor } from '../redux/colorGridSlice'
 import { useSelector, useDispatch } from 'react-redux';
 
 /** Should manage options, auto function, and ripple change functions.
@@ -23,9 +24,11 @@ function GridWrapper({
   const [clickVariance, setClickVariance] = useState(rippleVariance);
   const dispatch = useDispatch();
   let colorGrid = useSelector(selectColorGrid);
+  let gettingColor = useSelector(selectGettingColor);
 
 
   // initial random color to be applied to entire grid
+  // limit the range so that the variance won't be producing too much black or white by hitting 0 or 255
   let randRed = Math.floor(Math.random() * 256);
   if (randRed < initialVariance) {
     randRed = initialVariance;
@@ -46,12 +49,14 @@ function GridWrapper({
   // determines whether to add or subtract variance from initial color
   const plusMinus = [-1, 1];
 
+
   // background color to be implemented, but doing it this way rerenders it every time grid changes
   // let styles = {
   //   background: {
   //     backgroundColor: `rgb(${randRed}, ${randGreen}, ${randBlue})`
   //   }
   // }
+
 
   // initializes the color grid by generating random color variance, with the random RGB values above as starting points.
   useEffect(() => {
@@ -113,6 +118,7 @@ function GridWrapper({
   //   auto()
   // },[colorGrid.length])
 
+
   /** Accepts a 2D array and initial row/column value, containing rgb objects. Propogates rgb changes one array shell at a time.
    * @param {Array} grids A 2d array, consisting of an outer array of rows, and inner arrays corresponding to columns, with each row/col having an rgb object
    * @param {Number} maxDelta The maximum propogation of color change
@@ -125,14 +131,12 @@ function GridWrapper({
     const currentGrid = grids.map(a=> a.map(b=> b))
 
     setTimeout(()=> {
-
       // ranges is the row and column numbers of boxes to be changed - ex. [-2, -1, 0, 1, 2]
       const ranges = [0];
-      for(let i = 1; i <= startDelta; i++){
+      for(let i = 1; i <= startDelta; i++) {
         ranges.unshift(-i);
         ranges.push(i);
       };
-
       // for each row/col in the range, return a new value in the outermost shell
       // the outermost shell will always have at least one row or column equal to the absolute value of the max range
       ranges.forEach(a => {
@@ -160,7 +164,6 @@ function GridWrapper({
         )
       });
       dispatch(setColorGrid(currentGrid))
-      // console.log(currentGrid);
       // can set the grids param to the original grids in order to only save changes to the outermost shell, instead of all shells, since the original grid has not changed
       // remember we are working with currentGrid, which is a copy of the original grids.
       if (outerShellOnly) {
@@ -175,16 +178,25 @@ function GridWrapper({
 
   /** function passed to color boxes, triggered on click.
   * Gets the row and column of the clicked box, changes its color, 
-  * then passes the color changes to the changeColor algorithm in order to propogate ripples.
+  * then passes the color changes to the changeColor() algorithm in order to propagate ripples.
   * @param {object} value is from the data-value attribute on the box, or props.data-value */
   const changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
-    // console.log(value, redChange, greenChange, blueChange);
     const currentRow = value.r;
     const currentCol = value.c;
-    // console.log(colorGrid)
+
+    // first, if gettingColor is active, then instead get the rgb values for the current square.
+    if (gettingColor) {
+      console.log('getting color is true');
+      // set back to false
+      dispatch(setGettingColor());
+      console.log(gettingColor)
+      let pickedColor = {r: null, g: null, b: null}
+      console.log(colorGrid[currentRow][currentCol]);
+    }
+
     // mapping to new grid to create a copy that doesn't have same reference
-    if (colorGrid.length > 0) {
-      let newGrid = JSON.stringify(colorGrid);
+    else if (colorGrid.length > 0) {
+      let newGrid = JSON.stringify(colorGrid); // stringifying then parsing avoids having same reference in memory
       newGrid = JSON.parse(newGrid)
       newGrid[currentRow].splice(currentCol, 1, {
         red: newGrid[currentRow][currentCol].red + redChange,

@@ -3,17 +3,24 @@ import { createSlice } from '@reduxjs/toolkit';
 export const colorGridSlice = createSlice({
   name: 'colorGrid',
   initialState: {
-    colorGrid: []
+    colorGrid: [],
+    gettingColor: false
   },
   reducers: {
     setColorGrid: (state, action) => {
       state.colorGrid = action.payload;
+    },
+    setGettingColor: (state) => {
+      console.log(state)
+      console.log('hjaishf')
+      state.gettingColor = !state.gettingColor;
     }
   }
 })
 
 export const selectColorGrid = state => state.colorGrid.colorGrid;
+export const selectGettingColor = state => state.colorGrid.gettingColor;
 
-export const { setColorGrid } = colorGridSlice.actions;
+export const { setColorGrid, setGettingColor } = colorGridSlice.actions;
 
 export default colorGridSlice.reducer;

@@ -25,9 +25,10 @@ function Grid(props) {
     window.addEventListener('resize', handleResize);
   }, [])
 
-  useEffect(() => {
-    console.log(props.colorGrid)
-  }, [props.colorGrid])
+  // enable to see changes in color grid
+  // useEffect(() => {
+  //   console.log(props.colorGrid)
+  // }, [props.colorGrid])
 
   // r and c are used to indicate rows and columns in the keys and data
   let r = -1;
