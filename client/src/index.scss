@@ -37,22 +37,37 @@
   margin: 2px;
 }
 
+/* top bar ------------------- */
 .topbar {
   width: 100%;
   background-color: slategray;
   border-bottom: 2px rgb(136, 122, 111) outset;
+  justify-content: flex-end;
+  display: flex;
 }
+
 
 .dropdown {
-  display: inline;
+  display: inline-flex;
 }
 
-.dropdown-basic {
+.empty-div {
+  display: inline-flex;
+  flex-grow: 4;
+}
+.dropdown-basic, .should-log-in {
   border-width: 1px;
   border-style: solid;
   border-color: rgb(63, 63, 63) !important;
 }
 
 .should-log-in {
-
+  position: relative;
+  display: inline-block;
 }
+
+.should-log-in a {
+  color: white;
+}
+
+/* ===================================*/

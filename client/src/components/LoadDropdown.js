@@ -31,7 +31,7 @@ export default function LoadDropdown(props) {
 
   return (<>
     <Dropdown className='dropdown'>
-      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" className="dropdown-basic">
         Load
       </Dropdown.Toggle>
       <Dropdown.Menu>

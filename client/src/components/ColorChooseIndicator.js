@@ -13,8 +13,8 @@ export default function ColorChooseIndicator() {
 
   let styles = {
     chooseIndicator: {
-      left: '42%',
-      position: 'absolute',
+      // left: '42%',
+      // position: 'absolute',
       opacity: opacity,
       transition: 'opacity 0.5s'
       // transform: 'translateX(-50%)'
@@ -24,7 +24,7 @@ export default function ColorChooseIndicator() {
   return (<>
     <Dropdown disabled className='dropdown' style={styles.chooseIndicator}>
       <Dropdown.Toggle disabled variant="secondary" id='chooseIndicator'>
-       Select a Color Below!
+       Select Color Below!
       </Dropdown.Toggle>
     </Dropdown>
   </>)

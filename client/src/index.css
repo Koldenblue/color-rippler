@@ -37,20 +37,39 @@
   margin: 2px;
 }
 
+/* top bar ------------------- */
 .topbar {
   width: 100%;
   background-color: slategray;
   border-bottom: 2px #887a6f outset;
+  justify-content: flex-end;
+  display: flex;
 }
 
 .dropdown {
-  display: inline;
+  display: inline-flex;
 }
 
-.dropdown-basic {
+.empty-div {
+  display: inline-flex;
+  flex-grow: 4;
+}
+
+.dropdown-basic, .should-log-in {
   border-width: 1px;
   border-style: solid;
   border-color: #3f3f3f !important;
 }
+
+.should-log-in {
+  position: relative;
+  display: inline-block;
+}
+
+.should-log-in a {
+  color: white;
+}
+
+/* ===================================*/
 
 /*# sourceMappingURL=index.css.map */

@@ -1,27 +1,10 @@
-import Axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Redirect, useHistory } from 'react-router-dom';
-import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
 
 export default function OptionsDropdown(props) {
-  const dispatch = useDispatch();
-  let userInfo = useSelector(selectLoggedInUser);
   const [redirect, setRedirect] = useState();
-  const [loginBtn, setLoginBtn] = useState();
-  const [logoutBtn, setLogoutBtn] = useState();
   const history = useHistory();
-
-  useEffect(() => {
-    if (userInfo) {
-      setLogoutBtn(<Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>)
-      setLoginBtn();
-    } else {
-      setLoginBtn(<Dropdown.Item href="/login">Log In</Dropdown.Item>);
-      setLogoutBtn();
-    }
-  }, [userInfo])
 
   let generateNewGrid = async () => {
     // Generate a new grid with the selected options by redirecting to appropriate route,
@@ -51,13 +34,6 @@ export default function OptionsDropdown(props) {
     window.location.reload();
   }
 
-  let logout = () => {
-    Axios.get('/api/logout').then(() => {
-      dispatch(loggedInUser(null));
-      window.location.reload();
-    })
-  }
-
   return (
     <>
     {redirect}
@@ -70,8 +46,6 @@ export default function OptionsDropdown(props) {
           <Dropdown.Item onClick={generateNewGrid}>New Grid with Customized Options</Dropdown.Item>
           <Dropdown.Item onClick={generateDefaultGrid}>New Grid with Default Options</Dropdown.Item>
           <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
-          {loginBtn}
-          {logoutBtn}
           {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
           <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}
 
