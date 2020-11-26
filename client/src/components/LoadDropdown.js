@@ -21,7 +21,9 @@ export default function LoadDropdown(props) {
       Axios.get(`api/load/${userInfo._id}/${slot}`).then(loadedGrid => {
         if (loadedGrid) {
           console.log(loadedGrid.data)
-          dispatch(setColorGrid(loadedGrid.data));
+          if (loadedGrid.data !== null) {
+            dispatch(setColorGrid(loadedGrid.data));
+          }
         }
       }).catch((err) => {
         console.error(err);
