@@ -26,7 +26,7 @@ export default function ShouldLogIn() {
           className='btn-secondary btn dropdown-basic should-log-in'
           onClick={logout}
         >
-          Log in
+          Log out
         </button>
       );
     } else {
