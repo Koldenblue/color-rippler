@@ -7,25 +7,25 @@
 }
 
 #options-jumbotron {
-  background: #20b246;
-  background: linear-gradient(0deg, #20b246 0%, #2d7d58 82%);
+  background: rgb(32,178,70);
+  background: linear-gradient(0deg, rgba(32,178,70,1) 0%, rgba(45,125,88,1) 82%); 
   border-bottom: black;
   border-width: 0 0 2px 0;
   border-style: dotted;
+
 }
 
 .no-scroll {
-  overflow: hidden;
-  /* Hide scrollbars */
+  overflow: hidden; /* Hide scrollbars */
 }
 
 #pink-watermelon {
-  background: lightcoral;
-  background: linear-gradient(180deg, lightcoral 25%, #f43c3c 80%);
+  background: rgb(240,128,128);
+  background: linear-gradient(180deg, rgba(240,128,128,1) 25%, rgba(244,60,60,1) 80%); 
 }
 
 .title-text {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
 }
 
 .loginSignupContainer {
@@ -40,7 +40,7 @@
 .topbar {
   width: 100%;
   background-color: slategray;
-  border-bottom: 2px #887a6f outset;
+  border-bottom: 2px rgb(136, 122, 111) outset;
 }
 
 .dropdown {
@@ -50,7 +50,9 @@
 .dropdown-basic {
   border-width: 1px;
   border-style: solid;
-  border-color: #3f3f3f !important;
+  border-color: rgb(63, 63, 63) !important;
 }
 
-/*# sourceMappingURL=index.css.map */
+.should-log-in {
+
+}

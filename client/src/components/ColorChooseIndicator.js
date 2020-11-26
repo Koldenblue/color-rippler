@@ -8,7 +8,7 @@ export default function ColorChooseIndicator() {
   let gettingColor = useSelector(selectGettingColor);
 
   useEffect(() => {
-    gettingColor ? setOpacity(1) : setOpacity (0)
+    gettingColor ? setOpacity(1) : setOpacity (0);
   }, [gettingColor])
 
   let styles = {
