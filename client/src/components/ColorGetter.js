@@ -30,11 +30,11 @@ export default function ColorGetter() {
   // perhaps the color grid should be put into a container-fluid rather than the entire window
   return (<>
     <Dropdown className='dropdown'>
-      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" className="dropdown-basic">
         Get Colors
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => retrieveColor()}>Choose Color</Dropdown.Item>
+        {/* <Dropdown.Item onClick={() => retrieveColor()}>Choose Color</Dropdown.Item> */}
         <Dropdown.Item onClick={() => colorDropper()}>Color Dropper</Dropdown.Item>
 
       </Dropdown.Menu>

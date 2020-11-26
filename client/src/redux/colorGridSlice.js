@@ -13,7 +13,7 @@ export const colorGridSlice = createSlice({
     setGettingColor: (state) => {
       console.log(state)
       console.log('hjaishf')
-      state.gettingColor = !state.gettingColor;
+      state.gettingColor = !state.gettingColor
     }
   }
 })

@@ -5,6 +5,7 @@ import SaveDropdown from './SaveDropdown';
 import { useSelector } from 'react-redux';
 import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
 import ColorGetter from './ColorGetter';
+import ColorChooseIndicator from './ColorChooseIndicator';
 
 export default function TopBar() {
   let userInfo = useSelector(selectLoggedInUser);
@@ -24,6 +25,7 @@ export default function TopBar() {
       {save}
       {load}
       <ColorGetter />
+      <ColorChooseIndicator />
     </div>
   </>)
 }

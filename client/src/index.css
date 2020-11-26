@@ -46,3 +46,9 @@
 .dropdown {
   display: inline;
 }
+
+.dropdown-basic {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(63, 63, 63) !important;
+}

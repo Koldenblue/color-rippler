@@ -62,7 +62,7 @@ export default function OptionsDropdown(props) {
     <>
     {redirect}
       <Dropdown className='dropdown'>
-        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+        <Dropdown.Toggle variant="secondary" className="dropdown-basic">
           Options
         </Dropdown.Toggle>
 
