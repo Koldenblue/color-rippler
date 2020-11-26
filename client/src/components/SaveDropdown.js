@@ -26,7 +26,7 @@ export default function SaveDropdown(props) {
 
   return (<>
     <Dropdown className='dropdown'>
-      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" className="dropdown-basic">
         Save
       </Dropdown.Toggle>
       <Dropdown.Menu>

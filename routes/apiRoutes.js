@@ -5,8 +5,11 @@ const passport = require("../config/passport");
 // require("dotenv").config();
 
 router.get('/colorgetter', (req, res) => {
-    let data = {hi: 'hi'}
-    res.json(data)
+    let queryUrl = 'http://thecolorapi.com/scheme?rgb=' + "222,32,52"
+    axios.get(queryUrl).then(data => {
+      res.json(data.data.data)
+    })
+    // res.json(data)
 })
 
 router.post('/login', passport.authenticate("local"), (req, res) => {
