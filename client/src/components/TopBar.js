@@ -23,7 +23,7 @@ export default function TopBar() {
   return (<>
     <div className='topbar'>
       <OptionsDropdown />
-      {/* <ColorGetter /> */}
+      <ColorGetter />
       <div className='empty-div'></div>
       <ColorChooseIndicator />
       <div className='empty-div'></div>

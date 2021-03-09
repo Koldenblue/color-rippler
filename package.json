@@ -16,7 +16,8 @@
     "install": "cd client && npm install",
     "heroku-postbuild": "npm run build",
     "sass": "cd client/src && sass.bat index.scss index.css && cd ../..",
-    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css"
+    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css",
+    "tsc-watch": "tsc ./client/src/components/*.tsx --watch --jsx react -esModuleInterop"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,7 @@
   },
   "homepage": "https://github.com/Koldenblue/color-rippler#readme",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
