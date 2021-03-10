@@ -22,7 +22,6 @@ function ColorGrid(props: {
 }) {
   const [grid, setGrid] = useState(<></>);
   const history = useHistory();
-
   // disallow scroll bar when the grid is on the page (cuz it messes up margins)
   useEffect(() => {
     document.body.classList.add('no-scroll');
