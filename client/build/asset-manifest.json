@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7d57fdfc.chunk.css",
+    "main.js": "/static/js/main.34ccc661.chunk.js",
+    "main.js.map": "/static/js/main.34ccc661.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.eeabec3a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.eeabec3a.js.map",
+    "static/css/2.74b270cf.chunk.css": "/static/css/2.74b270cf.chunk.css",
+    "static/js/2.debab00e.chunk.js": "/static/js/2.debab00e.chunk.js",
+    "static/js/2.debab00e.chunk.js.map": "/static/js/2.debab00e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.74b270cf.chunk.css.map": "/static/css/2.74b270cf.chunk.css.map",
+    "static/css/main.7d57fdfc.chunk.css.map": "/static/css/main.7d57fdfc.chunk.css.map",
+    "static/js/2.debab00e.chunk.js.LICENSE.txt": "/static/js/2.debab00e.chunk.js.LICENSE.txt",
+    "static/media/watercolor-background.png": "/static/media/watercolor-background.73882de6.png",
+    "static/media/watercolor-circle.svg": "/static/media/watercolor-circle.a6689a7c.svg",
+    "static/media/watercolor-circle2.svg": "/static/media/watercolor-circle2.7a7c6d4c.svg",
+    "static/media/watercolor-circle3.svg": "/static/media/watercolor-circle3.2aa72dcd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eeabec3a.js",
+    "static/css/2.74b270cf.chunk.css",
+    "static/js/2.debab00e.chunk.js",
+    "static/css/main.7d57fdfc.chunk.css",
+    "static/js/main.34ccc661.chunk.js"
+  ]
+}

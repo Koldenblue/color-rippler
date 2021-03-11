@@ -23,8 +23,8 @@ function GridWrapper({
   const [gridSize, setGridSize] = useState(maxGridSize);
   const [clickVariance, setClickVariance] = useState(rippleVariance);
   const dispatch = useDispatch();
-  let colorGrid = useSelector(selectColorGrid);
-  let gettingColor = useSelector(selectGettingColor);
+  let colorGrid: Array<Array<{ red: number, green: number, blue: number }>> = useSelector(selectColorGrid);
+  let gettingColor: boolean = useSelector(selectGettingColor);
 
 
   // initial random color to be applied to entire grid
@@ -60,9 +60,9 @@ function GridWrapper({
 
   // initializes the color grid by generating random color variance, with the random RGB values above as starting points.
   useEffect(() => {
-    let newGrid = []
+    let newGrid: Array<Array<{ red: number, green: number, blue: number }>> = [];
     for (let i = 0; i < gridSize; i++) {
-      newGrid.push([])
+      newGrid.push([]);
       for (let j = 0; j < gridSize; j++) {
         let redVar = Math.floor(Math.random() * variance);
         let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)];
@@ -126,7 +126,7 @@ function GridWrapper({
    * @param {Number} row The starting row, corresponding to the outermost array
    * @param {Number} col The starting column, corresponding to the inner arrays
    * @param {Number} redChange The amount that each red value in the rgb objects will be changed. Similar for greenChange and blueChange */
-  const changeColor = (grids, maxDelta: number, startDelta: number = 1, row: number, col: number, redChange: number, greenChange:number, blueChange:number) => {
+  const changeColor = (grids: Array<Array<{ red: number, green: number, blue: number }>>, maxDelta: number, startDelta: number = 1, row: number, col: number, redChange: number, greenChange:number, blueChange:number) => {
     // mapping to new grid to create a copy that doesn't have same reference
     const currentGrid = grids.map(a=> a.map(b=> b))
 
@@ -180,7 +180,7 @@ function GridWrapper({
   * Gets the row and column of the clicked box, changes its color, 
   * then passes the color changes to the changeColor() algorithm in order to propagate ripples.
   * @param {object} value is from the data-value attribute on the box, or props.data-value */
-  const changeSurroundings = (value, [redChange, greenChange, blueChange]) => {
+  const changeSurroundings = (value: { r: number, c: number }, [redChange, greenChange, blueChange]: Array<number>) => {
     const currentRow = value.r;
     const currentCol = value.c;
 
@@ -196,7 +196,7 @@ function GridWrapper({
 
     // mapping to new grid to create a copy that doesn't have same reference
     else if (colorGrid.length > 0) {
-      let newGrid = JSON.stringify(colorGrid); // stringifying then parsing avoids having same reference in memory
+      let newGrid: any = JSON.stringify(colorGrid); // stringifying then parsing avoids having same reference in memory
       newGrid = JSON.parse(newGrid)
       newGrid[currentRow].splice(currentCol, 1, {
         red: newGrid[currentRow][currentCol].red + redChange,

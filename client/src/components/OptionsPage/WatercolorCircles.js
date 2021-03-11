@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'react-bootstrap/Image';
+import circle2 from '../../assets/watercolor-circle2.svg';
+import circle3 from '../../assets/watercolor-circle3.svg';
+import circle1 from '../../assets/watercolor-circle.svg';
 
 export default function WatercolorCircles() {
   const [opacity1, setOpacity1] = useState(0);
@@ -82,8 +85,8 @@ export default function WatercolorCircles() {
 
 
   return (<>
-    <Image style={styles.circle2} src={require('../../assets/watercolor-circle.svg')} alt='watercolor circle' />
-    <Image style={styles.circle1} src={require('../../assets/watercolor-circle2.svg')} alt='watercolor circle' />
-    <Image style={styles.circle3} src={require('../../assets/watercolor-circle3.svg')} alt='watercolor circle' />
+    <Image style={styles.circle2} src={circle1} alt='watercolor circle' />
+    <Image style={styles.circle1} src={circle2} alt='watercolor circle' />
+    <Image style={styles.circle3} src={circle3} alt='watercolor circle' />
   </>)
 }

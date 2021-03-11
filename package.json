@@ -16,7 +16,8 @@
     "install": "cd client && npm install",
     "heroku-postbuild": "npm run build",
     "sass": "cd client/src && sass.bat index.scss index.css && cd ../..",
-    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css"
+    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css",
+    "test": "cd ./client && npm run test"
   },
   "repository": {
     "type": "git",
