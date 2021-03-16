@@ -10,7 +10,7 @@ function DynaColorBox(props: {
   green: number,
   blue: number,
   changeSurroundings: any,
-  'data-value': number 
+  'data-value': { r: number, c: number }
 }) {
   const [variance, setVariance] = useState<number>(props.clickVariance);
   const [opacity, setOpacity] = useState<number>(0);

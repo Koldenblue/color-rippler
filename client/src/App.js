@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import OptionsDropdown from './components/OptionsDropdown';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ColorGrid from './components/ColorGrid';
 import OptionsPage from './components/OptionsPage/OptionsPage';
@@ -9,8 +8,6 @@ import axios from 'axios';
 import Signup from './components/LoginSignupPages/Signup';
 import { loggedInUser, selectLoggedInUser } from './redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import SaveDropdown from './components/SaveDropdown';
-import LoadDropdown from './components/LoadDropdown';
 import TopBar from './components/TopBar';
 
 function App() {

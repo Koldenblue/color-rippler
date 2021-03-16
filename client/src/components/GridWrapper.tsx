@@ -180,7 +180,10 @@ function GridWrapper({
   * Gets the row and column of the clicked box, changes its color, 
   * then passes the color changes to the changeColor() algorithm in order to propagate ripples.
   * @param {object} value is from the data-value attribute on the box, or props.data-value */
-  const changeSurroundings = (value: { r: number, c: number }, [redChange, greenChange, blueChange]: Array<number>) => {
+  const changeSurroundings = (
+    value: { r: number, c: number },
+    [redChange, greenChange, blueChange]: Array<number>
+  ): void => {
     const currentRow = value.r;
     const currentCol = value.c;
 
