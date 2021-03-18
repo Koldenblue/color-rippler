@@ -8,17 +8,16 @@ import { useHistory } from "react-router-dom";
  * or before the DynaColorBox components can be mapped. */
 function ColorGrid(props: {
   reloadingWithOptions: boolean,
-  outerShellOnly: boolean,
-  initialVariance: number,
-  rippleVariance: number,
-  rippleSize: number,
-  maxGridSize: number,
-  rippleSpeed: number,
-  ripplePropagation: number,
-  initialGrayscale: boolean,
-  rippleTransitionSpeed: number,
-  grayscaleChange: boolean,
-  autoDrop: boolean
+  outerShellOnly?: boolean,
+  initialVariance?: number,
+  rippleVariance?: number,
+  maxGridSize?: number,
+  rippleSpeed?: number,
+  ripplePropagation?: number,
+  initialGrayscale?: boolean,
+  rippleTransitionSpeed?: number,
+  grayscaleChange?: boolean,
+  autoDrop?: boolean
 }) {
   const [grid, setGrid] = useState(<></>);
   const history = useHistory();

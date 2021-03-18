@@ -70,16 +70,17 @@ function OptionsDropdown() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    options = JSON.parse(sessionStorage.getItem('optionsGrid'));
+                    options = sessionStorage.getItem('optionsGrid');
                     if (!!options) return [3 /*break*/, 1];
                     // await setRedirect(
                     //   <Redirect to='/options' />
                     // )
                     history.push('/options');
                     return [3 /*break*/, 3];
-                case 1: 
-                // pushing history doesn't seem helpful, since the colorgrid doesn't revert anyway
-                return [4 /*yield*/, setRedirect(react_1["default"].createElement(react_router_dom_1.Redirect, { to: '/optionsgrid' }))];
+                case 1:
+                    options = JSON.parse(options);
+                    // pushing history doesn't seem helpful, since the colorgrid doesn't revert anyway
+                    return [4 /*yield*/, setRedirect(react_1["default"].createElement(react_router_dom_1.Redirect, { to: '/optionsgrid' }))];
                 case 2:
                     // pushing history doesn't seem helpful, since the colorgrid doesn't revert anyway
                     _a.sent();

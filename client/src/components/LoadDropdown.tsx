@@ -1,8 +1,8 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
-import { setColorGrid, selectColorGrid } from '../redux/colorGridSlice';
+import { selectLoggedInUser } from '../redux/userSlice';
+import { setColorGrid } from '../redux/colorGridSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function LoadDropdown() {

@@ -16,7 +16,7 @@ function Grid(props: {
 
   // resizes the DynaColorBox components based on the window size.
   // Resizing is only allowed every 500 ms.
-  let allowResize = true;
+  let allowResize: boolean = true;
   useEffect(() => {
     function handleResize() {
       if (allowResize) {

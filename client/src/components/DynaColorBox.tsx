@@ -41,15 +41,15 @@ function DynaColorBox(props: {
   let plusMinus: Array<number> = [-1, 1]   // plus or minus random color variance
 
   // generates a random color variance, then propogates to surroundings thru props.changeSurroundings
-  const changeColors = () => {
-    let redVar = Math.floor(Math.random() * variance)
-    let redPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-    let greenVar = Math.floor(Math.random() * variance)
-    let greenPlusMinus = plusMinus[Math.floor(Math.random() * 2)]
-    let blueVar = Math.floor(Math.random() * variance)
-    let bluePlusMinus = plusMinus[Math.floor(Math.random() * 2)]
+  const changeColors = (): void => {
+    let redVar: number = Math.floor(Math.random() * variance);
+    let redPlusMinus: number = plusMinus[Math.floor(Math.random() * 2)];
+    let greenVar: number = Math.floor(Math.random() * variance);
+    let greenPlusMinus: number = plusMinus[Math.floor(Math.random() * 2)];
+    let blueVar: number = Math.floor(Math.random() * variance);
+    let bluePlusMinus: number = plusMinus[Math.floor(Math.random() * 2)];
 
-    props.changeSurroundings(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus])
+    props.changeSurroundings(props['data-value'], [redVar * redPlusMinus, greenVar * greenPlusMinus, blueVar * bluePlusMinus]);
   }
 
 

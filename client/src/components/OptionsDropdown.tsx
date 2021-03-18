@@ -9,7 +9,7 @@ export default function OptionsDropdown() {
   let generateNewGrid = async () => {
     // Generate a new grid with the selected options by redirecting to appropriate route,
     // if options are stored. Else reload page.
-    let options = JSON.parse(sessionStorage.getItem('optionsGrid'));
+    let options: any = sessionStorage.getItem('optionsGrid');
     if (!options) {
       // await setRedirect(
       //   <Redirect to='/options' />
@@ -18,6 +18,7 @@ export default function OptionsDropdown() {
       // window.location.reload();
     }
     else {
+      options = JSON.parse(options)
       // pushing history doesn't seem helpful, since the colorgrid doesn't revert anyway
       await setRedirect(
         <Redirect to='/optionsgrid' />

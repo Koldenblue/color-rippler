@@ -3,7 +3,7 @@ import LoadDropdown from './LoadDropdown';
 import OptionsDropdown from './OptionsDropdown';
 import SaveDropdown from './SaveDropdown';
 import { useSelector } from 'react-redux';
-import { loggedInUser, selectLoggedInUser } from '../redux/userSlice';
+import { selectLoggedInUser } from '../redux/userSlice';
 import ColorGetter from './ColorGetter';
 import ColorChooseIndicator from './ColorChooseIndicator';
 import ShouldLogIn from './ShouldLogIn';

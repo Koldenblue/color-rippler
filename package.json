@@ -11,13 +11,12 @@
     "seed": "node scripts/seedDB.js",
     "watch-client": "cd client && npm start",
     "watch-server": "nodemon --ignore \"client/\" index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd ./client && npm run test",
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
     "heroku-postbuild": "npm run build",
     "sass": "cd client/src && sass.bat index.scss index.css && cd ../..",
-    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css",
-    "test": "cd ./client && npm run test"
+    "watch-sass": "sass.bat --watch client/src/index.scss client/src/index.css"
   },
   "repository": {
     "type": "git",

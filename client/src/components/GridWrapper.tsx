@@ -184,8 +184,8 @@ function GridWrapper({
     value: { r: number, c: number },
     [redChange, greenChange, blueChange]: Array<number>
   ): void => {
-    const currentRow = value.r;
-    const currentCol = value.c;
+    const currentRow: number = value.r;
+    const currentCol: number = value.c;
 
     // first, if gettingColor is active, then instead get the rgb values for the current square.
     if (gettingColor) {
@@ -193,7 +193,7 @@ function GridWrapper({
       // set back to false
       dispatch(setGettingColor());
       console.log(gettingColor)
-      let pickedColor = {r: null, g: null, b: null}
+      let pickedColor: { r: null | number, g: null | number, b: null | number } = {r: null, g: null, b: null}
       console.log(colorGrid[currentRow][currentCol]);
     }
 
