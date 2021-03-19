@@ -19,7 +19,7 @@ function OptionsPage() {
   // background color
 
   // submits options form, stores the options in session storage, then generates a grid with the selected options
-  let handleFormSubmit = (event) => {
+  let handleFormSubmit = (event: any) => {
     event.preventDefault();
     const form = event.currentTarget;
     setValidated(true)
