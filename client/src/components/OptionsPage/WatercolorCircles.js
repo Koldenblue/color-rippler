@@ -9,7 +9,6 @@ export default function WatercolorCircles() {
   const [opacity2, setOpacity2] = useState(0);
   const [opacity3, setOpacity3] = useState(0);
 
-
   let styles = {
     circle1: {
       position: 'fixed',

@@ -41,6 +41,7 @@
   "devDependencies": {
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
+    "tslib": "^1.14.1",
     "typescript": "^4.2.3"
   }
 }

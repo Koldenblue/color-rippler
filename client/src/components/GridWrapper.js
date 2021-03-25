@@ -1,43 +1,19 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-exports.__esModule = true;
-var react_1 = __importStar(require("react"));
-var Grid_1 = __importDefault(require("./Grid"));
-var colorGridSlice_1 = require("../redux/colorGridSlice");
-var colorGridSlice_2 = require("../redux/colorGridSlice");
-var react_redux_1 = require("react-redux");
+import React, { useEffect, useState } from 'react';
+import Grid from './Grid';
+import { setColorGrid, selectColorGrid } from '../redux/colorGridSlice';
+import { setGettingColor, selectGettingColor } from '../redux/colorGridSlice';
+import { useSelector, useDispatch } from 'react-redux';
 /** Should manage options, auto function, and ripple change functions.
 * Should get the initial grid array from a higher order component. */
 function GridWrapper(_a) {
     var _b = _a.outerShellOnly, outerShellOnly = _b === void 0 ? false : _b, _c = _a.initialVariance, initialVariance = _c === void 0 ? 50 : _c, _d = _a.rippleVariance, rippleVariance = _d === void 0 ? 100 : _d, _e = _a.maxGridSize, maxGridSize = _e === void 0 ? 20 : _e, _f = _a.rippleSpeed, rippleSpeed = _f === void 0 ? 100 : _f, _g = _a.ripplePropagation, ripplePropagation = _g === void 0 ? 3 : _g, _h = _a.autoDrop, autoDrop = _h === void 0 ? false : _h, _j = _a.rippleTransitionSpeed, rippleTransitionSpeed = _j === void 0 ? 1.5 : _j, _k = _a.initialGrayscale, initialGrayscale = _k === void 0 ? true : _k, _l = _a.grayscaleChange, grayscaleChange = _l === void 0 ? false : _l;
     // const [colorGrid, setColorGrid] = useState([]);
-    var _m = react_1.useState(initialVariance), variance = _m[0], setVariance = _m[1];
-    var _o = react_1.useState(maxGridSize), gridSize = _o[0], setGridSize = _o[1];
-    var _p = react_1.useState(rippleVariance), clickVariance = _p[0], setClickVariance = _p[1];
-    var dispatch = react_redux_1.useDispatch();
-    var colorGrid = react_redux_1.useSelector(colorGridSlice_1.selectColorGrid);
-    var gettingColor = react_redux_1.useSelector(colorGridSlice_2.selectGettingColor);
+    var _m = useState(initialVariance), variance = _m[0], setVariance = _m[1];
+    var _o = useState(maxGridSize), gridSize = _o[0], setGridSize = _o[1];
+    var _p = useState(rippleVariance), clickVariance = _p[0], setClickVariance = _p[1];
+    var dispatch = useDispatch();
+    var colorGrid = useSelector(selectColorGrid);
+    var gettingColor = useSelector(selectGettingColor);
     // initial random color to be applied to entire grid
     // limit the range so that the variance won't be producing too much black or white by hitting 0 or 255
     var randRed = Math.floor(Math.random() * 256);
@@ -66,7 +42,7 @@ function GridWrapper(_a) {
     //   }
     // }
     // initializes the color grid by generating random color variance, with the random RGB values above as starting points.
-    react_1.useEffect(function () {
+    useEffect(function () {
         var newGrid = [];
         for (var i = 0; i < gridSize; i++) {
             newGrid.push([]);
@@ -95,7 +71,7 @@ function GridWrapper(_a) {
                 });
             }
         }
-        dispatch(colorGridSlice_1.setColorGrid(newGrid));
+        dispatch(setColorGrid(newGrid));
     }, []);
     // auto function. automatically selects a random row and column to execute changeSurroundings function for.
     // useEffect(() => {
@@ -168,7 +144,7 @@ function GridWrapper(_a) {
                     }
                 }));
             });
-            dispatch(colorGridSlice_1.setColorGrid(currentGrid));
+            dispatch(setColorGrid(currentGrid));
             // can set the grids param to the original grids in order to only save changes to the outermost shell, instead of all shells, since the original grid has not changed
             // remember we are working with currentGrid, which is a copy of the original grids.
             if (outerShellOnly) {
@@ -192,7 +168,7 @@ function GridWrapper(_a) {
         if (gettingColor) {
             console.log('getting color is true');
             // set back to false
-            dispatch(colorGridSlice_2.setGettingColor());
+            dispatch(setGettingColor());
             console.log(gettingColor);
             var pickedColor = { r: null, g: null, b: null };
             console.log(colorGrid[currentRow][currentCol]);
@@ -204,18 +180,18 @@ function GridWrapper(_a) {
             newGrid[currentRow].splice(currentCol, 1, {
                 red: newGrid[currentRow][currentCol].red + redChange,
                 green: newGrid[currentRow][currentCol].green + greenChange,
-                blue: newGrid[currentRow][currentCol].blue + blueChange
+                blue: newGrid[currentRow][currentCol].blue + blueChange,
             });
             // console.log("new Grid", newGrid)
             changeColor(newGrid, ripplePropagation, 1, currentRow, currentCol, redChange, greenChange, blueChange);
-            dispatch(colorGridSlice_1.setColorGrid(newGrid));
+            dispatch(setColorGrid(newGrid));
         }
     };
-    return (react_1["default"].createElement("div", { className: 'container-fluid' },
-        react_1["default"].createElement(Grid_1["default"]
+    return (React.createElement("div", { className: 'container-fluid' },
+        React.createElement(Grid
         // appropriate options are passed down to lower components
         , { 
             // appropriate options are passed down to lower components
             clickVariance: clickVariance, colorGrid: colorGrid, gridSize: gridSize, changeSurroundings: changeSurroundings, rippleTransitionSpeed: rippleTransitionSpeed })));
 }
-exports["default"] = GridWrapper;
+export default GridWrapper;

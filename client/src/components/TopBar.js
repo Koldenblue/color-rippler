@@ -1,55 +1,30 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-exports.__esModule = true;
-var react_1 = __importStar(require("react"));
-var LoadDropdown_1 = __importDefault(require("./LoadDropdown"));
-var OptionsDropdown_1 = __importDefault(require("./OptionsDropdown"));
-var SaveDropdown_1 = __importDefault(require("./SaveDropdown"));
-var react_redux_1 = require("react-redux");
-var userSlice_1 = require("../redux/userSlice");
-var ColorGetter_1 = __importDefault(require("./ColorGetter"));
-var ColorChooseIndicator_1 = __importDefault(require("./ColorChooseIndicator"));
-var ShouldLogIn_1 = __importDefault(require("./ShouldLogIn"));
-function TopBar() {
-    var userInfo = react_redux_1.useSelector(userSlice_1.selectLoggedInUser);
-    var _a = react_1.useState(react_1["default"].createElement(react_1["default"].Fragment, null)), save = _a[0], setSave = _a[1];
-    var _b = react_1.useState(react_1["default"].createElement(react_1["default"].Fragment, null)), load = _b[0], setLoad = _b[1];
-    react_1.useEffect(function () {
+import React, { useEffect, useState } from 'react';
+import LoadDropdown from './LoadDropdown';
+import OptionsDropdown from './OptionsDropdown';
+import SaveDropdown from './SaveDropdown';
+import { useSelector } from 'react-redux';
+import { selectLoggedInUser } from '../redux/userSlice';
+import ColorGetter from './ColorGetter';
+import ColorChooseIndicator from './ColorChooseIndicator';
+import ShouldLogIn from './ShouldLogIn';
+export default function TopBar() {
+    var userInfo = useSelector(selectLoggedInUser);
+    var _a = useState(React.createElement(React.Fragment, null)), save = _a[0], setSave = _a[1];
+    var _b = useState(React.createElement(React.Fragment, null)), load = _b[0], setLoad = _b[1];
+    useEffect(function () {
         if (userInfo) {
-            setSave(react_1["default"].createElement(SaveDropdown_1["default"], null));
-            setLoad(react_1["default"].createElement(LoadDropdown_1["default"], null));
+            setSave(React.createElement(SaveDropdown, null));
+            setLoad(React.createElement(LoadDropdown, null));
         }
     }, [userInfo]);
-    return (react_1["default"].createElement(react_1["default"].Fragment, null,
-        react_1["default"].createElement("div", { className: 'topbar' },
-            react_1["default"].createElement(OptionsDropdown_1["default"], null),
-            react_1["default"].createElement(ColorGetter_1["default"], null),
-            react_1["default"].createElement("div", { className: 'empty-div' }),
-            react_1["default"].createElement(ColorChooseIndicator_1["default"], null),
-            react_1["default"].createElement("div", { className: 'empty-div' }),
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", { className: 'topbar' },
+            React.createElement(OptionsDropdown, null),
+            React.createElement(ColorGetter, null),
+            React.createElement("div", { className: 'empty-div' }),
+            React.createElement(ColorChooseIndicator, null),
+            React.createElement("div", { className: 'empty-div' }),
             save,
             load,
-            react_1["default"].createElement(ShouldLogIn_1["default"], null))));
+            React.createElement(ShouldLogIn, null))));
 }
-exports["default"] = TopBar;

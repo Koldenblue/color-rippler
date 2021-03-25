@@ -12,14 +12,13 @@ export const colorGridSlice = createSlice({
     },
     setGettingColor: (state) => {
       console.log(state)
-      console.log('hjaishf')
       state.gettingColor = !state.gettingColor
     }
   }
 })
 
-export const selectColorGrid = state => state.colorGrid.colorGrid;
-export const selectGettingColor = state => state.colorGrid.gettingColor;
+export const selectColorGrid = (state) => state.colorGrid.colorGrid;
+export const selectGettingColor = (state) => state.colorGrid.gettingColor;
 
 export const { setColorGrid, setGettingColor } = colorGridSlice.actions;
 

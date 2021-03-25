@@ -35,6 +35,7 @@ export default function OptionsDropdown() {
     window.location.reload();
   }
 
+  console.log('he')
   return (
     <>
     {redirect}
@@ -49,6 +50,7 @@ export default function OptionsDropdown() {
           <Dropdown.Item href="/options">Go to Options Page</Dropdown.Item>
           {/* <Dropdown.Item href="#">Save to be implemented</Dropdown.Item>
           <Dropdown.Item href="#">Ripple style, to be implemented</Dropdown.Item> */}
+
 
         </Dropdown.Menu>
       </Dropdown>

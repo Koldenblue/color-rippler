@@ -19,17 +19,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "declaration": true,
     "isolatedModules": true,
     "noEmit": false,
     "importHelpers": true,
-    "jsx": "react"
+    "jsx": "react",
+    "declaration": true
   },
   "include": [
-    "src"
-, "src/components/OptionsPage/WatercolorCircles.js", "src/components/OptionsPage/OptionsForm.js"  ],
-  "exclude": [
-    "node_modules",
-    "build"
+    "./client/src/components/*.tsx",
+    "./client/src/components/**/*.tsx"
   ]
 }
