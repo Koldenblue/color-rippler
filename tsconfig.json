@@ -9,7 +9,7 @@
     "paths": {
       "tslib" : ["./node_modules/tslib/tslib.d.ts"]
     },
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,7 +20,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
+    "noEmit": true,
     "importHelpers": true,
     "jsx": "react",
     "declaration": true
